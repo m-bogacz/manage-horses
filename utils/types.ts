@@ -28,6 +28,7 @@ export interface HorsesEntity {
 export interface SlideEntity {
   src: string;
   label: string;
+  default: boolean;
 }
 
 export interface ParentEntity {

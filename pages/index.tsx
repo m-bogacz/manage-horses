@@ -1,8 +1,8 @@
 import Head from 'next/head';
 import { Inter } from 'next/font/google';
 import { Box, Flex } from '@chakra-ui/react';
-import Image, { ImageLoaderProps } from 'next/image';
-import adaAndFado from 'images/adaAndFado.jpeg';
+import Image from 'next/image';
+import { myImageLoader } from '@/utils/imageLoader/myImageLoader';
 
 export default function Home() {
   return (
@@ -14,7 +14,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Box display={{ base: 'none', md: 'flex' }}>
-        <Image sizes="100vh" src={adaAndFado} alt="Ada" />
+        <Image loader={myImageLoader} width={500} height={500} src={'/horse.jpeg'} alt="Ada" />
       </Box>
     </>
   );
