@@ -67,11 +67,9 @@ export interface ParentEntity {
 }
 type TypeSex = 'mare' | 'gelding' | 'stallion';
 
-export type SectionNameType = 'Geneology Tree' | 'News' | 'Vet' | 'Blacksmith' | 'Gallery';
+export type SectionNameType = 'Geneology Tree' | 'News' | 'Veterinarian' | 'Blacksmith' | 'Gallery';
 
 export type TabSectionType = {
   name: SectionNameType;
   active: boolean;
 };
-
-export type TabsSectionEntity = TabSectionType[];
