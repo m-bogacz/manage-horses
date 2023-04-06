@@ -2,13 +2,21 @@ import { Profile } from '@/components/profile/Profile';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import data from '@/json/data.json';
 import { HorseEntity } from '@/utils/types';
+import { TabMenu } from '@/components/tabMenu/TabMenu';
+import { Flex } from '@chakra-ui/react';
+import { getDefaultphoto } from '@/utils/imageLoader/getDefualtPhoto';
 
 interface HorsePageProps {
   horse: HorseEntity;
 }
 
 export default function Horse({ horse }: HorsePageProps) {
-  return <Profile name={horse.name} />;
+  return (
+    <Flex h={'100vh'}>
+      <TabMenu />
+      <Profile name={horse.name} src={getDefaultphoto(horse.images)} />
+    </Flex>
+  );
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
