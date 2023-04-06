@@ -1,11 +1,13 @@
+import { SlideEntity } from '@/utils/types';
 import { FlexProps, Flex, Box, Avatar, Text, Stack, HStack, Image } from '@chakra-ui/react';
 import Link from 'next/link';
 
-interface NavItemProps extends FlexProps {
+interface SideBarItemProps extends FlexProps {
   name: string;
+  src: string;
 }
 
-export const NavItem = ({ name }: NavItemProps) => {
+export const SideBarItem = ({ name, src }: SideBarItemProps) => {
   return (
     <Link href={`/horse/${name}`} style={{ textDecoration: 'none' }}>
       <Flex
@@ -21,7 +23,7 @@ export const NavItem = ({ name }: NavItemProps) => {
         }}
       >
         <HStack>
-          <Avatar name="name" src="/adaZdjecia/Fado1.jpg" />
+          <Avatar name={name} src={src} />
           <Text>{name}</Text>
         </HStack>
       </Flex>

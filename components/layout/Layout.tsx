@@ -1,5 +1,5 @@
 import { Box, Flex, useColorModeValue } from '@chakra-ui/react';
-import SidebarContent from '../sidebar/SidebarContent';
+import { Sidebar } from '../sidebar/Sidebar';
 
 export const Layout = ({ children }: { children: any }) => {
   return (
@@ -11,7 +11,7 @@ export const Layout = ({ children }: { children: any }) => {
         minH="100vh"
         bg={useColorModeValue('gray.100', 'gray.900')}
       >
-        <SidebarContent />
+        <Sidebar />
       </Box>
       <Box as={'main'} flex={{ base: 0, md: 2 }}>
         {children}
