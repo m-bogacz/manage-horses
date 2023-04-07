@@ -3,18 +3,18 @@ import { TabsSectionEntity } from './types';
 export const TAB_SECTIONS = [
   {
     name: 'News',
-    active: false,
-  },
-  {
-    name: 'Veterinarian',
     active: true,
   },
   {
-    name: 'Blacksmith',
+    name: 'Veterinarian',
     active: false,
   },
   {
-    name: 'Geneology Tree',
+    name: 'Farrier',
+    active: false,
+  },
+  {
+    name: 'Geneology',
     active: false,
   },
   {
