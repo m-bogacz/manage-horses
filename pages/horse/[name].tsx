@@ -5,6 +5,7 @@ import { HorseEntity } from '@/utils/types';
 import { TabMenu } from '@/components/tabMenu/TabMenu';
 import { Flex } from '@chakra-ui/react';
 import { getDefaultphoto } from '@/utils/imageLoader/getDefualtPhoto';
+import { HorseProvider } from '@/apps/context/HorseContext';
 
 interface HorsePageProps {
   horse: HorseEntity;
@@ -12,10 +13,12 @@ interface HorsePageProps {
 
 export default function Horse({ horse }: HorsePageProps) {
   return (
-    <Flex h={'100vh'}>
-      <TabMenu />
-      <Profile name={horse.name} src={getDefaultphoto(horse.images)} />
-    </Flex>
+    <HorseProvider value={horse}>
+      <Flex h={'100vh'} marginLeft={5}>
+        <TabMenu />
+        <Profile name={horse.name} src={getDefaultphoto(horse.images)} />
+      </Flex>
+    </HorseProvider>
   );
 }
 
