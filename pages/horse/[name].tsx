@@ -1,8 +1,8 @@
-import { Profile } from '@/components/profile/Profile';
+import { Profile } from '@/module/profile/Profile';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import data from '@/json/data.json';
 import { HorseEntity } from '@/utils/types';
-import { TabMenu } from '@/components/tabMenu/TabMenu';
+import { TabMenu } from '@/module/tabMenu/TabMenu';
 import { Box, Flex } from '@chakra-ui/react';
 import { HorseProvider } from '@/apps/context/HorseContext';
 
