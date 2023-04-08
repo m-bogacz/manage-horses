@@ -8,3 +8,7 @@ export const getDefaultphoto = (images: SlideEntity[] | null): string => {
 
   return defualtImage[0].src;
 };
+
+export const downloadImageFromSupBase = (nameImage: string, width: number, height: number, quality = 75) => {
+  return `https://dpdasginastynijsarwv.supabase.co/storage/v1/object/public/horses/horses/${nameImage}?width=${width}&height=${height}&quality=${quality}`;
+};
