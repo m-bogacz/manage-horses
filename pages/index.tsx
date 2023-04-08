@@ -1,8 +1,4 @@
 import Head from 'next/head';
-import { Inter } from 'next/font/google';
-import { Box, Flex } from '@chakra-ui/react';
-import Image from 'next/image';
-import { myImageLoader } from '@/utils/imageLoader/myImageLoader';
 
 export default function Home() {
   return (
@@ -13,9 +9,6 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Box display={{ base: 'none', md: 'flex' }}>
-        <Image loader={myImageLoader} width={500} height={500} src={'/horse.jpeg'} alt="Ada" />
-      </Box>
     </>
   );
 }
