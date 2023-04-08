@@ -1,41 +1,40 @@
-import { Box, Flex, Tab, TabIndicator, TabList, TabPanel, TabPanels, Tabs } from '@chakra-ui/react';
+import { Box, Flex, Tab, TabIndicator, TabList, Tabs } from '@chakra-ui/react';
 import React from 'react';
-
-import { SwitchTab } from './switchTab/SwitchTab';
+import { ProfileMobile } from '../profile/ProfileMobile';
+import { SwitchTabPanels } from './switchTab/SwitchTabPanels';
 import { useTabMenu } from './useTabMenu';
 
 export const TabMenu = () => {
   const { tabSections, activeSectionIndex, activeSection, changeActiveSection } = useTabMenu();
 
-  console.log(activeSection);
-
   return (
-    <Flex flexGrow={6} as={'section'}>
+    <Flex as={'section'} flexGrow={3} ml={5} mr={5}>
       <Tabs
         index={activeSectionIndex}
         onChange={changeActiveSection}
-        size={'lg'}
+        size={'sm'}
         position={'relative'}
         variant="unstyled"
         paddingTop={10}
-        w={'100%'}
+        ml={{ base: 1, sm: 5, md: 2 }}
+        mr={{ base: 1, sm: 5, md: 2 }}
+        w={{ base: '95vw', md: '100%' }}
       >
         <TabList>
           {tabSections.map((section) => {
             return (
-              <Tab fontSize={'sm'} fontWeight="medium" key={section.name}>
+              <Tab p={3} fontSize={'sm'} fontWeight="medium" key={section.name}>
                 {section.name}
               </Tab>
             );
           })}
         </TabList>
-        <TabIndicator mt="-1.5px" height="2px" bg="blue.500" borderRadius="1px" />
+        <TabIndicator mt="-1px" height="2px" bg="blue.500" borderRadius="1px" />
 
-        <Box border={'1px solid #E2E8F0'} borderRadius={12} m={2} pb={4}>
-          <TabPanels>
-            <SwitchTab active={activeSection} />
-          </TabPanels>
+        <Box display={{ base: 'block', md: 'none' }} pt={5}>
+          <ProfileMobile />
         </Box>
+        <SwitchTabPanels />
       </Tabs>
     </Flex>
   );
