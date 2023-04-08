@@ -4,11 +4,11 @@ import { TBodyTr } from './components/TBodyTr';
 
 export const Table = () => {
   return (
-    <TableContainer>
-      <TableUI border={'1px Highlight'} variant="striped" colorScheme="table">
+    <TableContainer m={0}>
+      <TableUI variant="striped" colorScheme="table" m={0}>
         <Thead pt={0}>
           <Tr>
-            <Th boxSize={50}>Data</Th>
+            <Th boxSize={{ base: 20, sm: 50 }}>Data</Th>
             <Th>Description</Th>
           </Tr>
         </Thead>

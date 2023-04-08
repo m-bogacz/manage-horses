@@ -1,5 +1,4 @@
-import { SlideEntity } from '@/utils/types';
-import { FlexProps, Flex, Box, Avatar, Text, Stack, HStack, Image } from '@chakra-ui/react';
+import { FlexProps, Flex, Box, Avatar, Text, HStack } from '@chakra-ui/react';
 import Link from 'next/link';
 
 interface SideBarItemProps extends FlexProps {
@@ -12,8 +11,9 @@ export const SideBarItem = ({ name, src }: SideBarItemProps) => {
     <Link href={`/horse/${name}`} style={{ textDecoration: 'none' }}>
       <Flex
         align="center"
-        p="4"
+        p="2"
         mx="4"
+        gap={3}
         borderRadius="lg"
         role="group"
         cursor="pointer"

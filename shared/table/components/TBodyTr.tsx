@@ -9,10 +9,10 @@ interface TBodyTrProps {
 export const TBodyTr = ({ date, describe }: TBodyTrProps) => {
   return (
     <Tr>
-      <Td pt={3} pb={3}>
+      <Td pt={{ base: 2, sm: 3 }} pb={{ base: 2, sm: 3 }}>
         {date}
       </Td>
-      <Td pt={3} pb={3}>
+      <Td pt={{ base: 2, sm: 3 }} pb={{ base: 2, sm: 3 }}>
         {describe}
       </Td>
     </Tr>
