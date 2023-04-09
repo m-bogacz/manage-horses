@@ -3,7 +3,7 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import data from '@/json/data.json';
 import { HorseEntity } from '@/utils/types';
 import { TabMenu } from '@/module/tabMenu/TabMenu';
-import { Box, Flex } from '@chakra-ui/react';
+import { Flex } from '@chakra-ui/react';
 import { HorseProvider } from '@/apps/context/HorseContext';
 
 interface HorsePageProps {
@@ -13,7 +13,6 @@ interface HorsePageProps {
 export default function Horse({ horse }: HorsePageProps) {
   return (
     <HorseProvider value={horse}>
-      <Box display={{ base: 'block', lg: 'none' }}>AppBar</Box>
       <Flex h={'100vh'} w={'100%'} justifyContent="center">
         <TabMenu />
         <Flex display={{ base: 'none', md: 'flex' }}>
