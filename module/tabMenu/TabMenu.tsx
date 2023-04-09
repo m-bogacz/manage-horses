@@ -1,5 +1,6 @@
 import { Box, Flex, Tab, TabIndicator, TabList, Tabs } from '@chakra-ui/react';
 import React from 'react';
+import { AppBar } from '../appBar/AppBar';
 import { ProfileMobile } from '../profile/ProfileMobile';
 import { SwitchTabPanels } from './switchTab/SwitchTabPanels';
 import { useTabMenu } from './useTabMenu';
@@ -8,14 +9,17 @@ export const TabMenu = () => {
   const { tabSections, activeSectionIndex, activeSection, changeActiveSection } = useTabMenu();
 
   return (
-    <Flex as={'section'} flexGrow={3} ml={5} mr={5}>
+    <Flex as={'section'} flexGrow={3} ml={5} mr={5} flexDir="column">
+      <Box display={{ base: 'block', lg: 'none' }}>
+        <AppBar />
+      </Box>
       <Tabs
         index={activeSectionIndex}
         onChange={changeActiveSection}
         size={'sm'}
         position={'relative'}
         variant="unstyled"
-        paddingTop={10}
+        paddingTop={{ lg: 10 }}
         ml={{ base: 1, sm: 5, md: 2 }}
         mr={{ base: 1, sm: 5, md: 2 }}
         w={{ base: '95vw', md: '100%' }}

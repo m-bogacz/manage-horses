@@ -6,7 +6,6 @@ export const Veterinarian = () => {
   return (
     <Box>
       <Table />
-      <Text>Veterinarian</Text>
     </Box>
   );
 };

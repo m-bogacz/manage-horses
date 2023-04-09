@@ -6,7 +6,6 @@ export const Farrier = () => {
   return (
     <Box>
       <Table />
-      <Text>farrier</Text>
     </Box>
   );
 };

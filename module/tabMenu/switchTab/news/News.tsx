@@ -7,7 +7,6 @@ export const News = () => {
   return (
     <Box>
       <Table />
-      <Text>news</Text>
     </Box>
   );
 };
