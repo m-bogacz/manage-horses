@@ -1,6 +1,5 @@
 import { Flex, Divider, Button, Box } from '@chakra-ui/react';
 import { useHorses } from '@/hooks/useHorse/useHorses';
-
 import { AppBar } from '../appBar/AppBar';
 import { SideBarList } from './SideBarList';
 import { useRouter } from 'next/navigation';
@@ -39,7 +38,7 @@ export const Sidebar = ({ maxW = 240, onCloseDrawer }: SideBarProps) => {
       </Box>
       <Divider />
 
-      <Box flex={6}>
+      <Box flex={9}>
         <SideBarList horses={data.horses} />
       </Box>
 
