@@ -1,47 +1,51 @@
-import { Flex, Text, Divider } from '@chakra-ui/react';
-import Image from 'next/image';
-import { SideBarItem } from './SideBarItem';
+import { Flex, Divider, Button, Box } from '@chakra-ui/react';
 import { useHorses } from '@/hooks/useHorse/useHorses';
-import Link from 'next/link';
-import { getDefaultphoto } from '@/utils/imageLoader/getDefualtPhoto';
-import { useRouter } from 'next/router';
-import { HOME_PAGE_PATH } from '@/apps/routes';
 
-export const Sidebar = () => {
-  const { pathname } = useRouter();
+import { AppBar } from '../appBar/AppBar';
+import { SideBarList } from './SideBarList';
+import { useRouter } from 'next/navigation';
+import { PlusSquareIcon } from '@chakra-ui/icons';
 
-  const isHomePage = pathname === HOME_PAGE_PATH;
+interface SideBarProps {
+  maxW?: number | string;
+  onCloseDrawer?: () => void;
+}
 
+export const Sidebar = ({ maxW = 240, onCloseDrawer }: SideBarProps) => {
+  const router = useRouter();
   const { isLoading, error, data } = useHorses();
 
   if (!data) return null;
+
+  const handleOpenAddHorseForm = () => {
+    router.push('/add');
+  };
 
   return (
     <Flex
       bg="gray.900"
       borderRight="1px"
       borderRightColor="gray.200"
-      display={{ base: isHomePage ? 'flex' : 'none', md: 'none', lg: 'flex' }}
       gap={3}
       h="100vh"
-      backgroundColor={{ base: 'gray.200', md: 'white' }}
+      backgroundColor={{ base: 'white', md: 'white' }}
       flexDir={'column'}
       minW={240}
-      w={'100%'}
-      maxW={240}
+      w={'100vw'}
+      maxW={{ base: '100vw', md: maxW }}
     >
-      <Link href={'/'}>
-        <Flex h="20" alignItems="center" mx="8" gap={2}>
-          <Image priority src="/logo.svg" height={42} width={42} alt="Logo App" />
-          <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-            Horses
-          </Text>
-        </Flex>
-      </Link>
+      <Box flex={1}>
+        <AppBar />
+      </Box>
       <Divider />
-      {data.horses.map((horse) => (
-        <SideBarItem key={horse.name} name={horse.name} src={getDefaultphoto(horse.images)} />
-      ))}
+
+      <Box flex={6}>
+        <SideBarList horses={data.horses} />
+      </Box>
+
+      <Button leftIcon={<PlusSquareIcon />} variant="solid" m={6} onClick={handleOpenAddHorseForm}>
+        Add horse
+      </Button>
     </Flex>
   );
 };
