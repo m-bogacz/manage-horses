@@ -1,5 +1,6 @@
-import { FlexProps, Flex, Box, Avatar, Text, HStack } from '@chakra-ui/react';
+import { FlexProps, Flex, Box, Avatar, Text, HStack, ListItem } from '@chakra-ui/react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 interface SideBarItemProps extends FlexProps {
   name: string;
@@ -7,26 +8,25 @@ interface SideBarItemProps extends FlexProps {
 }
 
 export const SideBarItem = ({ name, src }: SideBarItemProps) => {
+  const router = useRouter();
   return (
-    <Link href={`/horse/${name}`} style={{ textDecoration: 'none' }}>
-      <Flex
-        align="center"
-        p="2"
-        mx="4"
-        gap={3}
-        borderRadius="lg"
-        role="group"
-        cursor="pointer"
-        _hover={{
-          bg: 'cyan.400',
-          color: 'white',
-        }}
-      >
-        <HStack>
-          <Avatar name={name} src={src} />
-          <Text>{name}</Text>
-        </HStack>
-      </Flex>
-    </Link>
+    <ListItem
+      display={'flex'}
+      alignItems="center"
+      p="2"
+      mx="4"
+      gap={3}
+      listStyleType="none"
+      borderRadius="lg"
+      cursor="pointer"
+      _hover={{
+        bg: 'cyan.400',
+        color: 'white',
+      }}
+      onClick={() => router.push(`/horse/${name}`)}
+    >
+      <Avatar name={name} src={src} />
+      {name}
+    </ListItem>
   );
 };
