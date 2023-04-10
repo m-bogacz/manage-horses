@@ -27,9 +27,11 @@
     "react-dom": "18.2.0",
     "react-hook-form": "^7.43.9",
     "react-photo-album": "^2.0.3",
+    "react-select": "^5.7.2",
     "typescript": "4.9.5"
   },
   "devDependencies": {
+    "@types/react-select": "^5.0.1",
     "eslint-config-prettier": "^8.6.0",
     "prettier": "2.8.4"
   }
