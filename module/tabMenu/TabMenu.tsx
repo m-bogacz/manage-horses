@@ -9,7 +9,7 @@ export const TabMenu = () => {
   const { tabSections, activeSectionIndex, activeSection, changeActiveSection } = useTabMenu();
 
   return (
-    <Flex as={'section'} flexGrow={3} ml={5} mr={5} flexDir="column">
+    <Flex as={'section'} flex={4} flexDir="column">
       <Box display={{ base: 'block', lg: 'none' }}>
         <AppBar />
       </Box>

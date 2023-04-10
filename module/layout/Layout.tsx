@@ -12,7 +12,7 @@ export const Layout = ({ children }: { children: any }) => {
       <Box display={{ base: isHomePage ? 'flex' : 'none', md: 'none', lg: 'flex' }}>
         <Sidebar />
       </Box>
-      <Box as={'main'} w={'100%'} flex={{ md: 1 }}>
+      <Box as={'main'} w={'100%'} flex={{ md: 2 }}>
         {children}
       </Box>
     </Flex>

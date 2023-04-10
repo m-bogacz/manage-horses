@@ -4,7 +4,7 @@ import { Flex, Box, Center, Text, Image, VStack, HStack } from '@chakra-ui/react
 export const Profile = () => {
   const { defaultPhotoSrc, name, birthday, sex, place } = useHorseContext();
   return (
-    <Flex minWidth={{ md: 300, lg: 400 }} m={10}>
+    <Flex minWidth={{ md: 300, lg: 400 }} m={{ base: 0, md: 10 }}>
       <Box w={'100%'} bg="table.100" borderRadius={16}>
         <Center padding={10} paddingBottom={2}>
           <Image
