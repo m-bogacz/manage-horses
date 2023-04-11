@@ -14,6 +14,7 @@
     "@chakra-ui/react-context": "^2.0.8",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
+    "@hookform/resolvers": "^3.0.1",
     "@tanstack/react-query": "^4.28.0",
     "@tanstack/react-query-devtools": "^4.29.0",
     "@types/node": "18.14.1",
@@ -28,7 +29,8 @@
     "react-hook-form": "^7.43.9",
     "react-photo-album": "^2.0.3",
     "react-select": "^5.7.2",
-    "typescript": "4.9.5"
+    "typescript": "4.9.5",
+    "zod": "^3.21.4"
   },
   "devDependencies": {
     "@types/react-select": "^5.0.1",

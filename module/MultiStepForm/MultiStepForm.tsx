@@ -1,6 +1,5 @@
 import { Flex } from '@chakra-ui/react';
 import { StepBar } from './stepBar/StepBar';
-import { useSteps } from './useMultiStepForm';
 import { Form } from './form/Form';
 import { MultiStepFormProvider } from './context/MultiStepFormContext';
 

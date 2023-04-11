@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from '@chakra-ui/react';
+import { Button, ButtonProps } from '@chakra-ui/react';
 
 interface FormButtonProps {
   onClick?: () => void;
@@ -7,9 +7,17 @@ interface FormButtonProps {
   text: string;
 }
 
-export const FormButton = ({ onClick, type = 'button', text }: FormButtonProps) => {
+export const FormButton = ({ onClick, type = 'button', text, ...props }: FormButtonProps & ButtonProps) => {
   return (
-    <Button type={type} _hover={{ bg: 'button.100' }} width={'100%'} onClick={onClick} bg={'button.100'} color="white">
+    <Button
+      type={type}
+      _hover={{ bg: 'button.100' }}
+      width={'100%'}
+      onClick={onClick}
+      bg={'button.100'}
+      color="white"
+      {...props}
+    >
       {text}
     </Button>
   );

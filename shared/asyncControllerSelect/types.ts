@@ -1,12 +1,8 @@
-import { FieldValues } from 'react-hook-form';
+import { FieldValues, UseFormRegister } from 'react-hook-form';
 import { OptionsOrGroups } from 'react-select';
 import { GroupBase } from 'react-select';
 import { Control, FieldErrors, FieldPath } from 'react-hook-form';
-
-export type OptionType = {
-  value: string | number;
-  label: string;
-};
+import { OptionType } from '@/utils/types';
 
 type LoadOptionsType<T> = (
   inputValue: string,

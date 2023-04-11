@@ -1,7 +1,8 @@
-import { Box, Circle, Flex, Text } from '@chakra-ui/react';
+import { Circle, Flex, Text } from '@chakra-ui/react';
 import React from 'react';
+import { STEP_TYPE } from '../types';
 
-export const Step = ({ step, active, label }: { step: number; active: number; label: string }) => {
+export const Step = ({ step, active, label }: { step: STEP_TYPE; active: STEP_TYPE; label: string }) => {
   const isActive = step <= active;
   return (
     <Flex flexDir={'column'} align="center">

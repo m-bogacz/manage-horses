@@ -2,7 +2,6 @@ import React from 'react';
 import Image from 'next/image';
 import {
   Flex,
-  Box,
   Center,
   Heading,
   Text,
@@ -13,11 +12,18 @@ import {
   Radio,
   RadioGroup,
   Stack,
+  FormErrorMessage,
+  FormControl,
 } from '@chakra-ui/react';
 import { Controller, useFormContext } from 'react-hook-form';
 
 export const FirstStepHorseDetails = () => {
-  const { register, control } = useFormContext();
+  const {
+    register,
+    control,
+    formState: { errors },
+  } = useFormContext();
+
   return (
     <Flex flexDir={'column'}>
       <Center w={'100%'} border={'1px dashed #718096'} p={5}>
@@ -33,49 +39,46 @@ export const FirstStepHorseDetails = () => {
       </Center>
       <Grid templateColumns="repeat(4, 1fr)" gap={4} mt={5} mb={5}>
         <GridItem colSpan={2}>
-          <Input
-            id="name"
-            placeholder="name"
-            {...register('name', {
-              required: 'This is required',
-              minLength: { value: 4, message: 'Minimum length should be 4' },
-            })}
-          />
+          <FormControl isInvalid={Boolean(errors.name)}>
+            <Input id="name" placeholder="name" {...register('name')} />
+            {errors.name && <FormErrorMessage>{errors?.name?.message?.toString()}</FormErrorMessage>}
+          </FormControl>
         </GridItem>
         <GridItem colSpan={2}>
-          <Input
-            id="surname"
-            placeholder="surname"
-            {...register('surname', {
-              required: 'This is required',
-              minLength: { value: 4, message: 'Minimum length should be 4' },
-            })}
-          />
+          <FormControl isInvalid={Boolean(errors.surname)}>
+            <Input id="surname" placeholder="surname" {...register('surname')} />
+            {errors.surname && <FormErrorMessage>{errors?.surname?.message?.toString()}</FormErrorMessage>}
+          </FormControl>
         </GridItem>
         <GridItem colSpan={4}>
-          <Input
-            id="date"
-            placeholder="Date of birth"
-            {...register('date', {
-              required: 'This is required',
-              minLength: { value: 4, message: 'Minimum length should be 4' },
-            })}
-          />
+          <FormControl isInvalid={Boolean(errors.date)}>
+            <Input id="date" placeholder="Date of birth" {...register('date')} />
+            {errors.date && <FormErrorMessage>{errors?.date?.message?.toString()}</FormErrorMessage>}
+          </FormControl>
         </GridItem>
       </Grid>
-      <Controller
-        name="radio"
-        control={control}
-        render={({ field: { onChange, value } }) => (
-          <RadioGroup onChange={onChange} value={value}>
-            <Stack direction="row">
-              <Radio value="mare">mare</Radio>
-              <Radio value="gelding">gelding</Radio>
-              <Radio value="stallion">stallion</Radio>
-            </Stack>
-          </RadioGroup>
-        )}
-      />
+      <FormControl isInvalid={Boolean(errors.sex)}>
+        <Controller
+          name="sex"
+          control={control}
+          render={({ field: { onChange, value } }) => (
+            <RadioGroup onChange={onChange} value={value} name="sex">
+              <Stack direction="row">
+                <Radio {...register('sex')} value="mare">
+                  mare
+                </Radio>
+                <Radio {...register('sex')} value="gelding">
+                  gelding
+                </Radio>
+                <Radio {...register('sex')} value="stallion">
+                  stallion
+                </Radio>
+              </Stack>
+            </RadioGroup>
+          )}
+        />
+        {errors.sex && <FormErrorMessage>{errors?.sex?.message?.toString()}</FormErrorMessage>}
+      </FormControl>
     </Flex>
   );
 };

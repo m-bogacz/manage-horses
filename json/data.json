@@ -1,260 +1,260 @@
 {
-    "horses": [
-        {
-            "name": "Fado",
-            "age": 17,
-            "birthday": "2016-12-10",
-            "sex": "gelding",
-            "parent": {
-                "mother": {
-                    "sex": "mare",
-                    "name": "Mother Fado",
-                    "grandMother": {
-                        "sex": "mare",
-                        "name": "Grand Mother Fado",
-                        "mother": "Grand Mother Mother Fado",
-                        "father": "Grand Mother Mother Fado"
-                    },
-                    "grandfather": {
-                        "sex": "stallion",
-                        "name": "Grand father Fado",
-                        "mother": "Grand father father Fado",
-                        "father": "Grand father father Fado"
-                    }
-                },
-                "father": {
-                    "name": "father Fado",
-                    "sex": "stallion",
-                    "grandMother": {
-                        "sex": "mare",
-                        "name": "Grand Mother Fado",
-                        "mother": "Grand Mother Mother Fado",
-                        "father": "Grand Mother Mother Fado"
-                    },
-                    "grandfather": {
-                        "sex": "stallion",
-                        "name": "Grand father Fado",
-                        "mother": "Grand father father Fado",
-                        "father": "Grand father father Fado"
-                    }
-                }
-            },
-            "images": [
-                {
-                    "src": "https://dpdasginastynijsarwv.supabase.co/storage/v1/object/public/horses/horses/Fado.jpg",
-                    "label": "horse-profile",
-                    "default": true
-                },
-                {
-                    "src": "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",
-                    "label": "foto1"
-                },
-                {
-                    "src": "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",
-                    "label": "foto1"
-                },
-                {
-                    "src": "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",
-                    "label": "foto1"
-                },
-                {
-                    "src": "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",
-                    "label": "foto1"
-                },
-                {
-                    "src": "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",
-                    "label": "foto1"
-                },
-                {
-                    "src": "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",
-                    "label": "foto1"
-                },
-                {
-                    "src": "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",
-                    "label": "foto1"
-                },
-                {
-                    "src": "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",
-                    "label": "foto1"
-                }
-            ],
-            "place": "Poznań",
-            "children": null,
-            "tabs": {
-                "News": [
-                    {
-                        "id": 1,
-                        "data": "17:02:2023",
-                        "title": "Concordia gave birth to a foal.",
-                        "description": "Concordia went to the clinic with a foal"
-                    }
-                ],
-                "Vet": [
-                    {
-                        "id": 1,
-                        "data": "27:02:2023",
-                        "title": "there was a vet, should go to clinic",
-                        "description": "In Warsaw Clicnic with foal"
-                    }
-                ],
-                "Blacksmith": [
-                    {
-                        "id": 1,
-                        "data": "27:02:2023",
-                        "title": "there was a blacksmith, no comments",
-                        "description": "there was a blacksmith, no comments"
-                    }
-                ]
-            }
-        },
-        {
-            "name": "Carl",
-            "age": 17,
-            "birthday": "2010-12-10",
-            "sex": "gelding",
-            "parent": {
-                "mother": {
-                    "sex": "mare",
-                    "name": "Mother Karl",
-                    "grandMother": {
-                        "sex": "mare",
-                        "name": "Grand Mother Karl",
-                        "mother": "Grand Mother Mother Karl",
-                        "father": "Grand Mother Mother Karl"
-                    },
-                    "grandfather": {
-                        "sex": "stallion",
-                        "name": "Grand father Karl",
-                        "mother": "Grand father father Karl",
-                        "father": "Grand father father Karl"
-                    }
-                },
-                "father": {
-                    "sex": "stallion",
-                    "name": "father Karl",
-                    "grandMother": {
-                        "sex": "mare",
-                        "name": "Grand Mother Karl",
-                        "mother": "Grand Mother Mother Karl",
-                        "father": "Grand Mother Mother Karl"
-                    },
-                    "grandfather": {
-                        "sex": "stallion",
-                        "name": "Grand father Karl",
-                        "mother": "Grand father father Karl",
-                        "father": "Grand father father Karl"
-                    }
-                }
-            },
-            "images": [
-                {
-                    "src": "https://dpdasginastynijsarwv.supabase.co/storage/v1/object/public/horses/horses/Fado.jpg",
-                    "label": "horse-profile",
-                    "default": true
-                }
-            ],
-            "place": "Poznań",
-            "children": null,
-            "tabs": {
-                "News": [
-                    {
-                        "id": 1,
-                        "data": "27:02:2023",
-                        "title": "Concordia gave birth to a foal.",
-                        "description": "Concordia went to the clinic with a foal"
-                    }
-                ],
-                "Vet": [
-                    {
-                        "id": 1,
-                        "data": "27:02:2023",
-                        "title": "there was a vet, should go to clinic",
-                        "description": "In Warsaw Clicnic with foal"
-                    }
-                ],
-                "Blacksmith": [
-                    {
-                        "id": 1,
-                        "data": "27:02:2023",
-                        "title": "there was a blacksmith, no comments KARL",
-                        "description": "there was a blacksmith, no comments KARL"
-                    }
-                ]
-            }
-        },
-        {
-            "name": "Concordia",
-            "age": 17,
-            "birthday": "2016-12-10",
+  "horses": [
+    {
+      "name": "Fado",
+      "age": 17,
+      "birthday": "2016-12-10",
+      "sex": "gelding",
+      "parent": {
+        "mother": {
+          "sex": "mare",
+          "name": "Mother Fado",
+          "grandMother": {
             "sex": "mare",
-            "parent": {
-                "mother": {
-                    "sex": "mare",
-                    "name": "Mother Karl",
-                    "grandMother": {
-                        "sex": "mare",
-                        "name": "Grand Mother Karl",
-                        "mother": "Grand Mother Mother Karl",
-                        "father": "Grand Mother Mother Karl"
-                    },
-                    "grandfather": {
-                        "sex": "stallion",
-                        "name": "Grand father Karl",
-                        "mother": "Grand father father Karl",
-                        "father": "Grand father father Karl"
-                    }
-                },
-                "father": {
-                    "name": "father Karl",
-                    "grandMother": {
-                        "sex": "mare",
-                        "name": "Grand Mother Karl",
-                        "mother": "Grand Mother Mother Karl",
-                        "father": "Grand Mother Mother Karl"
-                    },
-                    "grandfather": {
-                        "sex": "gelding",
-                        "name": "Grand father Karl",
-                        "mother": "Grand father father Karl",
-                        "father": "Grand father father Karl"
-                    }
-                }
-            },
-            "images": [
-                {
-                    "src": "https://dpdasginastynijsarwv.supabase.co/storage/v1/object/public/horses/horses/horse.jpeg",
-                    "label": "horse-profile",
-                    "default": true
-                }
-            ],
-            "place": "Poznań",
-            "children": null,
-            "tabs": {
-                "News": [
-                    {
-                        "id": 1,
-                        "data": "27:02:2023",
-                        "title": "Concordia gave birth to a foal.",
-                        "description": "Concordia went to the clinic with a foal"
-                    }
-                ],
-                "Vet": [
-                    {
-                        "id": 1,
-                        "data": "27:02:2023",
-                        "title": "there was a vet, should go to clinic",
-                        "description": "In Warsaw Clicnic with foal"
-                    }
-                ],
-                "Blacksmith": [
-                    {
-                        "id": 1,
-                        "data": "27:02:2023",
-                        "title": "there was a blacksmith, no comments KARL",
-                        "description": "there was a blacksmith, no comments KARL"
-                    }
-                ]
-            }
+            "name": "Grand Mother Fado",
+            "mother": "Grand Mother Mother Fado",
+            "father": "Grand Mother Mother Fado"
+          },
+          "grandfather": {
+            "sex": "stallion",
+            "name": "Grand father Fado",
+            "mother": "Grand father father Fado",
+            "father": "Grand father father Fado"
+          }
+        },
+        "father": {
+          "name": "father Fado",
+          "sex": "stallion",
+          "grandMother": {
+            "sex": "mare",
+            "name": "Grand Mother Fado",
+            "mother": "Grand Mother Mother Fado",
+            "father": "Grand Mother Mother Fado"
+          },
+          "grandfather": {
+            "sex": "stallion",
+            "name": "Grand father Fado",
+            "mother": "Grand father father Fado",
+            "father": "Grand father father Fado"
+          }
         }
-    ]
+      },
+      "images": [
+        {
+          "src": "https://dpdasginastynijsarwv.supabase.co/storage/v1/object/public/horses/horses/Fado.jpg",
+          "label": "horse-profile",
+          "default": true
+        },
+        {
+          "src": "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",
+          "label": "foto1"
+        },
+        {
+          "src": "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",
+          "label": "foto1"
+        },
+        {
+          "src": "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",
+          "label": "foto1"
+        },
+        {
+          "src": "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",
+          "label": "foto1"
+        },
+        {
+          "src": "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",
+          "label": "foto1"
+        },
+        {
+          "src": "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",
+          "label": "foto1"
+        },
+        {
+          "src": "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",
+          "label": "foto1"
+        },
+        {
+          "src": "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",
+          "label": "foto1"
+        }
+      ],
+      "place": "Poznań",
+      "children": null,
+      "tabs": {
+        "News": [
+          {
+            "id": 1,
+            "data": "17:02:2023",
+            "title": "Concordia gave birth to a foal.",
+            "description": "Concordia went to the clinic with a foal"
+          }
+        ],
+        "Vet": [
+          {
+            "id": 1,
+            "data": "27:02:2023",
+            "title": "there was a vet, should go to clinic",
+            "description": "In Warsaw Clicnic with foal"
+          }
+        ],
+        "Blacksmith": [
+          {
+            "id": 1,
+            "data": "27:02:2023",
+            "title": "there was a blacksmith, no comments",
+            "description": "there was a blacksmith, no comments"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Carl",
+      "age": 17,
+      "birthday": "2010-12-10",
+      "sex": "gelding",
+      "parent": {
+        "mother": {
+          "sex": "mare",
+          "name": "Mother Karl",
+          "grandMother": {
+            "sex": "mare",
+            "name": "Grand Mother Karl",
+            "mother": "Grand Mother Mother Karl",
+            "father": "Grand Mother Mother Karl"
+          },
+          "grandfather": {
+            "sex": "stallion",
+            "name": "Grand father Karl",
+            "mother": "Grand father father Karl",
+            "father": "Grand father father Karl"
+          }
+        },
+        "father": {
+          "sex": "stallion",
+          "name": "father Karl",
+          "grandMother": {
+            "sex": "mare",
+            "name": "Grand Mother Karl",
+            "mother": "Grand Mother Mother Karl",
+            "father": "Grand Mother Mother Karl"
+          },
+          "grandfather": {
+            "sex": "stallion",
+            "name": "Grand father Karl",
+            "mother": "Grand father father Karl",
+            "father": "Grand father father Karl"
+          }
+        }
+      },
+      "images": [
+        {
+          "src": "https://dpdasginastynijsarwv.supabase.co/storage/v1/object/public/horses/horses/Fado.jpg",
+          "label": "horse-profile",
+          "default": true
+        }
+      ],
+      "place": "Poznań",
+      "children": null,
+      "tabs": {
+        "News": [
+          {
+            "id": 1,
+            "data": "27:02:2023",
+            "title": "Concordia gave birth to a foal.",
+            "description": "Concordia went to the clinic with a foal"
+          }
+        ],
+        "Vet": [
+          {
+            "id": 1,
+            "data": "27:02:2023",
+            "title": "there was a vet, should go to clinic",
+            "description": "In Warsaw Clicnic with foal"
+          }
+        ],
+        "Blacksmith": [
+          {
+            "id": 1,
+            "data": "27:02:2023",
+            "title": "there was a blacksmith, no comments KARL",
+            "description": "there was a blacksmith, no comments KARL"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Concordia",
+      "age": 17,
+      "birthday": "2016-12-10",
+      "sex": "mare",
+      "parent": {
+        "mother": {
+          "sex": "mare",
+          "name": "Mother Karl",
+          "grandMother": {
+            "sex": "mare",
+            "name": "Grand Mother Karl",
+            "mother": "Grand Mother Mother Karl",
+            "father": "Grand Mother Mother Karl"
+          },
+          "grandfather": {
+            "sex": "stallion",
+            "name": "Grand father Karl",
+            "mother": "Grand father father Karl",
+            "father": "Grand father father Karl"
+          }
+        },
+        "father": {
+          "name": "father Karl",
+          "grandMother": {
+            "sex": "mare",
+            "name": "Grand Mother Karl",
+            "mother": "Grand Mother Mother Karl",
+            "father": "Grand Mother Mother Karl"
+          },
+          "grandfather": {
+            "sex": "gelding",
+            "name": "Grand father Karl",
+            "mother": "Grand father father Karl",
+            "father": "Grand father father Karl"
+          }
+        }
+      },
+      "images": [
+        {
+          "src": "https://dpdasginastynijsarwv.supabase.co/storage/v1/object/public/horses/horses/horse.jpeg",
+          "label": "horse-profile",
+          "default": true
+        }
+      ],
+      "place": "Poznań",
+      "children": null,
+      "tabs": {
+        "News": [
+          {
+            "id": 1,
+            "data": "27:02:2023",
+            "title": "Concordia gave birth to a foal.",
+            "description": "Concordia went to the clinic with a foal"
+          }
+        ],
+        "Vet": [
+          {
+            "id": 1,
+            "data": "27:02:2023",
+            "title": "there was a vet, should go to clinic",
+            "description": "In Warsaw Clicnic with foal"
+          }
+        ],
+        "Blacksmith": [
+          {
+            "id": 1,
+            "data": "27:02:2023",
+            "title": "there was a blacksmith, no comments KARL",
+            "description": "there was a blacksmith, no comments KARL"
+          }
+        ]
+      }
+    }
+  ]
 }
