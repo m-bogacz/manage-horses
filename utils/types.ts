@@ -1,9 +1,10 @@
 export interface HorseEntity {
   name: string;
-  age: number;
   birthday: string;
   sex: TypeSex;
-  parent: ParentEntity;
+  mother: customParent;
+  father: customParent;
+  // parent: ParentEntity;
   images: SlideEntity[] | null;
   place: string;
   children: string[] | null;
@@ -13,6 +14,13 @@ export interface HorseEntity {
     Blacksmith: Tab[];
   };
 }
+
+export type OptionType = {
+  value: string;
+  label: string;
+};
+
+type customParent = OptionType;
 
 interface Tab {
   id: number;
