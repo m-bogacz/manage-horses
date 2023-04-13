@@ -1,24 +1,24 @@
+import { Step, useSteps } from '@/hooks/useSteps';
 import { createSafeContext } from '@/lib/createSafeContext';
 import { ReactNode } from 'react';
-import { STEP_TYPE } from '../types';
-import { useSteps } from '../stepBar/useSteps';
+import { steps } from '../components/form/helpers';
 
-interface MultiStepFormProviderProps {
-  readonly children: ReactNode;
-}
+type StepNames = (typeof steps)[number]['name'];
 
 interface ReturnValueType {
-  activeStep: STEP_TYPE;
-  handlePrev: () => void;
-  handleNext: () => void;
+  currentStepIndex: number;
+  currentStep: Step<StepNames>;
+  handlePrevStep: () => void;
+  handleNextStep: () => void;
+  stepCount: number[];
 }
 
 const [useMultiStepFormContext, MultiStepFormContextProvider] = createSafeContext<ReturnValueType>();
 
-const MultiStepFormProvider = ({ children }: MultiStepFormProviderProps) => {
-  const { activeStep, handlePrev, handleNext } = useSteps();
+const MultiStepFormProvider = ({ children }: { readonly children: ReactNode }) => {
+  const { currentStep, currentStepIndex, handlePrevStep, handleNextStep, stepCount } = useSteps(steps);
 
-  const value = { activeStep, handlePrev, handleNext };
+  const value = { currentStep, currentStepIndex, stepCount, handlePrevStep, handleNextStep };
 
   return <MultiStepFormContextProvider value={value}>{children}</MultiStepFormContextProvider>;
 };
