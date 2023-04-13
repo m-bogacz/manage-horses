@@ -1,7 +1,7 @@
 import { Flex, Divider, Button, Box } from '@chakra-ui/react';
 import { useHorses } from '@/hooks/useHorse/useHorses';
 import { AppBar } from '../appBar/AppBar';
-import { SideBarList } from './SideBarList';
+import { SideBarList } from './components/sideBarList/SideBarList';
 import { useRouter } from 'next/navigation';
 import { PlusSquareIcon } from '@chakra-ui/icons';
 

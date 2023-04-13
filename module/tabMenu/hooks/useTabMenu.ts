@@ -1,7 +1,7 @@
 import { SectionNameType, TabSectionType } from '@/utils/types';
 import { useState } from 'react';
-import { TAB_SECTIONS } from './const';
-import { TabsSectionEntity } from './types';
+import { TAB_SECTIONS } from '../utils/const';
+import { TabsSectionEntity } from '../utils/types';
 
 export const useTabMenu = () => {
   const [tabSections, setTabSections] = useState<TabsSectionEntity>(TAB_SECTIONS);

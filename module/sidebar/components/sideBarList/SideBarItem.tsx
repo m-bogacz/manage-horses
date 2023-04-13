@@ -1,5 +1,4 @@
-import { FlexProps, Flex, Box, Avatar, Text, HStack, ListItem } from '@chakra-ui/react';
-import Link from 'next/link';
+import { FlexProps, Avatar, ListItem } from '@chakra-ui/react';
 import { useRouter } from 'next/navigation';
 
 interface SideBarItemProps extends FlexProps {

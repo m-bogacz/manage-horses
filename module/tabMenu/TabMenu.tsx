@@ -1,9 +1,9 @@
 import { Box, Flex, Tab, TabIndicator, TabList, Tabs } from '@chakra-ui/react';
 import React from 'react';
 import { AppBar } from '../appBar/AppBar';
-import { ProfileMobile } from '../profile/ProfileMobile';
+import { ProfileMobile } from '../profile/components/profileMobile/ProfileMobile';
 import { SwitchTabPanels } from './switchTab/SwitchTabPanels';
-import { useTabMenu } from './useTabMenu';
+import { useTabMenu } from './hooks/useTabMenu';
 
 export const TabMenu = () => {
   const { tabSections, activeSectionIndex, activeSection, changeActiveSection } = useTabMenu();
