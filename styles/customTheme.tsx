@@ -36,6 +36,9 @@ export const theme = extendTheme({
     button: {
       100: '#2D3434',
     },
+    checkIcon: {
+      100: '#0F8378',
+    },
   },
   fonts: {
     body: genos.style.fontFamily,
