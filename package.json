@@ -29,12 +29,12 @@
     "react-hook-form": "^7.43.9",
     "react-photo-album": "^2.0.3",
     "react-select": "^5.7.2",
-    "typescript": "4.9.5",
     "zod": "^3.21.4"
   },
   "devDependencies": {
     "@types/react-select": "^5.0.1",
     "eslint-config-prettier": "^8.6.0",
-    "prettier": "2.8.4"
+    "prettier": "2.8.4",
+    "typescript": "^5.0.4"
   }
 }
