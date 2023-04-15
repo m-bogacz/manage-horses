@@ -13,13 +13,11 @@ interface FormTemplateDetailsProps {
 }
 
 export const FormTemplateDetails = ({ name, options, placeholder, label }: FormTemplateDetailsProps) => {
-  const { control, formState, register } = useFormContext();
+  const {
+    control,
+    formState: { errors },
+  } = useFormContext();
   const { promiseOptions } = useAsyncControllerSelect(options);
-  const errors = formState.errors;
-
-  // const errors = formState.errors;
-  console.log(formState);
-  console.log(errors);
 
   return (
     <Grid templateColumns="repeat(2, 1fr)" gap={6}>

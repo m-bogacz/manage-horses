@@ -7,11 +7,7 @@ export const AsyncControllerSelect = <TForm extends FieldValues>({
   name,
   control,
   loadOptions,
-
-  ...props
 }: AsyncControllerSelectProps<TForm>) => {
-  const { register } = useFormContext();
-
   return (
     <Controller
       name={name}

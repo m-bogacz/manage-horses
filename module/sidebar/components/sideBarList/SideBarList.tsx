@@ -12,7 +12,11 @@ export const SideBarList = ({ horses }: SideBarListProps) => {
   return (
     <List>
       {horses.map((horse) => (
-        <SideBarItem key={horse.name} name={horse.name} src={getDefaultphoto(horse.images)} />
+        <SideBarItem
+          key={horse.name}
+          name={horse.name}
+          src={horse.profileImageUrl ? horse.profileImageUrl : getDefaultphoto(horse.images)}
+        />
       ))}
     </List>
   );

@@ -7,6 +7,7 @@ import { useAddHorse } from './hooks/useAddHorse';
 import { HorseEntity } from '@/utils/types';
 import { useMultiStepFormContext } from '../../context/MultiStepFormContext';
 import { useRouter } from 'next/navigation';
+import { handleAddImageToSupBase } from '@/module/uploader/helpers';
 
 export const Form = () => {
   const router = useRouter();
@@ -17,13 +18,22 @@ export const Form = () => {
   const methods = useForm<HorseEntity>({ resolver, defaultValues });
   const formData = methods.getValues();
 
-  const onSubmit: SubmitHandler<HorseEntity> = (data) => {
+  const onSubmit: SubmitHandler<HorseEntity> = async (data) => {
     if (['Horse Information', 'Dam Information'].includes(currentStep.name)) {
       handleNextStep();
     }
-    if (currentStep.name === 'Sire Information') {
-      mutation.mutate(formData);
-      handleNextStep();
+    try {
+      if (currentStep.name === 'Sire Information') {
+        if (formData.profileImage && formData.profileImage.length > 0) {
+          const path = await handleAddImageToSupBase(formData.profileImage[0]);
+          formData.profileImageUrl = path ?? '';
+        }
+
+        mutation.mutate(formData);
+        handleNextStep();
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
 

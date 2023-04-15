@@ -4,6 +4,8 @@ export interface HorseEntity {
   sex: TypeSex;
   mother: customParent;
   father: customParent;
+  profileImage: FileList | null;
+  profileImageUrl: string;
   // parent: ParentEntity;
   images: SlideEntity[] | null;
   place: string;

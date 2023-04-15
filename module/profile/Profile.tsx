@@ -2,14 +2,15 @@ import { useHorseContext } from '@/apps/context/HorseContext';
 import { Flex, Box, Center, Text, Image, VStack, HStack } from '@chakra-ui/react';
 
 export const Profile = () => {
-  const { defaultPhotoSrc, name, birthday, sex, place } = useHorseContext();
+  const { defaultPhotoSrc, name, birthday, sex, place, profileImageUrl } = useHorseContext();
+
   return (
     <Flex minWidth={{ md: 300, lg: 400 }} m={{ base: 0, md: 10 }}>
       <Box w={'100%'} bg="table.100" borderRadius={16}>
         <Center padding={10} paddingBottom={2}>
           <Image
             boxSize="200px"
-            src={defaultPhotoSrc}
+            src={profileImageUrl ? profileImageUrl : defaultPhotoSrc}
             alt={`profile image of ${name}`}
             borderRadius="full"
             objectFit="cover"

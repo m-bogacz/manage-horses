@@ -1,5 +1,5 @@
 import React from 'react';
-import { OptionType } from './types';
+import { OptionType } from '@/utils/types';
 
 export const useAsyncControllerSelect = <T extends OptionType>(options: T[]) => {
   const filterOptions = (inputValue: string) => {
