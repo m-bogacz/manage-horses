@@ -24,8 +24,11 @@ export const Form = () => {
     }
     try {
       if (currentStep.name === 'Sire Information') {
-        if (formData.profileImage && formData.profileImage.length > 0) {
-          const path = await handleAddImageToSupBase(formData.profileImage[0]);
+        if (formData.profileImage) {
+          const fileBlob = await fetch(formData.profileImage).then((res) => res.blob());
+
+          const path = await handleAddImageToSupBase(fileBlob);
+          formData.profileImage = '';
           formData.profileImageUrl = path ?? '';
         }
 

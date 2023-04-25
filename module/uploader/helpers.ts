@@ -1,6 +1,6 @@
 import { supabase } from './supabaseClient';
 
-export const handleAddImageToSupBase = async (file: File) => {
+export const handleAddImageToSupBase = async (file: Blob) => {
   try {
     const filename = `${'test'}-${file?.name}`;
 
