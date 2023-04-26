@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "node app.js",
+    "dev": "next dev",
     "build": "next build",
-    "start": "NODE_ENV=production node app.js",
+    "start": "next start",
     "lint": "next lint",
     "prod": "next export"
   },
@@ -16,6 +16,7 @@
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@hookform/resolvers": "^3.0.1",
+    "@prisma/client": "^4.13.0",
     "@supabase/supabase-js": "^2.20.0",
     "@tanstack/react-query": "^4.28.0",
     "@tanstack/react-query-devtools": "^4.29.0",
@@ -35,12 +36,14 @@
     "react-image-crop": "^10.0.9",
     "react-photo-album": "^2.0.3",
     "react-select": "^5.7.2",
+    "supabase": "^1.50.13",
     "zod": "^3.21.4"
   },
   "devDependencies": {
     "@types/react-select": "^5.0.1",
     "eslint-config-prettier": "^8.6.0",
     "prettier": "2.8.4",
+    "prisma": "^4.13.0",
     "typescript": "^5.0.4"
   }
 }
