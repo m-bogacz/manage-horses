@@ -1,14 +1,14 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-import path from 'path';
-import { promises as fs } from 'fs';
+import { prisma } from '@/lib/prisma';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  //Find the absolute path of the json directory
-  const jsonDirectory = path.join(process.cwd(), 'json');
-  //Read the json data file data.json
-  const fileContents = await fs.readFile(jsonDirectory + '/data.json', 'utf8');
-  const parse = JSON.parse(fileContents);
-  //Return the content of the data file in json format
-  res.status(200).json(parse);
+  const names = await prisma.horse.findMany({
+    select: {
+      name: true,
+      profileImageUrl: true,
+    },
+  });
+
+  res.json(names);
 }

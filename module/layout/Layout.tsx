@@ -9,10 +9,10 @@ export const Layout = ({ children }: { children: any }) => {
   const isHomePage = pathname === HOME_PAGE_PATH;
   return (
     <Flex h={'100vh'}>
-      <Box display={{ base: isHomePage ? 'flex' : 'none', md: 'none', lg: 'flex' }}>
+      <Box width={240} display={{ base: isHomePage ? 'flex' : 'none', lg: 'flex' }}>
         <Sidebar />
       </Box>
-      <Box as={'main'} w={'100%'} flex={{ md: 2 }}>
+      <Box as={'main'} flex={1}>
         {children}
       </Box>
     </Flex>

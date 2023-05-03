@@ -1,5 +1,5 @@
 import { createSafeContext } from '@/lib/createSafeContext';
-import { getDefaultphoto } from '@/utils/imageLoader/getDefualtPhoto';
+import { getDefaultExamplephoto } from '@/utils/imageLoader/getDefualtPhoto';
 import { HorseEntity } from '@/utils/types';
 import { ReactNode } from 'react';
 
@@ -15,7 +15,7 @@ interface ReturnValueType extends HorseEntity, DefaultPhotoSrcType {}
 const [useHorseContext, HorseContextProvider] = createSafeContext<ReturnValueType>();
 
 const HorseProvider = ({ children, value }: HorseProviderProps) => {
-  const defaultPhotoSrc = getDefaultphoto(value.images);
+  const defaultPhotoSrc = getDefaultExamplephoto();
 
   const returnValue = {
     ...value,

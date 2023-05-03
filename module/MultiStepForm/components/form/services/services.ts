@@ -1,18 +1,10 @@
-import { HorseEntity } from '@/utils/types';
+import { HorseEntity, Tab } from '@/utils/types';
+import axios from 'axios';
 
-export async function addObject(newObject: HorseEntity) {
-  console.log(newObject);
-  const response = await fetch('http://localhost:3000/api/add', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(newObject),
-  });
-
-  if (!response.ok) {
-    throw new Error('Problem z dodaniem obiektu');
-  }
-
-  return response.json();
+export async function addObject(newObject: any) {
+  return axios.post('/api/add', newObject);
 }
+
+export const addNewsServices = (data: Tab[]) => axios.post('/api/tab/news', data);
+export const addVeterinarianServices = (data: Tab[]) => axios.post('/api/tab/veterinarian', data);
+export const addFarrierServices = (data: Tab[]) => axios.post('/api/tab/farrier', data);

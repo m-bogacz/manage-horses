@@ -1,14 +1,14 @@
 import { HorseEntity } from '@/utils/types';
-import { DamInformation } from './components/DamInformation';
+import { DamInformation } from './components/motherInformation/MotherInformation';
 import { HorseInformation } from './components/horseInformation/HorseInformation';
-import { SireInformation } from './components/SireInformation';
-import { Summary } from './components/Summary';
+import { SireInformation } from './components/fatherInformation/FatherInformation';
+import { Summary } from './components/summary/Summary';
 
 export const defaultValues = {
   name: '',
-  birthday: '',
+  birthday: null,
   sex: 'mare',
-  profileImage: null,
+  profileImage: '',
   profileImageUrl: '',
   mother: {
     value: '',
@@ -21,17 +21,16 @@ export const defaultValues = {
   images: [],
   place: '',
   children: null,
-  tabs: {
-    News: [],
-    Vet: [],
-    Blacksmith: [],
-  },
+
+  news: [],
+  veterinarian: [],
+  farrier: [],
 } satisfies HorseEntity;
 
 export const steps = [
   { name: 'Horse Information', component: <HorseInformation /> },
-  { name: 'Dam Information', component: <DamInformation /> },
-  { name: 'Sire Information', component: <SireInformation /> },
+  { name: 'Mother Information', component: <DamInformation /> },
+  { name: 'Father Information', component: <SireInformation /> },
   { name: 'Summary', component: <Summary /> },
 ] as const;
 

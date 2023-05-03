@@ -1,20 +1,19 @@
 export interface HorseEntity {
   name: string;
-  birthday: string;
+  birthday: Date | null;
   sex: TypeSex;
   mother: customParent;
   father: customParent;
-  profileImage: string | null;
+  profileImage: string;
   profileImageUrl: string;
   // parent: ParentEntity;
-  images: SlideEntity[] | null;
+  images: SlideEntity[] | [];
   place: string;
   children: string[] | null;
-  tabs: {
-    News: Tab[];
-    Vet: Tab[];
-    Blacksmith: Tab[];
-  };
+
+  news: Tab[];
+  veterinarian: Tab[];
+  farrier: Tab[];
 }
 
 export type OptionType = {
@@ -24,9 +23,9 @@ export type OptionType = {
 
 type customParent = OptionType;
 
-interface Tab {
+export interface Tab {
   id: number;
-  data: string;
+  date: string;
   title: string;
   description: string;
 }

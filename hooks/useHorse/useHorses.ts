@@ -1,14 +1,22 @@
-import { HorseEntity } from '@/utils/types';
 import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
 
-type FetchHorsesEntity = { horses: HorseEntity[] };
+type horse = {
+  name: string;
+  profileImageUrl: string;
+};
 
-export const fetchHorses = async (): Promise<FetchHorsesEntity> =>
-  await fetch('http://localhost:3000/api/horses').then((res) => res.json());
+interface SideBarListProps {
+  data: horse[];
+}
+
+export const fetchHorses = async (): Promise<SideBarListProps> => await axios.get('/api/horses');
 
 export const useHorses = () => {
-  return useQuery({
+  const { data, isLoading, error } = useQuery({
     queryKey: ['horses'],
     queryFn: fetchHorses,
   });
+
+  return { data, isLoading, error };
 };
