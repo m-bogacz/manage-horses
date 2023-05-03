@@ -1,6 +1,10 @@
 import { getFirstElement } from '../helpers';
 import { SlideEntity } from '../types';
 
+export const getDefaultExamplephoto = () => {
+  return 'https://dpdasginastynijsarwv.supabase.co/storage/v1/object/public/horses/horses/horse.jpeg';
+};
+
 export const getDefaultphoto = (images: SlideEntity[] | null): string => {
   if (images === null || images.length === 0) {
     return 'https://dpdasginastynijsarwv.supabase.co/storage/v1/object/public/horses/horses/horse.jpeg';

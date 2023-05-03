@@ -1,6 +1,4 @@
 import { TabPanels, TabPanel, Box } from '@chakra-ui/react';
-import { useId } from 'react';
-
 import { Farrier } from './farrier/Farrier';
 import { Gallery } from './gallery/Gallery';
 import { Geneology } from './geneology/Geneology';

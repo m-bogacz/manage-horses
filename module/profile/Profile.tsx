@@ -1,34 +1,34 @@
 import { useHorseContext } from '@/apps/context/HorseContext';
-import { Flex, Box, Center, Text, Image, VStack, HStack } from '@chakra-ui/react';
+import { Box, Center, Text, Image, VStack, HStack } from '@chakra-ui/react';
+import dayjs from 'dayjs';
 
 export const Profile = () => {
-  const { defaultPhotoSrc, name, birthday, sex, place, profileImageUrl } = useHorseContext();
+  const { defaultPhotoSrc, name, birthday, sex, place, profileImageUrl, mother, father } = useHorseContext();
 
   return (
-    <Flex minWidth={{ md: 300, lg: 400 }} m={{ base: 0, md: 10 }}>
-      <Box w={'100%'} bg="table.100" borderRadius={16}>
-        <Center padding={10} paddingBottom={2}>
-          <Image
-            boxSize="200px"
-            src={profileImageUrl ? profileImageUrl : defaultPhotoSrc}
-            alt={`profile image of ${name}`}
-            borderRadius="full"
-            objectFit="cover"
-          />
-        </Center>
+    <Box w={'100%'} bg="table.100" borderRadius={16} m={{ base: 0, md: 10 }}>
+      <Center padding={10} paddingBottom={2}>
+        <Image
+          boxSize="200px"
+          src={profileImageUrl ? profileImageUrl : defaultPhotoSrc}
+          alt={`profile image of ${name}`}
+          borderRadius="full"
+          objectFit="cover"
+        />
+      </Center>
 
-        <Center>
-          <Text fontSize="xx-large">{name}</Text>
-        </Center>
+      <Center>
+        <Text fontSize="xx-large">{name}</Text>
+      </Center>
 
-        <VStack spacing={0} ml={2} align={'stretch'}>
-          <Feature title="Name" desc={name} />
-          <Feature title="Birthday" desc={birthday} />
-          <Feature title="Sex" desc={sex} />
-          <Feature title="Place" desc={place} />
-        </VStack>
-      </Box>
-    </Flex>
+      <VStack spacing={0} ml={2} align={'stretch'}>
+        <Feature title="Birthday" desc={dayjs(birthday).format('DD/MM/YYYY')} />
+        <Feature title="Sex" desc={sex} />
+        <Feature title="Place" desc={place} />
+        <Feature title="Mother" desc={mother} />
+        <Feature title="Father" desc={father} />
+      </VStack>
+    </Box>
   );
 };
 

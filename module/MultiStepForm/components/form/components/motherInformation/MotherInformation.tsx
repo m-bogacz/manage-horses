@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormTemplateDetails } from '../../template/FormTemplateDetails';
+import { FormTemplateDetails } from '../../../template/FormTemplateDetails';
 
 const options = [
   { value: 'klacz1', label: 'klacz1' },
