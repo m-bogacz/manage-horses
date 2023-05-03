@@ -1,0 +1,94 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Horse {
+  id              Int          @id @default(autoincrement())
+  createdAt       DateTime     @default(now())
+  name            String       @unique
+  birthday        DateTime
+  sex             String
+  profileImageUrl String?
+  place           String
+  mother          String
+  father          String
+  images          String[]
+  news            NewsTab[]
+  veterinarian    VetTab[]
+  farrier         FarrierTab[]
+
+  // profileImage    String?
+
+  // children String[]
+  // tabs Tabs @relation(fields: [tabsId], references: [id])
+
+  // customParentValue       String
+  // customParentMotherValue String
+  // customParentFatherValue String
+  // tabsId                  Int
+}
+
+// model Tabs {
+//   id      Int          @id @default(autoincrement())
+//   News    NewsTab[]
+//   Vet     VetTab[]
+//   Farrier FarrierTab[]
+// }
+
+model NewsTab {
+  id          Int    @id @default(autoincrement())
+  date        String
+  title       String
+  description String
+  news        Horse  @relation(fields: [tabName], references: [name])
+  tabName     String
+}
+
+model VetTab {
+  id          Int    @id @default(autoincrement())
+  date        String
+  title       String
+  description String
+  vet         Horse  @relation(fields: [tabName], references: [name])
+  tabName     String
+}
+
+model FarrierTab {
+  id          Int    @id @default(autoincrement())
+  date        String
+  title       String
+  description String
+  farrier     Horse  @relation(fields: [tabName], references: [name])
+  tabName     String
+}
+
+// model SlideEntity {
+//   src     String  @unique
+//   label   String
+//   default Boolean
+//   Horse   Horse?  @relation(fields: [horseId], references: [id])
+//   horseId Int?
+// }
+
+// model CustomParentMother {
+//   name  String  @unique
+//   label String
+//   Horse Horse[]
+// }
+
+// model CustomParentFather {
+//   name  String  @unique
+//   label String
+//   Horse Horse[]
+// }
+
+enum TypeSex {
+  mare
+  gelding
+  stallion
+}

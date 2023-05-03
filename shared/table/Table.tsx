@@ -1,8 +1,11 @@
-import { TableContainer, Thead, Tr, Th, Tbody, Table as TableUI } from '@chakra-ui/react';
+import { TableContainer, Thead, Tr, Th, Tbody, Table as TableUI, Skeleton } from '@chakra-ui/react';
 import React from 'react';
 import { TBodyTr } from './components/TBodyTr';
+import { Tab } from '@/utils/types';
+import { LoadingSkeleton } from '../LoadingSkeleton/LoadingSkeleton';
 
-export const Table = () => {
+export const Table = ({ tab, isLoaded }: { tab: Tab[]; isLoaded: boolean }) => {
+  if (!tab) return null;
   return (
     <TableContainer m={0}>
       <TableUI variant="striped" colorScheme="table" m={0}>
@@ -13,11 +16,12 @@ export const Table = () => {
           </Tr>
         </Thead>
         <Tbody>
-          <TBodyTr date="27.02.2023" describe="In Warsaw Clicnic with foal" />
-          <TBodyTr date="27.02.2023" describe="In Warsaw Clicnic with foal" />
-          <TBodyTr date="27.02.2023" describe="Concordia went to the clinic with a foal" />
+          {tab.map((item) => {
+            return <TBodyTr key={item.id} date={item.date} describe={item.title} />;
+          })}
         </Tbody>
       </TableUI>
+      {isLoaded && <LoadingSkeleton />}
     </TableContainer>
   );
 };

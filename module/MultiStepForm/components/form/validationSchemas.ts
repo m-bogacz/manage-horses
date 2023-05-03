@@ -1,5 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
+import { date, z } from 'zod';
 
 const SEX = ['mare', 'gelding', 'stallion'];
 
@@ -13,8 +13,7 @@ const FormTemplateDetailsSchema = z
 
 export const step1Schema = z.object({
   name: z.string().min(2, 'Imię musi mieć co najmniej 2 znaki'),
-  surname: z.string().min(2, 'Drugie imię musi mieć co najmniej 2 znaki'),
-  birthday: z.string().min(2, 'Imię musi mieć co najmniej 2 znaki'),
+  birthday: date(),
   place: z.string().min(2, 'Imię musi mieć co najmniej 2 znaki'),
   sex: z.string({ invalid_type_error: 'Zaznacz jedną z opcji' }).refine((val) => SEX.map((sex) => sex).includes(val)),
 });

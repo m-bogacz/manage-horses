@@ -13,26 +13,35 @@ export const Form = () => {
   const router = useRouter();
   const { currentStep, handleNextStep, handlePrevStep, currentStepIndex } = useMultiStepFormContext();
   const resolver = switchResolver(currentStepIndex);
-
   const { mutation } = useAddHorse();
+
   const methods = useForm<HorseEntity>({ resolver, defaultValues });
   const formData = methods.getValues();
 
   const onSubmit: SubmitHandler<HorseEntity> = async (data) => {
-    if (['Horse Information', 'Dam Information'].includes(currentStep.name)) {
+    if (['Horse Information', 'Mother Information'].includes(currentStep.name)) {
       handleNextStep();
     }
     try {
-      if (currentStep.name === 'Sire Information') {
-        if (formData.profileImage) {
-          const fileBlob = await fetch(formData.profileImage).then((res) => res.blob());
+      if (currentStep.name === 'Father Information') {
+        const fileBlob = await fetch(formData?.profileImage).then((res) => res.blob());
 
-          const path = await handleAddImageToSupBase(fileBlob);
-          formData.profileImage = '';
-          formData.profileImageUrl = path ?? '';
-        }
+        const path = await handleAddImageToSupBase(fileBlob);
+        formData.profileImage = '';
 
-        mutation.mutate(formData);
+        const { name, birthday, place, sex, mother, images } = formData;
+        const { father } = data;
+
+        mutation.mutate({
+          name: name,
+          birthday: birthday,
+          sex: sex,
+          profileImageUrl: path,
+          place: place,
+          mother: mother.value,
+          father: father.value,
+          images: images,
+        });
         handleNextStep();
       }
     } catch (error) {
