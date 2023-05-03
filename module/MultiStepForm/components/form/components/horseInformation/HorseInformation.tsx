@@ -2,8 +2,11 @@ import React from 'react';
 import { Flex, GridItem, Grid } from '@chakra-ui/react';
 import { ImageUploader } from './components/imageUploader/ImageUploader';
 import { InputField } from '@/shared/inputs/InputField';
-import { formFields } from './formFields';
+import { formFields } from './utils/formFields';
 import { RadioInput } from '@/shared/inputs/RadioInput';
+
+import 'react-datepicker/dist/react-datepicker.css';
+import { DatePickerInput } from '@/shared/inputs/datePickerInput/DatePickerInput';
 
 export const HorseInformation = () => {
   return (
@@ -13,11 +16,16 @@ export const HorseInformation = () => {
         {formFields.input.map((field) => {
           return (
             <GridItem colSpan={2} key={field.name}>
-              <InputField name={field.name} placeholder={field.placeholder} />
+              {field.name === 'birthday' ? (
+                <DatePickerInput key={field.name} name={field.name} />
+              ) : (
+                <InputField name={field.name} placeholder={field.placeholder} />
+              )}
             </GridItem>
           );
         })}
       </Grid>
+
       <RadioInput name="sex" radioValues={formFields.radio} />
     </Flex>
   );

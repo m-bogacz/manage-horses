@@ -7,7 +7,7 @@ import photos from './photos';
 export const Gallery = () => {
   return (
     <Box overflowY={'scroll'} h={'1000px'} pb={5} mb={55}>
-      {/* <PhotoAlbum
+      <PhotoAlbum
         layout="masonry"
         photos={photos}
         columns={(containerWidth) => {
@@ -16,7 +16,7 @@ export const Gallery = () => {
           return 4;
         }}
         renderPhoto={NextJsImage}
-      /> */}
+      />
     </Box>
   );
 };

@@ -1,8 +1,11 @@
+import { useId } from 'react';
 import { supabase } from './supabaseClient';
+import { v4 as uuidv4 } from 'uuid';
 
 export const handleAddImageToSupBase = async (file: Blob) => {
+  const id = uuidv4();
   try {
-    const filename = `${'test'}-${file?.name}`;
+    const filename = `${'test' + id}`;
 
     const { data, error } = await supabase.storage.from('horses/horses').upload(filename, file, {
       cacheControl: '3600',
@@ -12,9 +15,11 @@ export const handleAddImageToSupBase = async (file: Blob) => {
     if (error) {
       console.error('Error uploading image:', error);
     } else {
-      const data = supabase.storage.from('horses/horses').getPublicUrl(filename);
+      console.log('data upload => ', data);
 
-      return data.data.publicUrl;
+      const file = supabase.storage.from('horses/horses').getPublicUrl(filename);
+
+      return file.data.publicUrl;
     }
   } catch (error) {
     console.log(error);

@@ -1,9 +1,8 @@
 export const formFields = {
   input: [
     { name: 'name', placeholder: 'name' },
-    { name: 'surname', placeholder: 'surname' },
-    { name: 'birthday', placeholder: 'birthday' },
     { name: 'place', placeholder: 'place' },
+    { name: 'birthday', placeholder: 'birthday' },
   ],
   radio: [
     { value: 'mare', content: 'mare' },

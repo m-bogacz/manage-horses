@@ -1,5 +1,5 @@
-import { Flex, Divider, Button, Box } from '@chakra-ui/react';
-import { useHorses } from '@/hooks/useHorse/useHorses';
+import { Flex, Divider, Button, Box, Skeleton } from '@chakra-ui/react';
+import { fetchHorses, useHorses } from '@/hooks/useHorse/useHorses';
 import { AppBar } from '../appBar/AppBar';
 import { SideBarList } from './components/sideBarList/SideBarList';
 import { useRouter } from 'next/navigation';
@@ -12,9 +12,6 @@ interface SideBarProps {
 
 export const Sidebar = ({ maxW = 240, onCloseDrawer }: SideBarProps) => {
   const router = useRouter();
-  const { isLoading, error, data } = useHorses();
-
-  if (!data) return null;
 
   const handleOpenAddHorseForm = () => {
     router.push('/add');
@@ -22,6 +19,7 @@ export const Sidebar = ({ maxW = 240, onCloseDrawer }: SideBarProps) => {
 
   return (
     <Flex
+      position={'fixed'}
       bg="gray.900"
       borderRight="1px"
       borderRightColor="gray.200"
@@ -39,7 +37,7 @@ export const Sidebar = ({ maxW = 240, onCloseDrawer }: SideBarProps) => {
       <Divider />
 
       <Box flex={9}>
-        <SideBarList horses={data.horses} />
+        <SideBarList />
       </Box>
 
       <Button leftIcon={<PlusSquareIcon />} variant="solid" m={6} onClick={handleOpenAddHorseForm}>
