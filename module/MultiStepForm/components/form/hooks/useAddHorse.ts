@@ -1,11 +1,11 @@
 import React from 'react';
 import { useQueryClient, useMutation } from '@tanstack/react-query';
-import { addObject } from '../services/services';
+import { addHorse } from '@/apps/services/services';
 
 export const useAddHorse = () => {
   const queryClient = useQueryClient();
 
-  const mutation = useMutation(addObject, {
+  const mutation = useMutation(addHorse, {
     onSuccess: (data) => {
       queryClient.invalidateQueries();
     },
@@ -14,5 +14,5 @@ export const useAddHorse = () => {
     },
   });
 
-  return { mutation };
+  return { mutate: mutation.mutateAsync };
 };

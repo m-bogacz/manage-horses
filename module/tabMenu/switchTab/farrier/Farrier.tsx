@@ -3,17 +3,12 @@ import { Table } from '@/shared/table/Table';
 import { Box, Skeleton, Text } from '@chakra-ui/react';
 import { useHorseContext } from '@/apps/context/HorseContext';
 import { AddTabForm } from '../../addTabForm/AddTabForm';
-import { addFarrierServices } from '@/module/MultiStepForm/components/form/services/services';
 import { useSubmitFormHandler } from '../../hooks/useSubmitFormHandler';
+import { addFarrierServices } from '@/apps/services/services';
 
 export const Farrier = () => {
   const { name, farrier } = useHorseContext();
-  const { data, isLoading, isSuccess, addDataFromTab, isLoaded } = useSubmitFormHandler(
-    addFarrierServices,
-    name,
-    farrier,
-    'farrier'
-  );
+  const { data, addDataFromTab, isLoaded } = useSubmitFormHandler(addFarrierServices, name, farrier, 'farrier');
 
   return (
     <Box>
