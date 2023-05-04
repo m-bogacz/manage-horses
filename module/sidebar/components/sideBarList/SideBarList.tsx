@@ -21,7 +21,7 @@ export const SideBarList = () => {
 
   return (
     <Skeleton isLoaded={!isLoading}>
-      <List>
+      <List mt={2}>
         {data &&
           data.data.map((horse) => (
             <SideBarItem

@@ -1,48 +1,50 @@
-import { Flex, Divider, Button, Box, Skeleton } from '@chakra-ui/react';
-import { fetchHorses, useHorses } from '@/hooks/useHorse/useHorses';
+import { Flex, Divider, Box } from '@chakra-ui/react';
 import { AppBar } from '../appBar/AppBar';
 import { SideBarList } from './components/sideBarList/SideBarList';
-import { useRouter } from 'next/navigation';
-import { PlusSquareIcon } from '@chakra-ui/icons';
+import { ChakraNextLink } from '@/shared/chakraNextLink/ChakraNextLink';
 
 interface SideBarProps {
   maxW?: number | string;
-  onCloseDrawer?: () => void;
 }
 
-export const Sidebar = ({ maxW = 240, onCloseDrawer }: SideBarProps) => {
-  const router = useRouter();
-
-  const handleOpenAddHorseForm = () => {
-    router.push('/add');
-  };
-
+export const Sidebar = ({ maxW = 240 }: SideBarProps) => {
   return (
     <Flex
       position={'fixed'}
       bg="gray.900"
       borderRight="1px"
       borderRightColor="gray.200"
-      gap={3}
       h="100vh"
       backgroundColor={{ base: 'white', md: 'white' }}
-      flexDir={'column'}
       minW={240}
+      flexDir={'column'}
       w={'100vw'}
       maxW={{ base: '100vw', md: maxW }}
     >
-      <Box flex={1}>
+      <Box h={'90px'}>
         <AppBar />
       </Box>
       <Divider />
 
-      <Box flex={9}>
+      <Box flex={1} overflowY={'auto'}>
         <SideBarList />
       </Box>
+      <Divider />
 
-      <Button leftIcon={<PlusSquareIcon />} variant="solid" m={6} onClick={handleOpenAddHorseForm}>
-        Add horse
-      </Button>
+      <Flex p={5} alignItems="center" justifyContent={'center'}>
+        <ChakraNextLink
+          href={'/add'}
+          textAlign={'center'}
+          border={'1px solid'}
+          w={'100%'}
+          height={'100%'}
+          color={'white'}
+          p={3}
+          bg={'button.100'}
+        >
+          Add horse
+        </ChakraNextLink>
+      </Flex>
     </Flex>
   );
 };
