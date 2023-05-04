@@ -1,21 +1,19 @@
 import React from 'react';
 import { Table } from '@/shared/table/Table';
-import { Box, Skeleton } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 import { useHorseContext } from '@/apps/context/HorseContext';
 import { AddTabForm } from '../../addTabForm/AddTabForm';
-import { addVeterinarianServices } from '@/module/MultiStepForm/components/form/services/services';
 import { useSubmitFormHandler } from '../../hooks/useSubmitFormHandler';
+import { addVeterinarianServices } from '@/apps/services/services';
 
 export const Veterinarian = () => {
   const { name, veterinarian } = useHorseContext();
-  const { data, isLoading, isLoaded, addDataFromTab } = useSubmitFormHandler(
+  const { data, isLoaded, addDataFromTab } = useSubmitFormHandler(
     addVeterinarianServices,
     name,
     veterinarian,
     'veterinarian'
   );
-
-  console.log(data);
 
   return (
     <>

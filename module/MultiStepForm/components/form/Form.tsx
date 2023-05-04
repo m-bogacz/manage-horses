@@ -13,7 +13,7 @@ export const Form = () => {
   const router = useRouter();
   const { currentStep, handleNextStep, handlePrevStep, currentStepIndex } = useMultiStepFormContext();
   const resolver = switchResolver(currentStepIndex);
-  const { mutation } = useAddHorse();
+  const { mutate } = useAddHorse();
 
   const methods = useForm<HorseEntity>({ resolver, defaultValues });
   const formData = methods.getValues();
@@ -32,7 +32,7 @@ export const Form = () => {
         const { name, birthday, place, sex, mother, images } = formData;
         const { father } = data;
 
-        mutation.mutate({
+        await mutate({
           name: name,
           birthday: birthday,
           sex: sex,
