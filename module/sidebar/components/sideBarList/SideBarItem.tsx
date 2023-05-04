@@ -1,5 +1,5 @@
-import { FlexProps, Avatar, ListItem } from '@chakra-ui/react';
-import { useRouter } from 'next/navigation';
+import { FlexProps, Avatar, ListItem, Text } from '@chakra-ui/react';
+import { ChakraNextLink } from '@/shared/chakraNextLink/ChakraNextLink';
 
 interface SideBarItemProps extends FlexProps {
   name: string;
@@ -7,12 +7,10 @@ interface SideBarItemProps extends FlexProps {
 }
 
 export const SideBarItem = ({ name, src }: SideBarItemProps) => {
-  const router = useRouter();
   return (
     <ListItem
-      display={'flex'}
-      alignItems="center"
-      p="2"
+      mt={2}
+      p={1}
       mx="4"
       gap={3}
       listStyleType="none"
@@ -20,12 +18,24 @@ export const SideBarItem = ({ name, src }: SideBarItemProps) => {
       cursor="pointer"
       _hover={{
         bg: 'cyan.400',
-        color: 'white',
       }}
-      onClick={() => router.push(`/horse/${name}`)}
     >
-      <Avatar name={name} src={src} />
-      {name}
+      <ChakraNextLink
+        href={`/horse/${name}`}
+        p={1}
+        display={'flex'}
+        alignItems="center"
+        gap={3}
+        listStyleType="none"
+        textDecoration="none"
+        _focus={{
+          boxShadow: '0 0 0 3px rgba(66, 153, 225, 0.6)',
+          outline: 'none',
+        }}
+      >
+        <Avatar name={name} src={src} />
+        <Text>{name}</Text>
+      </ChakraNextLink>
     </ListItem>
   );
 };
