@@ -1,7 +1,7 @@
 import { HorseEntity } from '@/utils/types';
-import { DamInformation } from './components/motherInformation/MotherInformation';
+import { MotherInformation } from './components/motherInformation/MotherInformation';
 import { HorseInformation } from './components/horseInformation/HorseInformation';
-import { SireInformation } from './components/fatherInformation/FatherInformation';
+import { FatherInformation } from './components/fatherInformation/FatherInformation';
 import { Summary } from './components/summary/Summary';
 
 export const defaultValues = {
@@ -29,8 +29,8 @@ export const defaultValues = {
 
 export const steps = [
   { name: 'Horse Information', component: <HorseInformation /> },
-  { name: 'Mother Information', component: <DamInformation /> },
-  { name: 'Father Information', component: <SireInformation /> },
+  { name: 'Mother Information', component: <MotherInformation /> },
+  { name: 'Father Information', component: <FatherInformation /> },
   { name: 'Summary', component: <Summary /> },
 ] as const;
 

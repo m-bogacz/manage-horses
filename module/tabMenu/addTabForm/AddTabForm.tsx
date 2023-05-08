@@ -48,7 +48,7 @@ export const AddTabForm = ({ title, nameForm, add, formFields = tabFormFields }:
     <FormProvider {...methods}>
       <Button onClick={onOpen}>Add</Button>
 
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal isOpen={isOpen} onClose={onClose} size={'4xl'}>
         <ModalOverlay />
         <ModalContent as="form" onSubmit={handleSubmit(onSubmit)}>
           <ModalHeader>{title}</ModalHeader>

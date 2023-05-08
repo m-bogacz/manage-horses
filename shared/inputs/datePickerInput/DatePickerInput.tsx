@@ -3,6 +3,7 @@ import { Controller, useFormContext } from 'react-hook-form';
 import { FormControl, FormErrorMessage, FormLabel, Input, InputGroup, InputRightElement } from '@chakra-ui/react';
 import DatePicker from 'react-datepicker';
 import { CalendarIcon } from '@chakra-ui/icons';
+import 'react-datepicker/dist/react-datepicker.css';
 
 export const DatePickerInput = ({ name, label = '' }: { name: string; label?: string }) => {
   const {
@@ -13,12 +14,8 @@ export const DatePickerInput = ({ name, label = '' }: { name: string; label?: st
 
   const inputRef = useRef<HTMLInputElement | null>(null);
 
-  const date = watch(name);
-
-  console.log(date);
-
   return (
-    <FormControl>
+    <FormControl isInvalid={Boolean(errors[name])}>
       <FormLabel htmlFor={name}>{label ? label : ''}</FormLabel>
       <InputGroup className="light-theme">
         <Controller
@@ -43,7 +40,9 @@ export const DatePickerInput = ({ name, label = '' }: { name: string; label?: st
 };
 
 const customDateInput = ({ value, onClick, onChange, placeholder }: any, ref: any) => {
-  return <Input ref={ref} onClick={onClick} onChange={onChange} placeholder={placeholder} value={value} />;
+  return (
+    <Input ref={ref} onClick={onClick} onChange={onChange} placeholder={placeholder} value={value} autoComplete="off" />
+  );
 };
 customDateInput.displayName = 'DateInput';
 
