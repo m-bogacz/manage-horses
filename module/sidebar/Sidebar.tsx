@@ -1,7 +1,8 @@
-import { Flex, Divider, Box } from '@chakra-ui/react';
+import { Flex, Divider, Box, Text } from '@chakra-ui/react';
 import { AppBar } from '../appBar/AppBar';
 import { SideBarList } from './components/sideBarList/SideBarList';
 import { ChakraNextLink } from '@/shared/chakraNextLink/ChakraNextLink';
+import { PlusSquareIcon } from '@chakra-ui/icons';
 
 interface SideBarProps {
   maxW?: number | string;
@@ -34,15 +35,20 @@ export const Sidebar = ({ maxW = 240 }: SideBarProps) => {
       <Flex p={5} alignItems="center" justifyContent={'center'}>
         <ChakraNextLink
           href={'/add'}
-          textAlign={'center'}
+          display={'flex'}
+          alignItems={'center'}
+          justifyContent={'center'}
+          gap={1}
           border={'1px solid'}
+          borderRadius={6}
           w={'100%'}
           height={'100%'}
           color={'white'}
           p={3}
           bg={'button.100'}
         >
-          Add horse
+          <PlusSquareIcon />
+          <Text>Add horse</Text>
         </ChakraNextLink>
       </Flex>
     </Flex>

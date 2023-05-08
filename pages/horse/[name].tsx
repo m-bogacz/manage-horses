@@ -37,7 +37,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     paths: horses.map((horse) => ({
       params: { name: horse.name },
     })),
-    fallback: true,
+    fallback: 'blocking',
   };
 };
 

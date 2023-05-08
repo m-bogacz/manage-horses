@@ -7,6 +7,6 @@ const options = [
   { value: 'klacz3', label: 'klacz3' },
 ];
 
-export const DamInformation = () => {
+export const MotherInformation = () => {
   return <FormTemplateDetails name="mother" options={options} label="Add mother horse" />;
 };

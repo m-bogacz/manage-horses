@@ -1,5 +1,4 @@
 import { TabSectionType } from '@/utils/types';
-import { string } from 'zod';
 
 export type TabsSectionEntity = TabSectionType[];
 

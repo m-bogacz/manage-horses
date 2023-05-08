@@ -12,7 +12,7 @@ export const HorseInformation = () => {
   return (
     <Flex flexDir={'column'}>
       <ImageUploader name="profileImage" />
-      <Grid templateColumns="repeat(4, 1fr)" gap={4} mt={5} mb={5}>
+      <Grid templateColumns="repeat(4, 1fr)" gap={4} mt={5} mb={5} zIndex={1}>
         {formFields.input.map((field) => {
           return (
             <GridItem colSpan={2} key={field.name}>

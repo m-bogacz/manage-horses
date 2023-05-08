@@ -1,21 +1,26 @@
 import React from 'react';
 import { tabFormFields } from '../tabFormFields';
 import { InputField } from '@/shared/inputs/InputField';
-import { Flex, Grid, GridItem } from '@chakra-ui/react';
+import { Flex, Grid, GridItem, Box } from '@chakra-ui/react';
 import { FormFields } from '../../utils/types';
+import { DatePickerInput } from '@/shared/inputs/datePickerInput/DatePickerInput';
 
 export const TabForm = ({ formFields }: { formFields: FormFields }) => {
   return (
-    <Flex flexDir={'column'}>
-      <Grid templateColumns="repeat(4, 1fr)" gap={4} mt={5} mb={5}>
+    <Box position={'relative'}>
+      <Grid templateColumns="repeat(4, 1fr)" gap={4} mt={5} mb={5} zIndex={2}>
         {formFields.map((field) => {
           return (
             <GridItem colSpan={2} key={field.name}>
-              <InputField name={field.name} placeholder={field.placeholder} label={field.label} />
+              {field.name === 'date' ? (
+                <DatePickerInput key={field.name} name={field.name} label={field.label} />
+              ) : (
+                <InputField name={field.name} placeholder={field.placeholder} label={field.label} />
+              )}
             </GridItem>
           );
         })}
       </Grid>
-    </Flex>
+    </Box>
   );
 };

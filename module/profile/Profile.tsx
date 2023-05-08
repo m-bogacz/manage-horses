@@ -1,6 +1,6 @@
 import { useHorseContext } from '@/apps/context/HorseContext';
+import { dateHelper } from '@/lib/dateHelper';
 import { Box, Center, Text, Image, VStack, HStack } from '@chakra-ui/react';
-import dayjs from 'dayjs';
 
 export const Profile = () => {
   const { defaultPhotoSrc, name, birthday, sex, place, profileImageUrl, mother, father } = useHorseContext();
@@ -22,7 +22,7 @@ export const Profile = () => {
       </Center>
 
       <VStack spacing={0} ml={2} align={'stretch'}>
-        <Feature title="Birthday" desc={dayjs(birthday).format('DD/MM/YYYY')} />
+        <Feature title="Birthday" desc={dateHelper(birthday).format('DD/MM/YYYY')} />
         <Feature title="Sex" desc={sex} />
         <Feature title="Place" desc={place} />
         <Feature title="Mother" desc={mother} />
