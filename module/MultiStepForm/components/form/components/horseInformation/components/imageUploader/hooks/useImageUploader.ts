@@ -24,6 +24,7 @@ export const useImageUploader = (name: string) => {
       const reader = new FileReader();
       reader.readAsDataURL(e.target.files[0]);
       reader.onload = () => {
+        setCropData(null);
         setImageSrc(reader.result as string);
       };
     }
