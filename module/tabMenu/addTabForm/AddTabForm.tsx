@@ -18,6 +18,8 @@ import { useHorseContext } from '@/apps/context/HorseContext';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 import { Tab } from '@/utils/types';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { addTabFormValidationSchema } from './validationSchema';
 
 interface AddTabFormProps {
   title: string;
@@ -30,7 +32,9 @@ export const AddTabForm = ({ title, nameForm, add, formFields = tabFormFields }:
   const router = useRouter();
   const { name, news } = useHorseContext();
 
-  const methods = useForm();
+  const methods = useForm({
+    resolver: zodResolver(addTabFormValidationSchema),
+  });
   const { handleSubmit } = methods;
 
   const { isOpen, onOpen, onClose } = useDisclosure();
