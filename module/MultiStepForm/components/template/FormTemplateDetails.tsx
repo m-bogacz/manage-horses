@@ -2,19 +2,7 @@ import React from 'react';
 import { useFormContext } from 'react-hook-form';
 import { AsyncControllerSelect } from '@/shared/asyncControllerSelect/AsyncControllerSelect';
 import { useAsyncControllerSelect } from '@/shared/asyncControllerSelect/useAsyncControllerSelect';
-import {
-  Divider,
-  Flex,
-  FormControl,
-  FormErrorMessage,
-  FormLabel,
-  Grid,
-  GridItem,
-  Switch,
-  Text,
-  Box,
-  Spacer,
-} from '@chakra-ui/react';
+import { Divider, FormControl, FormErrorMessage, FormLabel, Grid, GridItem } from '@chakra-ui/react';
 import { ParentSideInfo } from '../../utils/types';
 import GrandParentsFields from './GrandParentsFields';
 
