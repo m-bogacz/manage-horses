@@ -3,7 +3,7 @@ import { date, z } from 'zod';
 
 const SEX = ['mare', 'gelding', 'stallion'];
 
-const makeValidationSchema = ({ required }: { required: boolean }) => {
+const makeObjectValidationSchema = ({ required }: { required: boolean }) => {
   const schema = z
     .object({
       value: z.string().nonempty('Wartość nie może być pusta'),
@@ -12,7 +12,7 @@ const makeValidationSchema = ({ required }: { required: boolean }) => {
     .nullable()
     .refine((v) => v?.value !== '', { message: 'Musisz wybrać opcję' });
 
-  return required ? schema : schema.optional();
+  return required ? schema : schema.optional().or(z.string().min(2, 'Imię musi mieć co najmniej 2 znaki'));
 };
 
 export const step1Schema = z.object({
@@ -23,15 +23,15 @@ export const step1Schema = z.object({
 });
 
 export const step2Schema = z.object({
-  mother: makeValidationSchema({ required: true }),
-  motherGrandMother: makeValidationSchema({ required: false }),
-  motherGrandFather: makeValidationSchema({ required: false }),
+  mother: makeObjectValidationSchema({ required: true }),
+  motherGrandMother: makeObjectValidationSchema({ required: false }),
+  motherGrandFather: makeObjectValidationSchema({ required: false }),
 });
 
 export const step3Schema = z.object({
-  father: makeValidationSchema({ required: true }),
-  fatherGrandMother: makeValidationSchema({ required: false }),
-  fatherGrandFather: makeValidationSchema({ required: false }),
+  father: makeObjectValidationSchema({ required: true }),
+  fatherGrandMother: makeObjectValidationSchema({ required: false }),
+  fatherGrandFather: makeObjectValidationSchema({ required: false }),
 });
 
 export const switchResolver = (currentStepIndex: number) => {

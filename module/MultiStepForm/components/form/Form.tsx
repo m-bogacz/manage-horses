@@ -36,6 +36,9 @@ export const Form = () => {
         const { name, birthday, place, sex, mother, images } = formData;
         const { father } = data;
 
+        // console.log(data);
+        // console.log(formData);
+
         await mutate({
           name: name,
           birthday: birthday,

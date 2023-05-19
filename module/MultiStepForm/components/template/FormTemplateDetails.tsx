@@ -2,8 +2,21 @@ import React from 'react';
 import { useFormContext } from 'react-hook-form';
 import { AsyncControllerSelect } from '@/shared/asyncControllerSelect/AsyncControllerSelect';
 import { useAsyncControllerSelect } from '@/shared/asyncControllerSelect/useAsyncControllerSelect';
-import { FormControl, FormErrorMessage, FormLabel, Grid, GridItem } from '@chakra-ui/react';
+import {
+  Divider,
+  Flex,
+  FormControl,
+  FormErrorMessage,
+  FormLabel,
+  Grid,
+  GridItem,
+  Switch,
+  Text,
+  Box,
+  Spacer,
+} from '@chakra-ui/react';
 import { ParentSideInfo } from '../../utils/types';
+import GrandParentsFields from './GrandParentsFields';
 
 interface FormTemplateDetailsProps {
   familySide: 'father' | 'mother';
@@ -17,7 +30,7 @@ export const FormTemplateDetails = ({ familySide, options, placeholder }: FormTe
     formState: { errors },
   } = useFormContext();
   const { familyMemberOptions } = useAsyncControllerSelect(options);
-
+  console.log(errors);
   return (
     <FormControl isInvalid={Boolean(errors[familySide])}>
       <Grid templateColumns="repeat(2, 1fr)" gap={6}>
@@ -32,26 +45,8 @@ export const FormTemplateDetails = ({ familySide, options, placeholder }: FormTe
           {errors[familySide] && <FormErrorMessage>{errors?.[familySide]?.message?.toString()}</FormErrorMessage>}
         </GridItem>
       </Grid>
-      <Grid templateColumns="repeat(2, 1fr)" gap={5} marginTop={8}>
-        <GridItem colSpan={1}>
-          <FormLabel htmlFor={`${familySide}GrandFather`}>{'Add grandFather horse'}</FormLabel>
-          <AsyncControllerSelect
-            control={control}
-            name={`${familySide}GrandFather`}
-            loadOptions={(val) => familyMemberOptions(val, 'grandFather')}
-            placeholder={placeholder}
-          />
-        </GridItem>
-        <GridItem colSpan={1}>
-          <FormLabel htmlFor={`${familySide}GrandMother`}>{'Add grandMother horse'}</FormLabel>
-          <AsyncControllerSelect
-            control={control}
-            name={`${familySide}GrandMother`}
-            loadOptions={(val) => familyMemberOptions(val, 'grandMother')}
-            placeholder={placeholder}
-          />
-        </GridItem>
-      </Grid>
+      <Divider orientation="horizontal" margin={'30px 30px 30px 0'} alignSelf={'center'} />
+      <GrandParentsFields familySide={familySide} familyMemberOptions={familyMemberOptions} />
     </FormControl>
   );
 };

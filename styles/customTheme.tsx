@@ -33,6 +33,7 @@ export const theme = extendTheme({
       active: '#0F8388',
       activeText: 'rgba(15, 131, 136, 0.2)',
     },
+
     button: {
       100: '#2D3434',
     },
