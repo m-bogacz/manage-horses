@@ -1,17 +1,18 @@
 import React from 'react';
 import { OptionType } from '@/utils/types';
+import { FAMILY_MEMBERS, ParentSideInfo } from '@/module/MultiStepForm/utils/types';
 
-export const useAsyncControllerSelect = <T extends OptionType>(options: T[]) => {
-  const filterOptions = (inputValue: string) => {
-    return options.filter((i) => i.label.toLowerCase().includes(inputValue.toLowerCase()));
+export const useAsyncControllerSelect = <T extends ParentSideInfo>(options: T) => {
+  const filterParentOptions = (inputValue: string, familyMember: FAMILY_MEMBERS) => {
+    return options[familyMember].filter((i) => i.label.toLowerCase().includes(inputValue.toLowerCase()));
   };
 
-  const promiseOptions = (inputValue: string) =>
-    new Promise<T[]>((resolve) => {
+  const familyMemberOptions = (inputValue: string, familyMember: FAMILY_MEMBERS) =>
+    new Promise<OptionType[]>((resolve) => {
       setTimeout(() => {
-        resolve(filterOptions(inputValue));
+        resolve(filterParentOptions(inputValue, familyMember));
       }, 1000);
     });
 
-  return { promiseOptions };
+  return { familyMemberOptions };
 };
