@@ -3,31 +3,55 @@ import { useFormContext } from 'react-hook-form';
 import { AsyncControllerSelect } from '@/shared/asyncControllerSelect/AsyncControllerSelect';
 import { useAsyncControllerSelect } from '@/shared/asyncControllerSelect/useAsyncControllerSelect';
 import { FormControl, FormErrorMessage, FormLabel, Grid, GridItem } from '@chakra-ui/react';
-import { OptionType } from '@/utils/types';
+import { ParentSideInfo } from '../../utils/types';
 
 interface FormTemplateDetailsProps {
-  name: string;
-  options: OptionType[];
+  familySide: 'father' | 'mother';
+  options: ParentSideInfo;
   placeholder?: string;
-  label?: string;
 }
 
-export const FormTemplateDetails = ({ name, options, placeholder, label }: FormTemplateDetailsProps) => {
+export const FormTemplateDetails = ({ familySide, options, placeholder }: FormTemplateDetailsProps) => {
   const {
     control,
     formState: { errors },
   } = useFormContext();
-  const { promiseOptions } = useAsyncControllerSelect(options);
+  const { familyMemberOptions } = useAsyncControllerSelect(options);
 
   return (
-    <Grid templateColumns="repeat(2, 1fr)" gap={6}>
-      <GridItem colSpan={1}>
-        <FormControl isInvalid={Boolean(errors[name])}>
-          <FormLabel htmlFor={name}>{label}</FormLabel>
-          <AsyncControllerSelect control={control} name={name} loadOptions={promiseOptions} placeholder={placeholder} />
-          {errors[name] && <FormErrorMessage>{errors?.[name]?.message?.toString()}</FormErrorMessage>}
-        </FormControl>
-      </GridItem>
-    </Grid>
+    <FormControl isInvalid={Boolean(errors[familySide])}>
+      <Grid templateColumns="repeat(2, 1fr)" gap={6}>
+        <GridItem colSpan={1}>
+          <FormLabel htmlFor={familySide}>{`Add ${familySide} horse`}</FormLabel>
+          <AsyncControllerSelect
+            control={control}
+            name={familySide}
+            loadOptions={(val) => familyMemberOptions(val, 'parent')}
+            placeholder={placeholder}
+          />
+          {errors[familySide] && <FormErrorMessage>{errors?.[familySide]?.message?.toString()}</FormErrorMessage>}
+        </GridItem>
+      </Grid>
+      <Grid templateColumns="repeat(2, 1fr)" gap={5} marginTop={8}>
+        <GridItem colSpan={1}>
+          <FormLabel htmlFor={`${familySide}GrandFather`}>{'Add grandFather horse'}</FormLabel>
+          <AsyncControllerSelect
+            control={control}
+            name={`${familySide}GrandFather`}
+            loadOptions={(val) => familyMemberOptions(val, 'grandFather')}
+            placeholder={placeholder}
+          />
+        </GridItem>
+        <GridItem colSpan={1}>
+          <FormLabel htmlFor={`${familySide}GrandMother`}>{'Add grandMother horse'}</FormLabel>
+          <AsyncControllerSelect
+            control={control}
+            name={`${familySide}GrandMother`}
+            loadOptions={(val) => familyMemberOptions(val, 'grandMother')}
+            placeholder={placeholder}
+          />
+        </GridItem>
+      </Grid>
+    </FormControl>
   );
 };

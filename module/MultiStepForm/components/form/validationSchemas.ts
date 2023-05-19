@@ -3,13 +3,17 @@ import { date, z } from 'zod';
 
 const SEX = ['mare', 'gelding', 'stallion'];
 
-const FormTemplateDetailsSchema = z
-  .object({
-    value: z.string().nonempty('Wartość nie może być pusta'),
-    label: z.string().nonempty('Etykieta nie może być pusta'),
-  })
-  .nullable()
-  .refine((v) => v?.value !== '', { message: 'Musisz wybrać opcję' });
+const makeValidationSchema = ({ required }: { required: boolean }) => {
+  const schema = z
+    .object({
+      value: z.string().nonempty('Wartość nie może być pusta'),
+      label: z.string().nonempty('Etykieta nie może być pusta'),
+    })
+    .nullable()
+    .refine((v) => v?.value !== '', { message: 'Musisz wybrać opcję' });
+
+  return required ? schema : schema.optional();
+};
 
 export const step1Schema = z.object({
   name: z.string().min(2, 'Imię musi mieć co najmniej 2 znaki'),
@@ -19,11 +23,15 @@ export const step1Schema = z.object({
 });
 
 export const step2Schema = z.object({
-  mother: FormTemplateDetailsSchema,
+  mother: makeValidationSchema({ required: true }),
+  motherGrandMother: makeValidationSchema({ required: false }),
+  motherGrandFather: makeValidationSchema({ required: false }),
 });
 
 export const step3Schema = z.object({
-  father: FormTemplateDetailsSchema,
+  father: makeValidationSchema({ required: true }),
+  fatherGrandMother: makeValidationSchema({ required: false }),
+  fatherGrandFather: makeValidationSchema({ required: false }),
 });
 
 export const switchResolver = (currentStepIndex: number) => {
