@@ -2,6 +2,8 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
+    loader: 'custom',
+    loaderFile: './utils/supabase-image-loader.ts',
     unoptimized: true,
     remotePatterns: [
       {

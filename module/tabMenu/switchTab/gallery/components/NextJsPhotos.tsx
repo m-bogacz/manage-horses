@@ -6,10 +6,8 @@ export default function NextJsImage({
   wrapperStyle,
 }: RenderPhotoProps) {
   return (
-    <div style={wrapperStyle}>
-      <div style={{ position: 'relative', width: '100%', height: '100%' }}>
-        <Image fill src={src} alt={alt} title={title} sizes={sizes} className={className} onClick={onClick} />
-      </div>
+    <div style={{ ...wrapperStyle, position: 'relative' }}>
+      <Image src={src} alt={alt} title={title} width={1180} height={980} onClick={onClick} />
     </div>
   );
 }

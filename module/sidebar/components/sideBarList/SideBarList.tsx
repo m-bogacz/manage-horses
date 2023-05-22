@@ -1,4 +1,4 @@
-import { getDefaultExamplephoto, getDefaultphoto } from '@/utils/imageLoader/getDefualtPhoto';
+import { getDefaultExamplephoto } from '@/utils/imageLoader/getDefualtPhoto';
 
 import { Box, List, Skeleton } from '@chakra-ui/react';
 import React from 'react';
