@@ -42,6 +42,7 @@
     "react-select": "^5.7.2",
     "supabase": "^1.50.13",
     "uuid": "^9.0.0",
+    "yet-another-react-lightbox": "^3.9.0",
     "zod": "^3.21.4"
   },
   "devDependencies": {

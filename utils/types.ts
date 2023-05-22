@@ -35,9 +35,10 @@ export interface HorsesEntity {
 }
 
 export interface SlideEntity {
+  id: number;
+  createdAt: Date;
   src: string;
-  label: string;
-  default: boolean;
+  alt: string;
 }
 
 export interface ParentEntity {

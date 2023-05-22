@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 export const handleAddImageToSupBase = async (file: Blob) => {
   const id = uuidv4();
   try {
-    const filename = `${'test' + id}`;
+    const filename = `${'horse' + id}`;
 
     const { data, error } = await supabase.storage.from('horses/horses').upload(filename, file, {
       cacheControl: '3600',

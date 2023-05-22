@@ -8,9 +8,9 @@ datasource db {
 }
 
 model Horse {
-  id              Int          @id @default(autoincrement())
-  createdAt       DateTime     @default(now())
-  name            String       @unique
+  id              Int           @id @default(autoincrement())
+  createdAt       DateTime      @default(now())
+  name            String        @unique
   birthday        DateTime
   sex             String
   profileImageUrl String?
@@ -18,6 +18,7 @@ model Horse {
   mother          String
   father          String
   images          String[]
+  photos          SlideEntity[]
   news            NewsTab[]
   veterinarian    VetTab[]
   farrier         FarrierTab[]
@@ -67,13 +68,14 @@ model FarrierTab {
   tabName     String
 }
 
-// model SlideEntity {
-//   src     String  @unique
-//   label   String
-//   default Boolean
-//   Horse   Horse?  @relation(fields: [horseId], references: [id])
-//   horseId Int?
-// }
+model SlideEntity {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  src       String
+  alt       String
+  photos    Horse    @relation(fields: [horseName], references: [name])
+  horseName String
+}
 
 // model CustomParentMother {
 //   name  String  @unique
