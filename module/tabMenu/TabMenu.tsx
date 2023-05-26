@@ -6,7 +6,7 @@ import { SwitchTabPanels } from './switchTab/SwitchTabPanels';
 import { useTabMenu } from './hooks/useTabMenu';
 
 export const TabMenu = () => {
-  const { tabSections, activeSectionIndex, activeSection, changeActiveSection } = useTabMenu();
+  const { tabSections, activeSectionIndex, changeActiveSection, handleChangeQueryParams } = useTabMenu();
 
   return (
     <Flex as={'section'} flex={4} flexDir="column">
@@ -27,7 +27,7 @@ export const TabMenu = () => {
         <TabList>
           {tabSections.map((section) => {
             return (
-              <Tab p={3} fontSize={'sm'} fontWeight="medium" key={section.name}>
+              <Tab p={3} fontSize={'sm'} fontWeight="medium" key={section.name} onClick={handleChangeQueryParams}>
                 {section.name}
               </Tab>
             );
