@@ -1,5 +1,6 @@
 import { FlexProps, Avatar, ListItem, Text } from '@chakra-ui/react';
 import { ChakraNextLink } from '@/shared/chakraNextLink/ChakraNextLink';
+import { useRouter } from 'next/router';
 
 interface SideBarItemProps extends FlexProps {
   name: string;
@@ -7,6 +8,8 @@ interface SideBarItemProps extends FlexProps {
 }
 
 export const SideBarItem = ({ name, src }: SideBarItemProps) => {
+  const router = useRouter();
+
   return (
     <ListItem
       mt={2}
@@ -21,7 +24,10 @@ export const SideBarItem = ({ name, src }: SideBarItemProps) => {
       }}
     >
       <ChakraNextLink
-        href={`/horse/${name}`}
+        href={{
+          pathname: `/horse/${name}`,
+          query: { tab: router.query.tab ? router.query.tab : 'News' },
+        }}
         p={1}
         display={'flex'}
         alignItems="center"

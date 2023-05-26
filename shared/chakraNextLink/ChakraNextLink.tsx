@@ -3,7 +3,7 @@ import NextLink from 'next/link';
 import { Link, LinkProps as ChakraLinkProps } from '@chakra-ui/react';
 
 interface ChakraNextLinkProps extends ChakraLinkProps {
-  href: string;
+  href: any; //todo => poprawić typowanie
   children: React.ReactNode;
 }
 
