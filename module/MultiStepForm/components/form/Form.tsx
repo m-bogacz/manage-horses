@@ -1,4 +1,4 @@
-import { Box, Button, ButtonGroup, Center, Divider } from '@chakra-ui/react';
+import { Box, Button, ButtonGroup, Center, Divider, Spinner } from '@chakra-ui/react';
 import { useForm, FormProvider, SubmitHandler } from 'react-hook-form';
 import { FormButton } from '@/shared/button/FormButton';
 import { switchResolver } from './validationSchemas';
@@ -8,10 +8,13 @@ import { HorseEntity } from '@/utils/types';
 import { useMultiStepFormContext } from '../../context/MultiStepFormContext';
 import { useRouter } from 'next/navigation';
 import { handleAddImageToSupBase } from '@/module/uploader/helpers';
+import { useState } from 'react';
 
 export const Form = () => {
+  const [pending, setPending] = useState(false);
   const router = useRouter();
   const { currentStep, handleNextStep, handlePrevStep, currentStepIndex } = useMultiStepFormContext();
+
   const resolver = switchResolver(currentStepIndex);
   const { mutate } = useAddHorse();
 
@@ -24,6 +27,7 @@ export const Form = () => {
     }
     try {
       if (currentStep.name === 'Father Information') {
+        setPending(true);
         const fileBlob = await fetch(formData?.profileImage).then((res) => res.blob());
 
         const path = await handleAddImageToSupBase(fileBlob);
@@ -31,6 +35,9 @@ export const Form = () => {
 
         const { name, birthday, place, sex, mother, images } = formData;
         const { father } = data;
+
+        // console.log(data);
+        // console.log(formData);
 
         await mutate({
           name: name,
@@ -42,6 +49,7 @@ export const Form = () => {
           father: father.value,
           images: images,
         });
+        setPending(false);
         handleNextStep();
       }
     } catch (error) {
@@ -70,16 +78,19 @@ export const Form = () => {
             />
           </Center>
         ) : (
-          <ButtonGroup width={'100%'} variant="outline" spacing="6">
+          <ButtonGroup width="100%" variant="outline" spacing="6">
             <Button
-              isDisabled={currentStep.name === 'Horse Information'}
-              width={'100%'}
+              isDisabled={currentStep.name === 'Horse Information' || pending}
+              width="100%"
               onClick={handlePrevStep}
-              bg={'step.100'}
+              bg="step.100"
             >
               Back
             </Button>
-            <FormButton type={'submit'} text={'Next'} />
+
+            <FormButton isDisabled={pending} type="submit">
+              {pending ? <Spinner /> : 'Next'}
+            </FormButton>
           </ButtonGroup>
         )}
       </form>

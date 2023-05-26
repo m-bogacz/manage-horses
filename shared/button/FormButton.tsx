@@ -2,13 +2,15 @@ import React from 'react';
 import { Button, ButtonProps } from '@chakra-ui/react';
 type FormButtonSubmit = {
   type: 'submit';
-  text: string;
+  text?: string;
+  isDisabled?: boolean;
 };
 
 type FormButton = {
   onClick: () => void;
   type?: 'button';
-  text: string;
+  text?: string;
+  children?: React.ReactNode;
 };
 
 type FormButtonProps = FormButtonSubmit | FormButton;
@@ -17,6 +19,7 @@ export const FormButton = ({
   onClick,
   type = 'button',
   text,
+  children,
   bg: propsBg,
   ...props
 }: FormButtonProps & ButtonProps) => {
@@ -30,7 +33,7 @@ export const FormButton = ({
       color="white"
       {...props}
     >
-      {text}
+      {text ? text : children}
     </Button>
   );
 };

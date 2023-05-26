@@ -1,11 +1,10 @@
 import { fetchHorses } from '@/apps/services/services';
 import { useQuery } from '@tanstack/react-query';
 
-export const useHorses = () => {
-  const { data, isLoading, error } = useQuery({
-    queryKey: ['horses'],
-    queryFn: fetchHorses,
+export const useHorses = (queryName: string, queryAge?: string) => {
+  return useQuery({
+    queryKey: ['horses', queryName, queryAge],
+    queryFn: () => fetchHorses(queryName, queryAge),
+    enabled: true,
   });
-
-  return { data, isLoading, error };
 };
