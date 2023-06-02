@@ -7,7 +7,12 @@ export const revalidate = async (path: string) => {
 };
 
 export const addHorse = (newHorse: any) => axios.post('/api/add', newHorse);
-export const fetchHorses = async (): Promise<SideBarListEntity> => await axios.get('/api/horses');
+
+export const fetchHorses = async (queryName: string, queryAge?: string) => {
+  const url = queryAge ? `/api/search?age=${queryAge}` : `/api/search?name=${queryName}`;
+  const res = await axios.get(url);
+  return res.data;
+};
 
 export const addNewsServices = (data: Tab) => axios.post('/api/tab/news', data);
 export const deleteNewsServices = (id: any) => axios.delete('/api/tab/news', id);

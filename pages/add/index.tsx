@@ -1,6 +1,6 @@
-import { MultiStepForm } from '@/module/MultiStepForm/MultiStepForm';
+import { AddHorseForm } from '@/module/addHorseForm/AddHorseForm';
 import React from 'react';
 
 export default function AddHorse() {
-  return <MultiStepForm />;
+  return <AddHorseForm />;
 }
