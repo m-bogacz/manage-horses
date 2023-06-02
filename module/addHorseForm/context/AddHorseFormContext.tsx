@@ -13,14 +13,14 @@ interface ReturnValueType {
   stepCount: number[];
 }
 
-const [useMultiStepFormContext, MultiStepFormContextProvider] = createSafeContext<ReturnValueType>();
+const [useAddHorseFormContext, AddHorseFormContextProvider] = createSafeContext<ReturnValueType>();
 
-const MultiStepFormProvider = ({ children }: { readonly children: ReactNode }) => {
+const AddHorseFormProvider = ({ children }: { readonly children: ReactNode }) => {
   const { currentStep, currentStepIndex, handlePrevStep, handleNextStep, stepCount } = useSteps(steps);
 
   const value = { currentStep, currentStepIndex, stepCount, handlePrevStep, handleNextStep };
 
-  return <MultiStepFormContextProvider value={value}>{children}</MultiStepFormContextProvider>;
+  return <AddHorseFormContextProvider value={value}>{children}</AddHorseFormContextProvider>;
 };
 
-export { useMultiStepFormContext, MultiStepFormProvider };
+export { useAddHorseFormContext, AddHorseFormProvider };

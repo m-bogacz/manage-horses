@@ -5,7 +5,7 @@ import { switchResolver } from './validationSchemas';
 import { defaultValues } from './helpers';
 import { useAddHorse } from './hooks/useAddHorse';
 import { HorseEntity } from '@/utils/types';
-import { useMultiStepFormContext } from '../../context/MultiStepFormContext';
+import { useAddHorseFormContext } from '../../context/AddHorseFormContext';
 import { useRouter } from 'next/navigation';
 import { handleAddImageToSupBase } from '@/module/uploader/helpers';
 import { useState } from 'react';
@@ -13,7 +13,7 @@ import { useState } from 'react';
 export const Form = () => {
   const [pending, setPending] = useState(false);
   const router = useRouter();
-  const { currentStep, handleNextStep, handlePrevStep, currentStepIndex } = useMultiStepFormContext();
+  const { currentStep, handleNextStep, handlePrevStep, currentStepIndex } = useAddHorseFormContext();
 
   const resolver = switchResolver(currentStepIndex);
   const { mutate } = useAddHorse();
