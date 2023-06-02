@@ -10,6 +10,8 @@ export const addHorse = (newHorse: any) => axios.post('/api/add', newHorse);
 export const fetchHorses = async (): Promise<SideBarListEntity> => await axios.get('/api/horses');
 
 export const addNewsServices = (data: Tab) => axios.post('/api/tab/news', data);
+export const deleteNewsServices = (id: any) => axios.delete('/api/tab/news', id);
+
 export const addVeterinarianServices = (data: Tab) => axios.post('/api/tab/veterinarian', data);
 export const addFarrierServices = (data: Tab) => axios.post('/api/tab/farrier', data);
 

@@ -35,6 +35,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     } catch (error) {
       res.status(500).json({ error: 'Błąd podczas pobierania tabów ' + name });
     }
+  } else if (req.method === 'DELETE') {
+    const { id } = req.body;
+
+    try {
+      const newsTabs = await prisma.newsTab.delete({
+        where: {
+          id,
+        },
+      });
+
+      res.status(200).json(newsTabs);
+    } catch (error) {
+      res.status(500).json({ error: 'Błąd podczas pobierania tabów ' + name });
+    }
   } else {
     res.setHeader('Allow', ['POST']);
     res.status(405).json({ message: `HTTP method ${req.method} is not supported.` });

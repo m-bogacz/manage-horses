@@ -28,6 +28,7 @@ export interface Tab {
   date: Date;
   title: string;
   description: string;
+  name?: string;
 }
 
 export interface HorsesEntity {
