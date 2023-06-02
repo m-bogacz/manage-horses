@@ -1,12 +1,12 @@
 import React from 'react';
 import { Flex, HStack } from '@chakra-ui/react';
 import { Step } from './Step';
-import { useMultiStepFormContext } from '../../context/MultiStepFormContext';
+import { useAddHorseFormContext } from '../../context/AddHorseFormContext';
 
 const LABELS = ['DETAILS', 'MOTHER ', 'FATHER', 'SUMMARY'];
 
 export const StepBar = () => {
-  const { currentStepIndex, stepCount } = useMultiStepFormContext();
+  const { currentStepIndex, stepCount } = useAddHorseFormContext();
 
   return (
     <Flex alignItems="flex-start" justifyContent="space-between">
