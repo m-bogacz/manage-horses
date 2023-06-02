@@ -10,9 +10,10 @@ const makeObjectValidationSchema = ({ required }: { required: boolean }) => {
       label: z.string().nonempty('Etykieta nie może być pusta'),
     })
     .nullable()
-    .refine((v) => v?.value !== '', { message: 'Musisz wybrać opcję' });
+    .refine((v) => v?.value !== '', { message: 'Musisz wybrać opcję' })
+    .or(z.string().min(2, 'Imię musi mieć co najmniej 2 znaki'));
 
-  return required ? schema : schema.optional().or(z.string().min(2, 'Imię musi mieć co najmniej 2 znaki'));
+  return required ? schema : schema.optional();
 };
 
 export const step1Schema = z.object({
