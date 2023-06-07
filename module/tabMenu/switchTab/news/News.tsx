@@ -10,13 +10,15 @@ export const News = () => {
   const { name, news } = useHorseContext();
   const { data, isLoaded, addDataFromTab } = useSubmitFormHandler(addNewsServices, name, news, 'news');
 
+  console.log('yoo', name, news);
+
   return (
     <>
       <Box textAlign={'right'}>
         <AddTabForm title="Add news" nameForm={'news'} add={addDataFromTab} />
       </Box>
       <Box>
-        <Table tab={data} isLoaded={isLoaded} />
+        <Table tab={data} isLoaded={isLoaded} tabName="news" horseName={name} />
       </Box>
     </>
   );

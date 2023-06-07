@@ -30,7 +30,7 @@ const GrandParentsFields = ({ familySide, placeholder, familyMemberOptions }: Pr
     <>
       <Flex alignItems="center" gap="2">
         <Box mb={1}>
-          <Text size="md">Choose grandparents from dataBase</Text>
+          <Text size="md">Choose grandparents from existing horses</Text>
         </Box>
         <Switch colorScheme="teal" onChange={(val) => setGrandParentsFromDataBase(val.target.checked)} />
       </Flex>

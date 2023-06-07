@@ -6,6 +6,7 @@ export type FormField = {
   name: string;
   placeholder: string;
   label: string;
+  textarea?: boolean;
 };
 
 export type FormFields = FormField[];

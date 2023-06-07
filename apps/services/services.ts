@@ -17,6 +17,8 @@ export const fetchHorses = async (queryName: string, queryAge?: string) => {
 };
 
 export const addNewsServices = (data: Tab) => axios.post('/api/tab/news', data);
+export const deleteNewsServices = (id: any) => axios.delete('/api/tab/news', id);
+
 export const addVeterinarianServices = (data: Tab) => axios.post('/api/tab/veterinarian', data);
 export const addFarrierServices = (data: Tab) => axios.post('/api/tab/farrier', data);
 

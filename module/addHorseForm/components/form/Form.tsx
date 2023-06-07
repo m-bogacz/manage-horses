@@ -36,8 +36,8 @@ export const Form = () => {
         const { name, birthday, place, sex, mother, images } = formData;
         const { father } = data;
 
-        // console.log(data);
-        // console.log(formData);
+        const motherValue = typeof mother === 'object' ? mother.value : mother;
+        const fatherValue = typeof father === 'object' ? father.value : father;
 
         await mutate({
           name: name,
@@ -45,10 +45,11 @@ export const Form = () => {
           sex: sex,
           profileImageUrl: path,
           place: place,
-          mother: mother.value,
-          father: father.value,
+          mother: motherValue,
+          father: fatherValue,
           images: images,
         });
+
         setPending(false);
         handleNextStep();
       }

@@ -20,8 +20,8 @@ export interface HorseEntity {
   name: string;
   birthday: Date | null;
   sex: TypeSex;
-  mother: customParent;
-  father: customParent;
+  mother: customParent | string;
+  father: customParent | string;
   profileImage: string;
   profileImageUrl: string;
   // parent: ParentEntity;
@@ -46,6 +46,7 @@ export interface Tab {
   date: Date;
   title: string;
   description: string;
+  name?: string;
 }
 
 export interface HorsesEntity {
