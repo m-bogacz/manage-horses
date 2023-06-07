@@ -6,7 +6,9 @@ export const revalidate = async (path: string) => {
   return await axios.post(`/api/revalidate?secret=1234567`, { path });
 };
 
-export const addHorse = (newHorse: any) => axios.post('/api/add', newHorse);
+export const addHorse = (newHorse: any) => axios.post('/api/horse', newHorse);
+
+export const deleteHorse = (name: string) => axios.delete('/api/horse', { data: { name } });
 
 export const fetchHorses = async (queryName: string, queryAge?: string) => {
   const url = queryAge ? `/api/search?age=${queryAge}` : `/api/search?name=${queryName}`;

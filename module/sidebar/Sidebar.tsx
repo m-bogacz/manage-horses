@@ -116,22 +116,3 @@ export const Sidebar = ({ maxW = 240 }: SideBarProps) => {
     </Flex>
   );
 };
-
-{
-  /* <Box>
-<Accordion>
-  <AccordionItem>
-    <AccordionButton pb={4}>Click</AccordionButton>
-    <AccordionPanel pb={4}>
-      <NumberInput size="md" maxW={24} defaultValue={15} min={10}>
-        <NumberInputField />
-        <NumberInputStepper>
-          <NumberIncrementStepper />
-          <NumberDecrementStepper />
-        </NumberInputStepper>
-      </NumberInput>
-    </AccordionPanel>
-  </AccordionItem>
-</Accordion>
-</Box> */
-}

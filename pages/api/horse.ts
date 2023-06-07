@@ -1,7 +1,5 @@
+import { prisma } from '@/lib/prisma';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
@@ -22,7 +20,21 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       });
       res.status(200).json(horse);
     } catch (e) {
-      res.status(500).json({ message: 'Something went wrong' });
+      res.status(500).json({ message: 'Failed to create the horse.' });
+    }
+  } else if (req.method === 'DELETE') {
+    const { name } = req.body;
+
+    try {
+      await prisma.horse.delete({
+        where: {
+          name,
+        },
+      });
+
+      res.status(200).json({ message: `Horse ${name} has been successfully deleted.` });
+    } catch (error) {
+      res.status(500).json({ message: 'Failed to delete the horse.' });
     }
   } else {
     res.setHeader('Allow', ['POST']);

@@ -46,7 +46,7 @@ model NewsTab {
   date        String
   title       String
   description String
-  news        Horse  @relation(fields: [tabName], references: [name])
+  news        Horse  @relation(fields: [tabName], references: [name], onDelete: Cascade)
   tabName     String
 }
 
@@ -55,7 +55,7 @@ model VetTab {
   date        String
   title       String
   description String
-  vet         Horse  @relation(fields: [tabName], references: [name])
+  vet         Horse  @relation(fields: [tabName], references: [name], onDelete: Cascade)
   tabName     String
 }
 
@@ -64,7 +64,7 @@ model FarrierTab {
   date        String
   title       String
   description String
-  farrier     Horse  @relation(fields: [tabName], references: [name])
+  farrier     Horse  @relation(fields: [tabName], references: [name], onDelete: Cascade)
   tabName     String
 }
 
@@ -73,7 +73,7 @@ model SlideEntity {
   createdAt DateTime @default(now())
   src       String
   alt       String
-  photos    Horse    @relation(fields: [horseName], references: [name])
+  photos    Horse    @relation(fields: [horseName], references: [name], onDelete: Cascade)
   horseName String
 }
 
