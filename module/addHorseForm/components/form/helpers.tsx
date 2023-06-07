@@ -10,14 +10,8 @@ export const defaultValues = {
   sex: 'mare',
   profileImage: '',
   profileImageUrl: '',
-  mother: {
-    value: '',
-    label: '',
-  },
-  father: {
-    value: '',
-    label: '',
-  },
+  mother: '',
+  father: '',
   images: [],
   place: '',
   children: null,

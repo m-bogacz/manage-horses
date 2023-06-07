@@ -2,8 +2,8 @@ export interface HorseEntity {
   name: string;
   birthday: Date | null;
   sex: TypeSex;
-  mother: customParent;
-  father: customParent;
+  mother: customParent | string;
+  father: customParent | string;
   profileImage: string;
   profileImageUrl: string;
   // parent: ParentEntity;
