@@ -10,12 +10,14 @@ export const TabForm = ({ formFields }: { formFields: FormFields }) => {
     <Box position={'relative'}>
       <Grid templateColumns="repeat(4, 1fr)" gap={4} mt={5} mb={5} zIndex={2}>
         {formFields.map((field) => {
+          const { label, name, placeholder, textarea = false } = field;
+
           return (
-            <GridItem colSpan={2} key={field.name}>
-              {field.name === 'date' ? (
-                <DatePickerInput key={field.name} name={field.name} label={field.label} />
+            <GridItem colSpan={2} key={name}>
+              {name === 'date' ? (
+                <DatePickerInput key={name} name={name} label={label} />
               ) : (
-                <InputField name={field.name} placeholder={field.placeholder} label={field.label} />
+                <InputField name={name} placeholder={placeholder} label={label} asTextArea={textarea} />
               )}
             </GridItem>
           );

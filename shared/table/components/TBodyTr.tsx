@@ -1,21 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { setFormatDate } from '@/lib/dateHelper';
-import { Tr, Td } from '@chakra-ui/react';
+import TabRowDetailsModal from '@/module/tabMenu/switchTab/TabRowDetailsModal';
+import { Tr, Td, useDisclosure } from '@chakra-ui/react';
+import { DeleteIcon } from '@chakra-ui/icons';
+import { Tab } from '@/utils/types';
+
+import { deleteNewsServices } from '@/apps/services/services';
+import { useRemoveRecordTab } from '@/module/tabMenu/hooks/useRemoveRecordTab';
+import { prisma } from '@/lib/prisma';
 
 interface TBodyTrProps {
-  date: Date;
-  describe: string;
+  item: Tab;
+  tabName: string;
+  horseName: string;
 }
 
-export const TBodyTr = ({ date, describe }: TBodyTrProps) => {
+export const TBodyTr = ({ item, tabName, horseName }: TBodyTrProps) => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { date, title, description, name } = item;
+
   return (
-    <Tr>
-      <Td pt={{ base: 2, sm: 3 }} pb={{ base: 2, sm: 3 }}>
-        {setFormatDate(date)}
-      </Td>
-      <Td pt={{ base: 2, sm: 3 }} pb={{ base: 2, sm: 3 }}>
-        {describe}
-      </Td>
-    </Tr>
+    <>
+      <Tr cursor={'pointer'} onClick={onOpen}>
+        <Td>{setFormatDate(date)}</Td>
+        <Td>{title}</Td>
+        <Td maxWidth={50} style={{ textOverflow: 'ellipsis', overflow: 'hidden' }}>
+          {description}
+        </Td>
+        <Td>{name ?? ''}</Td>
+
+        <DeleteIcon _hover={{ color: '#FF6961' }} />
+      </Tr>
+      <TabRowDetailsModal data={item} show={isOpen} handleClose={onClose} />
+    </>
   );
 };
