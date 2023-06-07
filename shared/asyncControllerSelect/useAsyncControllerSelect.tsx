@@ -1,6 +1,6 @@
 import React from 'react';
 import { OptionType } from '@/utils/types';
-import { FAMILY_MEMBERS, ParentSideInfo } from '@/module/MultiStepForm/utils/types';
+import { ParentSideInfo, FAMILY_MEMBERS } from '@/module/addHorseForm/utils/types';
 
 export const useAsyncControllerSelect = <T extends ParentSideInfo>(options: T) => {
   const filterParentOptions = (inputValue: string, familyMember: FAMILY_MEMBERS) => {

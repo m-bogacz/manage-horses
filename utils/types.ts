@@ -1,3 +1,21 @@
+export interface HorseData {
+  id: number;
+  name: string;
+  birthday: Date | null;
+  sex: TypeSex;
+  mother: customParent | string;
+  father: customParent | string;
+  profileImage: string;
+  profileImageUrl: string;
+  images: SlideEntity[] | [];
+  place: string;
+  children: string[] | null;
+
+  news: Tab[];
+  veterinarian: Tab[];
+  farrier: Tab[];
+}
+
 export interface HorseEntity {
   name: string;
   birthday: Date | null;

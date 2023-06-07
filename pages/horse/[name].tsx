@@ -1,6 +1,6 @@
 import { Profile } from '@/module/profile/Profile';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { HorseEntity } from '@/utils/types';
+import { HorseData } from '@/utils/types';
 import { TabMenu } from '@/module/tabMenu/TabMenu';
 import { Flex } from '@chakra-ui/react';
 import { HorseProvider } from '@/apps/context/HorseContext';
@@ -12,7 +12,7 @@ interface Params extends ParsedUrlQuery {
 }
 
 interface HorsePageProps {
-  horse: HorseEntity;
+  horse: HorseData;
 }
 
 export default function Horse({ horse }: HorsePageProps) {
