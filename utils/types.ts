@@ -1,37 +1,33 @@
 export interface HorseData {
   id: number;
   name: string;
-  birthday: Date | null;
+  birthday: Date;
   sex: TypeSex;
-  mother: customParent | string;
-  father: customParent | string;
+  motherName: string;
+  fatherName: string;
   profileImage: string;
   profileImageUrl: string;
   images: SlideEntity[] | [];
   place: string;
-  children: string[] | null;
-
   news: Tab[];
   veterinarian: Tab[];
   farrier: Tab[];
 }
 
-export interface HorseEntity {
+export interface HorseDataContext {
+  id: number;
   name: string;
-  birthday: Date | null;
+  birthday: Date;
   sex: TypeSex;
-  mother: customParent | string;
-  father: customParent | string;
+  motherName: string;
+  fatherName: string;
   profileImage: string;
   profileImageUrl: string;
-  // parent: ParentEntity;
   images: SlideEntity[] | [];
   place: string;
-  children: string[] | null;
-
-  news: Tab[];
-  veterinarian: Tab[];
-  farrier: Tab[];
+  news: News;
+  veterinarian: Veterinarian;
+  farrier: Farrier;
 }
 
 export type OptionType = {
@@ -39,18 +35,28 @@ export type OptionType = {
   label: string;
 };
 
-type customParent = OptionType;
+export type customParent = OptionType;
 
 export interface Tab {
   id: number;
   date: Date;
   title: string;
   description: string;
-  name?: string;
+  executedBy: string;
+  horseName: string;
 }
 
-export interface HorsesEntity {
-  horses: HorseEntity[];
+export interface News {
+  type: 'news';
+  news: Tab[];
+}
+export interface Veterinarian {
+  type: 'veterinarian';
+  veterinarian: Tab[];
+}
+export interface Farrier {
+  type: 'farrier';
+  farrier: Tab[];
 }
 
 export interface SlideEntity {
@@ -61,42 +67,23 @@ export interface SlideEntity {
 }
 
 export interface ParentEntity {
-  mother: {
-    name: string;
-    sex: TypeSex;
-    grandMother: {
-      sex: TypeSex;
-      name: TypeSex;
-      mother: string;
-      father: string;
-    };
-    grandfather: {
-      sex: TypeSex;
-      name: string;
-      mother: string;
-      father: string;
-    };
-  };
-  father: {
-    sex: TypeSex;
-    name: string;
-    grandMother: {
-      sex: TypeSex;
-      name: string;
-      mother: string;
-      father: string;
-    };
-    grandfather: {
-      sex: TypeSex;
-      name: string;
-      mother: string;
-      father: string;
-    };
-  };
+  sex: TypeSex;
+  name: customParent | string;
+  grandMotherName: string;
+  grandFatherName: string;
 }
-type TypeSex = 'mare' | 'gelding' | 'stallion';
 
-export type SectionNameType = 'Geneology' | 'News' | 'Veterinarian' | 'Farrier' | 'Gallery';
+export type TypeSex = 'mare' | 'gelding' | 'stallion';
+
+export type SectionNameType = 'geneology' | 'news' | 'veterinarian' | 'farrier' | 'gallery';
+
+export const SECTION_NAME = {
+  news: 'news',
+  veterinarian: 'veterinarian',
+  farrier: 'farrier',
+  geneology: 'geneology',
+  gallery: 'gallery',
+};
 
 export type TabSectionType = {
   name: SectionNameType;

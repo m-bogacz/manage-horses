@@ -7,22 +7,21 @@ import { useSubmitFormHandler } from '../../hooks/useSubmitFormHandler';
 import { addVeterinarianServices } from '@/apps/services/services';
 
 export const Veterinarian = () => {
-  const { name, veterinarian } = useHorseContext();
-  const { data, isLoaded, addDataFromTab } = useSubmitFormHandler(
-    addVeterinarianServices,
+  const {
     name,
-    veterinarian,
-    'veterinarian'
-  );
+    veterinarian: { veterinarian, type },
+  } = useHorseContext();
+
+  const { data, isLoaded, addDataFromTab } = useSubmitFormHandler(addVeterinarianServices, name, veterinarian, type);
 
   return (
     <>
       <Box textAlign={'right'}>
-        <AddTabForm title="Add veterinarian" nameForm={'veterinarian'} add={addDataFromTab} />
+        <AddTabForm title="Add veterinarian" nameForm={type} add={addDataFromTab} />
       </Box>
 
       <Box>
-        <Table tab={data} isLoaded={isLoaded} />
+        <Table tab={data} isLoaded={isLoaded} type={type} />
       </Box>
     </>
   );

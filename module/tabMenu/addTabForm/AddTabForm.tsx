@@ -12,11 +12,8 @@ import {
 import React from 'react';
 import { TabForm } from './components/TabForm';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
-import { FormFields } from '../utils/types';
-import { tabFormFields } from './tabFormFields';
-import { useHorseContext } from '@/apps/context/HorseContext';
-import { useRouter } from 'next/router';
-import axios from 'axios';
+import { DefaultValuesTabFormType, FormFields } from '../utils/types';
+import { defaultValuesTabForm, tabFormFields } from './tabFormFields';
 import { Tab } from '@/utils/types';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { addTabFormValidationSchema } from './validationSchema';
@@ -26,42 +23,60 @@ interface AddTabFormProps {
   nameForm: string;
   formFields?: FormFields;
   add: (data: Tab) => void;
+  isEditing?: boolean;
+  handleCloseEditing?: () => void;
+  isHiddenOpenBtn?: boolean;
+  defaultValuesTab?: DefaultValuesTabFormType;
 }
 
-export const AddTabForm = ({ title, nameForm, add, formFields = tabFormFields }: AddTabFormProps) => {
-  const router = useRouter();
-  const { name, news } = useHorseContext();
-
-  const methods = useForm({
+export const AddTabForm = ({
+  title,
+  formFields = tabFormFields,
+  isEditing = false,
+  isHiddenOpenBtn = false,
+  defaultValuesTab = defaultValuesTabForm,
+  add,
+  handleCloseEditing,
+}: AddTabFormProps) => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const methods = useForm<Tab>({
     resolver: zodResolver(addTabFormValidationSchema),
+    defaultValues: defaultValuesTab,
   });
   const { handleSubmit } = methods;
 
-  const { isOpen, onOpen, onClose } = useDisclosure();
-
-  const onSubmit = async (data: any) => {
+  const onSubmit: SubmitHandler<Tab> = async (data) => {
     try {
       add(data);
-      onClose();
+      handleClose();
     } catch (error) {
       console.log(error);
     }
   };
 
+  const handleClose = () => {
+    handleCloseEditing && handleCloseEditing();
+    onClose();
+  };
+
   return (
     <FormProvider {...methods}>
-      <Button onClick={onOpen}>Add</Button>
+      {isHiddenOpenBtn ? null : (
+        <Button onClick={onOpen} mt={2}>
+          Add
+        </Button>
+      )}
 
-      <Modal isOpen={isOpen} onClose={onClose} size={'4xl'}>
+      <Modal isOpen={isOpen || isEditing} onClose={handleClose} size={'4xl'}>
         <ModalOverlay />
         <ModalContent as="form" onSubmit={handleSubmit(onSubmit)}>
           <ModalHeader>{title}</ModalHeader>
-          <ModalCloseButton />
+          <ModalCloseButton onClick={handleClose} />
           <ModalBody>
             <TabForm formFields={formFields} />
           </ModalBody>
           <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={onClose}>
+            <Button colorScheme="blue" mr={3} onClick={handleClose}>
               Close
             </Button>
             <Button type="submit" variant="ghost">

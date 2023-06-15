@@ -2,6 +2,7 @@ import React from 'react';
 import { useQueryClient, useMutation, useQuery } from '@tanstack/react-query';
 import axios, { AxiosResponse } from 'axios';
 import { Tab } from '@/utils/types';
+import { useFetchTab } from './useFetchTab';
 
 type Fn = (data: Tab & { name: string }) => Promise<AxiosResponse<any, any>>;
 
@@ -13,11 +14,7 @@ export const fetchTab = async (tabName: string, horseName: string) => {
 
 export const useAddRecordTab = (addServices: Fn, initial: Tab[], tabName: string, horseName: string) => {
   const queryClient = useQueryClient();
-
-  const { data, isLoading, error, isSuccess, refetch } = useQuery([tabName], async () => fetchTab(tabName, horseName), {
-    initialData: initial,
-    enabled: false,
-  });
+  const { data, isLoading, error, isSuccess, refetch } = useFetchTab(initial, tabName, horseName);
 
   const mutation = useMutation(addServices, {
     onSuccess: (data) => {

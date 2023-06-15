@@ -2,23 +2,23 @@ import { TabsSectionEntity } from './types';
 
 export const TAB_SECTIONS = [
   {
-    name: 'News',
+    name: 'news',
     active: true,
   },
   {
-    name: 'Veterinarian',
+    name: 'veterinarian',
     active: false,
   },
   {
-    name: 'Farrier',
+    name: 'farrier',
     active: false,
   },
   {
-    name: 'Geneology',
+    name: 'geneology',
     active: false,
   },
   {
-    name: 'Gallery',
+    name: 'gallery',
     active: false,
   },
 ] satisfies TabsSectionEntity;

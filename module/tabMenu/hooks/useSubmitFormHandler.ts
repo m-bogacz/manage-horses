@@ -10,17 +10,17 @@ export const useSubmitFormHandler = (
   initialData: Tab[],
   tabName: string
 ) => {
-  const { data, isLoading, error, mutation, isSuccess, refetch } = useAddRecordTab(fn, initialData, tabName, name);
+  const { data, isLoading, error, isSuccess, mutation, refetch } = useAddRecordTab(fn, initialData, tabName, name);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     refetch();
   }, [initialData, refetch]);
 
-  const addDataFromTab = async (news: Tab) => {
+  const addDataFromTab = async (tab: Tab) => {
     setIsLoaded(true);
     try {
-      await mutation.mutateAsync({ ...news, name });
+      await mutation.mutateAsync({ ...tab, name });
       await revalidate(`/horse/${name}`);
       refetch();
     } catch (error) {

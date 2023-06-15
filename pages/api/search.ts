@@ -27,7 +27,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   const results = await prisma.horse.findMany({
-    where: whereClause,
+    where: {
+      ...whereClause,
+      createAsParent: {
+        equals: false,
+      },
+    },
     select: {
       name: true,
       profileImageUrl: true,

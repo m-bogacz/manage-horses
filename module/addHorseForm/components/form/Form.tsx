@@ -4,11 +4,30 @@ import { FormButton } from '@/shared/button/FormButton';
 import { switchResolver } from './validationSchemas';
 import { defaultValues } from './helpers';
 import { useAddHorse } from './hooks/useAddHorse';
-import { HorseEntity } from '@/utils/types';
 import { useAddHorseFormContext } from '../../context/AddHorseFormContext';
 import { useRouter } from 'next/navigation';
 import { handleAddImageToSupBase } from '@/module/uploader/helpers';
 import { useState } from 'react';
+import { TypeSex, customParent } from '@/utils/types';
+
+export interface FormDataEntity {
+  name: string;
+  birthday: Date | null;
+  father: customParent | string;
+  mother: customParent | string;
+  images: string[];
+  place: string;
+  profileImageUrl: string;
+  profileImage: string;
+  sex: TypeSex;
+}
+
+const returnNameofObject = (obj: customParent | string) => {
+  if (typeof obj === 'object' && 'value' in obj) {
+    return obj.value;
+  }
+  return obj;
+};
 
 export const Form = () => {
   const [pending, setPending] = useState(false);
@@ -18,10 +37,10 @@ export const Form = () => {
   const resolver = switchResolver(currentStepIndex);
   const { mutate } = useAddHorse();
 
-  const methods = useForm<HorseEntity>({ resolver, defaultValues });
+  const methods = useForm<FormDataEntity>({ resolver, defaultValues });
   const formData = methods.getValues();
 
-  const onSubmit: SubmitHandler<HorseEntity> = async (data) => {
+  const onSubmit: SubmitHandler<FormDataEntity> = async (data) => {
     if (['Horse Information', 'Mother Information'].includes(currentStep.name)) {
       handleNextStep();
     }
@@ -33,11 +52,9 @@ export const Form = () => {
         const path = await handleAddImageToSupBase(fileBlob);
         formData.profileImage = '';
 
+        console.log(formData, data, path);
         const { name, birthday, place, sex, mother, images } = formData;
         const { father } = data;
-
-        const motherValue = typeof mother === 'object' ? mother.value : mother;
-        const fatherValue = typeof father === 'object' ? father.value : father;
 
         await mutate({
           name: name,
@@ -45,8 +62,8 @@ export const Form = () => {
           sex: sex,
           profileImageUrl: path,
           place: place,
-          mother: motherValue,
-          father: fatherValue,
+          mother: returnNameofObject(mother),
+          father: returnNameofObject(father),
           images: images,
         });
 

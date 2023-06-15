@@ -3,13 +3,15 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
-    const { name, title, date, description } = req.body;
+    const { name, title, date, description, executedBy } = req.body;
+
     try {
       const horse = await prisma.newsTab.create({
         data: {
           title: title,
           date: date,
           description: description,
+          executedBy: executedBy,
           news: {
             connect: {
               name: name,
@@ -27,7 +29,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     try {
       const newsTabs = await prisma.newsTab.findMany({
         where: {
-          tabName: name as string,
+          horseName: name as string,
         },
       });
 
@@ -49,6 +51,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     } catch (error) {
       res.status(500).json({ error: 'Błąd podczas pobierania tabów ' + name });
     }
+  } else if (req.method === 'PATCH') {
+    const { id, tab } = req.body.data;
+    const updatedData = await prisma.newsTab.update({
+      where: { id: id },
+      data: tab,
+    });
+
+    res.json(updatedData);
   } else {
     res.setHeader('Allow', ['POST']);
     res.status(405).json({ message: `HTTP method ${req.method} is not supported.` });
