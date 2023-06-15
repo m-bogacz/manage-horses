@@ -1,6 +1,6 @@
 import { Profile } from '@/module/profile/Profile';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { HorseData } from '@/utils/types';
+import { HorseData, HorseDataContext } from '@/utils/types';
 import { TabMenu } from '@/module/tabMenu/TabMenu';
 import { Flex } from '@chakra-ui/react';
 import { HorseProvider } from '@/apps/context/HorseContext';
@@ -16,8 +16,15 @@ interface HorsePageProps {
 }
 
 export default function Horse({ horse }: HorsePageProps) {
+  const updateHorse = {
+    ...horse,
+    news: { type: 'news', news: horse.news },
+    veterinarian: { type: 'veterinarian', veterinarian: horse.veterinarian },
+    farrier: { type: 'farrier', farrier: horse.farrier },
+  } satisfies HorseDataContext;
+
   return (
-    <HorseProvider value={horse}>
+    <HorseProvider value={updateHorse}>
       <Flex h={'100vh'} justifyContent="center">
         <TabMenu />
         <Flex display={{ base: 'none', md: 'flex' }} flex={{ base: 4, lg: 2 }}>
@@ -49,6 +56,7 @@ export const getStaticProps: GetStaticProps<HorsePageProps, Params> = async ({ p
       news: true,
       veterinarian: true,
       farrier: true,
+      mother: true,
     },
   });
 

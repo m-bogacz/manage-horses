@@ -6,7 +6,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const { name, src, alt } = req.body;
 
     try {
-      const photo = await prisma.slideEntity.create({
+      const photo = await prisma.photosEntity.create({
         data: {
           src: src,
           alt: alt,
@@ -26,7 +26,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const { name } = req.query;
 
     try {
-      const photos = await prisma.slideEntity.findMany({
+      const photos = await prisma.photosEntity.findMany({
         where: {
           horseName: name as string,
         },

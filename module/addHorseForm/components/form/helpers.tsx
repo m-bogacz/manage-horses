@@ -1,8 +1,9 @@
-import { HorseEntity } from '@/utils/types';
 import { MotherSideInformation } from './components/motherSideInformation/MotherInformation';
 import { FatherSideInformation } from './components/fatherSideInformation/FatherInformation';
 import { HorseInformation } from './components/horseInformation/HorseInformation';
 import { Summary } from './components/summary/Summary';
+import { FormDataEntity } from './Form';
+
 
 export const defaultValues = {
   name: '',
@@ -10,16 +11,11 @@ export const defaultValues = {
   sex: 'mare',
   profileImage: '',
   profileImageUrl: '',
-  mother: '',
-  father: '',
+  mother: "",
+  father: "",
   images: [],
   place: '',
-  children: null,
-
-  news: [],
-  veterinarian: [],
-  farrier: [],
-} satisfies HorseEntity;
+} satisfies FormDataEntity;
 
 export const steps = [
   { name: 'Horse Information', component: <HorseInformation /> },

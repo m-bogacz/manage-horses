@@ -1,24 +1,66 @@
 import { prisma } from '@/lib/prisma';
+
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
-    try {
-      const { name, birthday, place, sex, profileImageUrl, mother, father, images } = req.body;
+    const { name, birthday, sex, place, mother, father, images, profileImageUrl } = req.body;
 
-      const horse = await prisma.horse.create({
-        data: {
-          name,
-          birthday,
-          sex,
-          profileImageUrl,
-          place,
-          mother,
-          father,
-          images,
+    try {
+      const motherHorse = await prisma.horse.findUnique({
+        where: {
+          name: name,
         },
       });
-      res.status(200).json(horse);
+
+      console.log(motherHorse);
+
+      if (!motherHorse) {
+        await prisma.horse.create({
+          data: {
+            name: mother,
+            createAsParent: true,
+          },
+        });
+      }
+
+      const fatherHorse = await prisma.horse.findUnique({
+        where: {
+          name: name,
+        },
+      });
+
+      if (!fatherHorse) {
+        await prisma.horse.create({
+          data: {
+            name: father,
+            createAsParent: true,
+          },
+        });
+      }
+
+      const newHorse = await prisma.horse.create({
+        data: {
+          name,
+          birthday: new Date(birthday),
+          sex,
+          place,
+          images,
+          profileImageUrl,
+          mother: {
+            connect: {
+              name: mother,
+            },
+          },
+          father: {
+            connect: {
+              name: father,
+            },
+          },
+        },
+      });
+
+      res.json(newHorse);
     } catch (e) {
       res.status(500).json({ message: 'Failed to create the horse.' });
     }

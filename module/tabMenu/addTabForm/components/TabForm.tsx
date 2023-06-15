@@ -8,7 +8,7 @@ import { DatePickerInput } from '@/shared/inputs/datePickerInput/DatePickerInput
 export const TabForm = ({ formFields }: { formFields: FormFields }) => {
   return (
     <Box position={'relative'}>
-      <Grid templateColumns="repeat(4, 1fr)" gap={4} mt={5} mb={5} zIndex={2}>
+      <Grid templateColumns="repeat(4, 1fr)" gap={4} mt={2} mb={5} zIndex={2}>
         {formFields.map((field) => {
           const { label, name, placeholder, textarea = false } = field;
 
