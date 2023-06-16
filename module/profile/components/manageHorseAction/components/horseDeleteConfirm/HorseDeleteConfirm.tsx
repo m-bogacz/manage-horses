@@ -1,4 +1,5 @@
 import { useHorseContext } from '@/apps/context/HorseContext';
+import { Alert } from '@/shared/alert/Alert';
 
 import {
   useDisclosure,
@@ -12,6 +13,7 @@ import {
   Text,
   HStack,
   useToast,
+  Flex,
 } from '@chakra-ui/react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
@@ -29,6 +31,7 @@ export const HorseDeleteConfirm = () => {
   const toast = useToast();
   const router = useRouter();
   const queryClient = useQueryClient();
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const { name } = useHorseContext();
   const mutation = useMutation(deleteHorse, {
@@ -39,9 +42,6 @@ export const HorseDeleteConfirm = () => {
       console.error('Wystąpił błąd podczas dodawania obiektu:', error);
     },
   });
-
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const cancelRef = React.useRef<any>();
 
   const remove = async (removeName: string) => {
     try {
@@ -68,31 +68,18 @@ export const HorseDeleteConfirm = () => {
         Delete horse
       </Button>
 
-      <AlertDialog isOpen={isOpen} leastDestructiveRef={cancelRef} onClose={onClose}>
-        <AlertDialogOverlay>
-          <AlertDialogContent>
-            <AlertDialogHeader fontSize="lg" fontWeight="bold">
-              Delete horse
-            </AlertDialogHeader>
-
-            <AlertDialogBody>
-              <HStack>
-                <Text>Are you sure you want to delete the horse</Text>
-                <Text as={'b'}>{`${name} ?`}</Text>
-              </HStack>
-            </AlertDialogBody>
-
-            <AlertDialogFooter>
-              <Button ref={cancelRef} onClick={onClose}>
-                Cancel
-              </Button>
-              <Button colorScheme="red" onClick={() => remove(name)} ml={3}>
-                Delete
-              </Button>
-            </AlertDialogFooter>
-          </AlertDialogContent>
-        </AlertDialogOverlay>
-      </AlertDialog>
+      <Alert
+        dialogHeader="Delete Horse"
+        dialogBody={
+          <Flex gap={1}>
+            <Text>Are you sure you want to delete the horse</Text>
+            <Text as={'b'}>{`${name} ?`}</Text>
+          </Flex>
+        }
+        isOpen={isOpen}
+        onClick={() => remove(name)}
+        onClose={onClose}
+      />
     </>
   );
 };

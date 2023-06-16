@@ -52,7 +52,6 @@ export const Form = () => {
         const path = await handleAddImageToSupBase(fileBlob);
         formData.profileImage = '';
 
-        console.log(formData, data, path);
         const { name, birthday, place, sex, mother, images } = formData;
         const { father } = data;
 
