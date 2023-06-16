@@ -14,5 +14,5 @@ export const useAddPhoto = () => {
     },
   });
 
-  return { mutate: mutation.mutateAsync };
+  return { mutation };
 };

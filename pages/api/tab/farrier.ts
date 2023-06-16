@@ -44,8 +44,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       where: { id: id },
       data: tab,
     });
-
     res.json(updatedData);
+  } else if (req.method === 'DELETE') {
+    const id = req.body.id;
+    console.log('id =>', req.body);
+
+    const remove = await prisma.farrierTab.delete({
+      where: { id: id },
+    });
+
+    res.json(remove);
   } else {
     res.setHeader('Allow', ['POST']);
     res.status(405).json({ message: `HTTP method ${req.method} is not supported.` });
