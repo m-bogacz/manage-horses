@@ -18,6 +18,7 @@ interface ModalPropsUI {
   readonly buttons?: React.ReactNode;
   readonly isOpen: boolean;
   contentButton?: string;
+  showButton?: boolean;
 
   onOpen: () => void;
   onClose: () => void;
@@ -33,6 +34,7 @@ export const Modal = ({
   onOpen,
   onClose,
   contentButton,
+  showButton = false,
   ...props
 }: ModalPropsUI & ModalProps) => {
   return (
@@ -44,7 +46,11 @@ export const Modal = ({
         <ModalBody>{children}</ModalBody>
 
         <ModalFooter>
-          {buttons ? buttons : <Buttons onClose={onClose} onClick={onClick} contentButton={contentButton} />}
+          {!showButton || buttons ? (
+            buttons
+          ) : (
+            <Buttons onClose={onClose} onClick={onClick} contentButton={contentButton} />
+          )}
         </ModalFooter>
       </ModalContent>
     </ChakraModal>

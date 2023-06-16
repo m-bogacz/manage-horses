@@ -59,6 +59,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     });
 
     res.json(updatedData);
+  } else if (req.method === 'DELETE') {
+    const id = req.body.id;
+
+    const remove = await prisma.newsTab.delete({
+      where: { id: id },
+    });
+
+    res.json(remove);
   } else {
     res.setHeader('Allow', ['POST']);
     res.status(405).json({ message: `HTTP method ${req.method} is not supported.` });

@@ -46,7 +46,7 @@ export const Gallery = () => {
         isOpen={isOpen}
         onOpen={onOpen}
         onClose={onClose}
-        size={'6xl'}
+        size={'5xl'}
       >
         <ImageUpload onClose={onClose} />
       </Modal>

@@ -12,13 +12,15 @@ import {
   Text,
   Box,
   Divider,
+  useToast,
+  useDisclosure,
 } from '@chakra-ui/react';
 import { Tab } from '@/utils/types';
 import { setFormatDate } from '@/lib/dateHelper';
 import { DeleteIcon, EditIcon } from '@chakra-ui/icons';
 import { AddTabForm } from '../addTabForm/AddTabForm';
-
 import { useUpdateRecordTab } from '../hooks/useUpdateRecordTab';
+import { Alert } from '@/shared/alert/Alert';
 
 interface Props {
   data: Tab;
@@ -28,9 +30,11 @@ interface Props {
 }
 
 const TabRowDetailsModal = ({ show, handleClose, data, type }: Props) => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const toast = useToast();
   const [isEditing, setIsEditing] = useState(false);
   const { date, description, title, executedBy, horseName, id } = data;
-  const { updateTab } = useUpdateRecordTab(horseName, type, id);
+  const { updateTab, removeTab } = useUpdateRecordTab(horseName, type, id);
 
   const defaultValues = {
     date: new Date(date),
@@ -45,6 +49,25 @@ const TabRowDetailsModal = ({ show, handleClose, data, type }: Props) => {
   const hadleCloseEditForm = () => {
     setIsEditing(false);
   };
+
+  const handleRemoveTab = async () => {
+    try {
+      await removeTab(id);
+      hadleCloseEditForm();
+      toast({
+        title: `Tab ${type} has been successfully deleted.`,
+        status: 'success',
+        position: 'top',
+      });
+    } catch (error) {
+      console.log(error);
+      toast({
+        title: `Failed to Delete Tab ${type}`,
+        status: 'error',
+        position: 'top',
+      });
+    }
+  };
   return (
     <>
       <AddTabForm
@@ -55,6 +78,13 @@ const TabRowDetailsModal = ({ show, handleClose, data, type }: Props) => {
         handleCloseEditing={hadleCloseEditForm}
         isHiddenOpenBtn={true}
         defaultValuesTab={defaultValues}
+      />
+      <Alert
+        dialogHeader="Delete tab"
+        dialogBody={<Text>Are you sure ?</Text>}
+        isOpen={isOpen}
+        onClose={onClose}
+        onClick={handleRemoveTab}
       />
 
       <Modal isOpen={show} onClose={handleClose}>
@@ -82,7 +112,7 @@ const TabRowDetailsModal = ({ show, handleClose, data, type }: Props) => {
           </ModalBody>
 
           <ModalFooter>
-            <Button leftIcon={<DeleteIcon />} mr={3} _hover={{ color: '#FF6961' }}>
+            <Button leftIcon={<DeleteIcon />} mr={3} _hover={{ color: '#FF6961' }} onClick={onOpen}>
               Delete
             </Button>
 

@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Box, Button, Flex, FormLabel, Input, VisuallyHidden } from '@chakra-ui/react';
+import { Box, Button, Flex, FormLabel, Input, VisuallyHidden, useToast } from '@chakra-ui/react';
 import { DownloadIcon } from '@chakra-ui/icons';
 import { useImageUpload } from './hooks/useImageUpload';
 import { handleAddImageToSupBase } from './utils/handleUploadImage';
@@ -27,13 +27,14 @@ const ImageUpload = ({
   sizeLimit = 10 * 1024 * 1024,
   onClose,
 }: ImageUploadProps) => {
+  const toast = useToast();
   const { name } = useHorseContext();
+  const { mutation } = useAddPhoto();
   const { image, updatingPicture, pictureRef, pictureError, setImage, handleOnClickPicture, handleOnChangePicture } =
     useImageUpload({
       initialImage,
       sizeLimit,
     });
-  const { mutate } = useAddPhoto();
 
   const addImage = async () => {
     if (!image) return;
@@ -42,12 +43,22 @@ const ImageUpload = ({
       const fileBlob = await fetch(image.src).then((res) => res.blob());
       const path = await handleAddImageToSupBase(fileBlob, name, image.alt);
       if (path) {
-        await mutate({ src: path, alt: image.alt, name: name });
+        await mutation.mutateAsync({ src: path, alt: image.alt, name: name });
       }
+      toast({
+        title: `Image has been successfully added.`,
+        status: 'success',
+        position: 'top',
+      });
       setImage(null);
       onClose();
     } catch (error) {
       console.log(error);
+      toast({
+        title: `Image has been failed added.`,
+        status: 'error',
+        position: 'top',
+      });
     }
   };
 
@@ -61,7 +72,10 @@ const ImageUpload = ({
             </Box>
             <Flex gap={2}>
               <Button onClick={() => setImage(null)}>cancel</Button>
-              <Button onClick={addImage}>add</Button>
+
+              <Button isLoading={mutation.isLoading} colorScheme={'cyan'} onClick={addImage}>
+                save
+              </Button>
             </Flex>
           </>
         ) : (
