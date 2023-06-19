@@ -27,6 +27,7 @@ export const DatePickerInput = ({ name, label = '' }: { name: string; label?: st
               onChange={onChange}
               customInput={<CustomInput ref={inputRef} placeholder="datum of birthday" />}
               onCalendarOpen={() => inputRef.current && inputRef.current?.blur()}
+              placeholderText="date of birth"
             />
           )}
         />

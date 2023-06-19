@@ -1,11 +1,13 @@
 import { useHorseContext } from '@/apps/context/HorseContext';
 import { dateHelper } from '@/lib/dateHelper';
-import { Box, Center, Text, Image, VStack, HStack, Flex } from '@chakra-ui/react';
+import { Box, Center, Text, Image, VStack, Flex } from '@chakra-ui/react';
 import { ManageHorseAction } from './components/manageHorseAction/ManageHorseAction';
-import { Feature, FeatureLink } from './components/feature/Feature';
+import { Feature } from './components/feature/Feature';
+import { FeatureParent } from './components/feature/FeatureParent';
 
 export const Profile = () => {
-  const { defaultPhotoSrc, name, birthday, sex, place, profileImageUrl, motherName, fatherName } = useHorseContext();
+  const { defaultPhotoSrc, name, birthday, sex, place, profileImageUrl, motherName, fatherName, mother, father } =
+    useHorseContext();
 
   return (
     <Flex w={'100%'} flexDir={'column'} bg="table.100" borderRadius={16} m={{ base: 0, md: 10 }}>
@@ -28,8 +30,8 @@ export const Profile = () => {
           <Feature title="Birthday" desc={birthday ? dateHelper(birthday).format('DD/MM/YYYY') : ''} />
           <Feature title="Sex" desc={sex} />
           <Feature title="Place" desc={place} />
-          <FeatureLink title="Mother" desc={motherName} />
-          <FeatureLink title="Father" desc={fatherName} />
+          <FeatureParent title="Mother" desc={motherName} parent={mother} />
+          <FeatureParent title="Father" desc={fatherName} parent={father} />
         </VStack>
       </Box>
       <ManageHorseAction />

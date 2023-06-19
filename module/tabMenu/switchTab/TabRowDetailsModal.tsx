@@ -23,6 +23,7 @@ import { useUpdateRecordTab } from '../hooks/useUpdateRecordTab';
 import { Alert } from '@/shared/alert/Alert';
 import { EditButton } from '@/shared/button/EditButton';
 import { RemoveButton } from '@/shared/button/DeleteButton';
+import { CloseButton } from '@/shared/button/CloseButton';
 
 interface Props {
   data: Tab;
@@ -117,10 +118,7 @@ const TabRowDetailsModal = ({ show, handleClose, data, type }: Props) => {
             <ButtonGroup>
               <RemoveButton onClick={onOpen} />
               <EditButton onClick={hadleOpenEditForm} />
-
-              <Button mr={3} onClick={handleClose}>
-                Close
-              </Button>
+              <CloseButton onClick={handleClose} />
             </ButtonGroup>
           </ModalFooter>
         </ModalContent>

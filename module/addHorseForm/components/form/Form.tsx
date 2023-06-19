@@ -1,8 +1,8 @@
 import { Box, Button, ButtonGroup, Center, Divider, Spinner } from '@chakra-ui/react';
 import { useForm, FormProvider, SubmitHandler } from 'react-hook-form';
 import { FormButton } from '@/shared/button/FormButton';
-import { switchResolver } from './validationSchemas';
-import { defaultValues } from './helpers';
+import { switchResolver } from './utils/validationSchemas';
+import { defaultValues, returnNameofObject } from './utils/helpers';
 import { useAddHorse } from './hooks/useAddHorse';
 import { useAddHorseFormContext } from '../../context/AddHorseFormContext';
 import { useRouter } from 'next/navigation';
@@ -21,13 +21,6 @@ export interface FormDataEntity {
   profileImage: string;
   sex: TypeSex;
 }
-
-const returnNameofObject = (obj: customParent | string) => {
-  if (typeof obj === 'object' && 'value' in obj) {
-    return obj.value;
-  }
-  return obj;
-};
 
 export const Form = () => {
   const [pending, setPending] = useState(false);

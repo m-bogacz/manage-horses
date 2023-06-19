@@ -1,7 +1,7 @@
 import { Step, useSteps } from '@/hooks/useSteps';
 import { createSafeContext } from '@/lib/createSafeContext';
 import { ReactNode } from 'react';
-import { steps } from '../components/form/helpers';
+import { steps } from '../components/form/utils/helpers';
 
 type StepNames = (typeof steps)[number]['name'];
 

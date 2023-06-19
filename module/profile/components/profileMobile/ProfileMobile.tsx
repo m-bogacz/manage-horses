@@ -1,6 +1,6 @@
+import React from 'react';
 import { useHorseContext } from '@/apps/context/HorseContext';
 import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box } from '@chakra-ui/react';
-import React from 'react';
 import { Profile } from '../../Profile';
 
 export const ProfileMobile = () => {

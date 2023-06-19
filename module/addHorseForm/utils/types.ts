@@ -8,9 +8,7 @@ export const STEP = {
   THIRD: 3,
 } as const;
 
-export type FAMILY_MEMBERS = 'parent' | 'grandMother' | 'grandFather';
+export type FAMILY_MEMBERS = 'parent';
 export interface ParentSideInfo {
   parent: OptionType[];
-  grandMother: OptionType[];
-  grandFather: OptionType[];
 }

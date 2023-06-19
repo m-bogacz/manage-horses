@@ -21,6 +21,8 @@ export default function Horse({ horse }: HorsePageProps) {
     news: { type: 'news', news: horse.news },
     veterinarian: { type: 'veterinarian', veterinarian: horse.veterinarian },
     farrier: { type: 'farrier', farrier: horse.farrier },
+    mother: {} as HorseDataContext,
+    father: {} as HorseDataContext,
   } satisfies HorseDataContext;
 
   return (
@@ -57,6 +59,7 @@ export const getStaticProps: GetStaticProps<HorsePageProps, Params> = async ({ p
       veterinarian: true,
       farrier: true,
       mother: true,
+      father: true,
     },
   });
 

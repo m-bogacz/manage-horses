@@ -2,11 +2,10 @@ import React from 'react';
 import { Flex, GridItem, Grid } from '@chakra-ui/react';
 import { ImageUploader } from './components/imageUploader/ImageUploader';
 import { InputField } from '@/shared/inputs/InputField';
-import { formFields } from './utils/formFields';
 import { RadioInput } from '@/shared/inputs/RadioInput';
-
 import 'react-datepicker/dist/react-datepicker.css';
 import { DatePickerInput } from '@/shared/inputs/datePickerInput/DatePickerInput';
+import { formFields } from '../../utils/helpers';
 
 export const HorseInformation = () => {
   return (
