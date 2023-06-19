@@ -14,13 +14,15 @@ import {
   Divider,
   useToast,
   useDisclosure,
+  ButtonGroup,
 } from '@chakra-ui/react';
 import { Tab } from '@/utils/types';
 import { setFormatDate } from '@/lib/dateHelper';
-import { DeleteIcon, EditIcon } from '@chakra-ui/icons';
 import { AddTabForm } from '../addTabForm/AddTabForm';
 import { useUpdateRecordTab } from '../hooks/useUpdateRecordTab';
 import { Alert } from '@/shared/alert/Alert';
+import { EditButton } from '@/shared/button/EditButton';
+import { RemoveButton } from '@/shared/button/DeleteButton';
 
 interface Props {
   data: Tab;
@@ -112,16 +114,14 @@ const TabRowDetailsModal = ({ show, handleClose, data, type }: Props) => {
           </ModalBody>
 
           <ModalFooter>
-            <Button leftIcon={<DeleteIcon />} mr={3} _hover={{ color: '#FF6961' }} onClick={onOpen}>
-              Delete
-            </Button>
+            <ButtonGroup>
+              <RemoveButton onClick={onOpen} />
+              <EditButton onClick={hadleOpenEditForm} />
 
-            <Button leftIcon={<EditIcon />} mr={3} _hover={{ color: '#FF6961' }} onClick={hadleOpenEditForm}>
-              Edit
-            </Button>
-            <Button mr={3} onClick={handleClose}>
-              Close
-            </Button>
+              <Button mr={3} onClick={handleClose}>
+                Close
+              </Button>
+            </ButtonGroup>
           </ModalFooter>
         </ModalContent>
       </Modal>
