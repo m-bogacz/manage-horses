@@ -12,6 +12,7 @@ export interface HorseData {
   news: Tab[];
   veterinarian: Tab[];
   farrier: Tab[];
+  createAsParent: boolean;
 }
 
 export interface HorseDataContext {
@@ -23,11 +24,14 @@ export interface HorseDataContext {
   fatherName: string;
   profileImage: string;
   profileImageUrl: string;
+  mother: HorseDataContext;
+  father: HorseDataContext;
   images: SlideEntity[] | [];
   place: string;
   news: News;
   veterinarian: Veterinarian;
   farrier: Farrier;
+  createAsParent: boolean;
 }
 
 export type OptionType = {

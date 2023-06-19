@@ -1,10 +1,8 @@
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
-import { AsyncControllerSelect } from '@/shared/asyncControllerSelect/AsyncControllerSelect';
 import { useAsyncControllerSelect } from '@/shared/asyncControllerSelect/useAsyncControllerSelect';
-import { Divider, FormControl, FormErrorMessage, FormLabel, Grid, GridItem } from '@chakra-ui/react';
+import { FormControl, Grid, GridItem } from '@chakra-ui/react';
 import { ParentSideInfo } from '../../utils/types';
-import GrandParentsFields from './GrandParentsFields';
 import ParentField from './ParentsField';
 
 interface FormTemplateDetailsProps {
@@ -27,8 +25,6 @@ export const FormTemplateDetails = ({ familySide, options, placeholder }: FormTe
           <ParentField familySide={familySide} familyMemberOptions={familyMemberOptions} placeholder={placeholder} />
         </GridItem>
       </Grid>
-      <Divider orientation="horizontal" margin={'30px 30px 30px 0'} alignSelf={'center'} />
-      <GrandParentsFields familySide={familySide} familyMemberOptions={familyMemberOptions} />
     </FormControl>
   );
 };

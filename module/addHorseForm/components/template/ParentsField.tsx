@@ -16,18 +16,13 @@ const ParentField = ({ familySide, placeholder, familyMemberOptions }: Props) =>
 
   const {
     control,
-    resetField,
     setValue,
     formState: { errors },
-    watch,
   } = useFormContext();
 
   useEffect(() => {
     setValue(familySide, chooseFromExistingHorses ? { value: '', label: '' } : '');
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [chooseFromExistingHorses]);
-
-  console.log(errors);
+  }, [chooseFromExistingHorses, familySide, setValue]);
 
   return (
     <>

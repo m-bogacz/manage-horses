@@ -1,19 +1,6 @@
 import React from 'react';
 import { Button, ButtonProps } from '@chakra-ui/react';
-type FormButtonSubmit = {
-  type: 'submit';
-  text?: string;
-  isDisabled?: boolean;
-};
-
-type FormButton = {
-  onClick: () => void;
-  type?: 'button';
-  text?: string;
-  children?: React.ReactNode;
-};
-
-type FormButtonProps = FormButtonSubmit | FormButton;
+import { FormButtonProps } from './types';
 
 export const FormButton = ({
   onClick,

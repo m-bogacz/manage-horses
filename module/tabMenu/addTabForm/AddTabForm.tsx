@@ -8,6 +8,7 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  ButtonGroup,
 } from '@chakra-ui/react';
 import React from 'react';
 import { TabForm } from './components/TabForm';
@@ -17,6 +18,8 @@ import { defaultValuesTabForm, tabFormFields } from './tabFormFields';
 import { Tab } from '@/utils/types';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { addTabFormValidationSchema } from './validationSchema';
+import { CloseButton } from '@/shared/button/CloseButton';
+import { FormButton } from '@/shared/button/FormButton';
 
 interface AddTabFormProps {
   title: string;
@@ -39,6 +42,7 @@ export const AddTabForm = ({
   handleCloseEditing,
 }: AddTabFormProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+
   const methods = useForm<Tab>({
     resolver: zodResolver(addTabFormValidationSchema),
     defaultValues: defaultValuesTab,
@@ -76,12 +80,12 @@ export const AddTabForm = ({
             <TabForm formFields={formFields} />
           </ModalBody>
           <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={handleClose}>
-              Close
-            </Button>
-            <Button type="submit" variant="ghost">
-              Add
-            </Button>
+            <ButtonGroup>
+              <CloseButton onClick={handleClose} />
+              <FormButton type="submit" colorScheme="blue">
+                Save
+              </FormButton>
+            </ButtonGroup>
           </ModalFooter>
         </ModalContent>
       </Modal>

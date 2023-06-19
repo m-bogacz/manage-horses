@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormControl, RadioGroup, Stack, Radio, FormErrorMessage, StackDirection } from '@chakra-ui/react';
+import { FormControl, RadioGroup, Stack, Radio, FormErrorMessage, StackDirection, FormLabel } from '@chakra-ui/react';
 import { Controller, useFormContext } from 'react-hook-form';
 
 type RadioType = {
@@ -15,14 +15,20 @@ interface InputFieldProps {
   direction?: StackDirection;
 }
 
-export const RadioInput = ({ name, direction = 'row', radioValues }: InputFieldProps) => {
+export const RadioInput = ({
+  name,
+  label = 'Select Horse Gender',
+  direction = 'row',
+  radioValues,
+}: InputFieldProps) => {
   const {
     register,
     control,
     formState: { errors },
   } = useFormContext();
   return (
-    <FormControl isInvalid={Boolean(errors.sex)}>
+    <FormControl label="choose sex" isInvalid={Boolean(errors.sex)}>
+      <FormLabel htmlFor={name}>{label}</FormLabel>
       <Controller
         name={name}
         control={control}
