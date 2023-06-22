@@ -1,38 +1,21 @@
 export interface HorseData {
   id: number;
   name: string;
-  birthday: Date;
+  birthday: Date | null;
   sex: TypeSex;
-  motherName: string;
-  fatherName: string;
+  mother: HorseData;
+  father: HorseData;
   profileImage: string;
   profileImageUrl: string;
-  images: SlideEntity[] | [];
-  place: string;
-  news: Tab[];
-  veterinarian: Tab[];
-  farrier: Tab[];
-  createAsParent: boolean;
-}
-
-export interface HorseDataContext {
-  id: number;
-  name: string;
-  birthday: Date;
-  sex: TypeSex;
-  motherName: string;
-  fatherName: string;
-  profileImage: string;
-  profileImageUrl: string;
-  mother: HorseDataContext;
-  father: HorseDataContext;
   images: SlideEntity[] | [];
   place: string;
   news: News;
   veterinarian: Veterinarian;
   farrier: Farrier;
-  createAsParent: boolean;
+  createAsParent?: boolean;
 }
+
+// export type HorseData = PartialExceptFor<HorseDataRequired, 'name'>;
 
 export type OptionType = {
   value: string;
@@ -93,3 +76,5 @@ export type TabSectionType = {
   name: SectionNameType;
   active: boolean;
 };
+
+export type PartialExceptFor<T, TRequired extends keyof T> = Partial<T> & Pick<T, TRequired>;

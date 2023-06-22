@@ -8,8 +8,8 @@ export const FeatureParent = ({ title, desc, parent }: FeatureParentProps) => {
     <Box>
       <FeatureLink title={title} desc={desc} />
       <Flex flexDir={'column'} ml={5}>
-        <FeatureLink title="Grand mother" variant={'small'} desc={parent?.motherName} />
-        <FeatureLink title="Grand father" variant={'small'} desc={parent?.fatherName} />
+        <FeatureLink title="Grand mother" variant={'small'} desc={parent?.mother?.name} />
+        <FeatureLink title="Grand father" variant={'small'} desc={parent?.father?.name} />
       </Flex>
     </Box>
   );

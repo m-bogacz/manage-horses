@@ -1,19 +1,17 @@
 import { ParentEntity, SlideEntity, Tab, TypeSex } from '@/utils/types';
 
-
-export type horse = {
+export type Horse = {
   name: string;
   profileImageUrl: string;
 };
 
 export interface SideBarListEntity {
-  data: horse[];
+  data: Horse[];
 }
 
 export interface PhotosEntity {
   data: SlideEntity;
 }
-
 
 export interface AddPhotoEntity {
   src: string;

@@ -1,16 +1,16 @@
 import { createSafeContext } from '@/lib/createSafeContext';
 import { getDefaultExamplephoto } from '@/utils/imageLoader/getDefualtPhoto';
-import { HorseDataContext } from '@/utils/types';
+import { HorseData } from '@/utils/types';
 import { ReactNode } from 'react';
 
 interface HorseProviderProps {
   readonly children: ReactNode;
-  value: HorseDataContext;
+  value: HorseData;
 }
 
 type DefaultPhotoSrcType = { defaultPhotoSrc: string };
 
-interface ReturnValueType extends HorseDataContext, DefaultPhotoSrcType {}
+interface ReturnValueType extends HorseData, DefaultPhotoSrcType {}
 
 const [useHorseContext, HorseContextProvider] = createSafeContext<ReturnValueType>();
 

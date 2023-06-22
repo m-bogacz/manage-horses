@@ -1,29 +1,33 @@
 import { Profile } from '@/module/profile/Profile';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { HorseData, HorseDataContext } from '@/utils/types';
+import { HorseData, PartialExceptFor } from '@/utils/types';
 import { TabMenu } from '@/module/tabMenu/TabMenu';
 import { Flex } from '@chakra-ui/react';
 import { HorseProvider } from '@/apps/context/HorseContext';
 import { prisma } from '@/lib/prisma';
 import { ParsedUrlQuery } from 'querystring';
+import { useQuery } from '@tanstack/react-query';
+import { getHorse } from '@/apps/services/services';
 
 interface Params extends ParsedUrlQuery {
   name: string;
 }
 
 interface HorsePageProps {
-  horse: HorseData;
+  horse: PartialExceptFor<HorseData, 'name'>;
 }
 
 export default function Horse({ horse }: HorsePageProps) {
+  const { data } = useQuery(['horse', horse.name], () => getHorse(horse.name), { initialData: horse });
+
+  console.log(data);
+
   const updateHorse = {
-    ...horse,
-    news: { type: 'news', news: horse.news },
-    veterinarian: { type: 'veterinarian', veterinarian: horse.veterinarian },
-    farrier: { type: 'farrier', farrier: horse.farrier },
-    mother: {} as HorseDataContext,
-    father: {} as HorseDataContext,
-  } satisfies HorseDataContext;
+    ...data,
+    news: { type: 'news', news: horse.news ?? [] },
+    veterinarian: { type: 'veterinarian', veterinarian: horse.veterinarian ?? [] },
+    farrier: { type: 'farrier', farrier: horse.farrier ?? [] },
+  } satisfies HorseData;
 
   return (
     <HorseProvider value={updateHorse}>
@@ -50,8 +54,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps<HorsePageProps, Params> = async ({ params }) => {
+export const getStaticProps: GetStaticProps<Partial<HorsePageProps>, Params> = async ({ params }) => {
   const horseName = params?.name;
+
   const horse = await prisma.horse.findUnique({
     where: { name: horseName },
     include: {
@@ -63,18 +68,9 @@ export const getStaticProps: GetStaticProps<HorsePageProps, Params> = async ({ p
     },
   });
 
-  if (horse) {
-    return {
-      props: {
-        horse: JSON.parse(JSON.stringify(horse)),
-      },
-    };
-  }
-
   return {
-    redirect: {
-      destination: '/',
-      permanent: false,
+    props: {
+      horse: JSON.parse(JSON.stringify(horse)),
     },
   };
 };

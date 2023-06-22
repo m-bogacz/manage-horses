@@ -1,6 +1,7 @@
 import { prisma } from '@/lib/prisma';
 import { searchHorsesByAge, searchHorsesByCurrentYear } from '@/apps/helpers/date';
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { Prisma } from '@prisma/client';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'GET') {
@@ -10,7 +11,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const nameQuery = req.query.name as string;
   const ageQuery = parseInt(req.query.age as string);
 
-  let whereClause: any = {};
+  let whereClause: Prisma.HorseWhereInput = {};
 
   if (nameQuery) {
     whereClause.name = { contains: nameQuery, mode: 'insensitive' };

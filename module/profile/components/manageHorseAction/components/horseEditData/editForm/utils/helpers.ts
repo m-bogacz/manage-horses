@@ -1,3 +1,5 @@
+import { OptionType } from '@/utils/types';
+
 export const formFields = {
   input: [
     { name: 'name', placeholder: 'name', label: 'Change name' },
@@ -10,3 +12,11 @@ export const formFields = {
     { value: 'stallion', content: 'stallion' },
   ],
 };
+
+export const filterhorses = (inputValue: string, arr: OptionType[]) => {
+  return arr.filter((i) => i.label.toLowerCase().includes(inputValue.toLowerCase()));
+};
+export const createOption = (label: string) => ({
+  label,
+  value: label,
+});

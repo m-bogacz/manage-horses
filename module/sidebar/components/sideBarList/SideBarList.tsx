@@ -3,10 +3,10 @@ import { Box, List, Spinner } from '@chakra-ui/react';
 import React from 'react';
 import { SideBarItem } from './SideBarItem';
 
-import { horse } from '@/apps/services/types';
+import { Horse } from '@/apps/services/types';
 
 interface SideBarListProps {
-  data: horse[];
+  data: Horse[];
   isLoading: boolean;
   error: unknown;
 }
