@@ -1,4 +1,4 @@
-import { OptionType } from '@/utils/types';
+import { OptionType, TypeSex, customParent } from '@/utils/types';
 
 export type STEP_TYPE = 1 | 2 | 3;
 
@@ -11,4 +11,16 @@ export const STEP = {
 export type FAMILY_MEMBERS = 'parent';
 export interface ParentSideInfo {
   parent: OptionType[];
+}
+
+export interface FormDataEntity {
+  name: string;
+  birthday: Date | null;
+  father: customParent | string;
+  mother: customParent | string;
+  images: string[];
+  place: string;
+  profileImageUrl: string;
+  profileImage: string;
+  sex: TypeSex;
 }

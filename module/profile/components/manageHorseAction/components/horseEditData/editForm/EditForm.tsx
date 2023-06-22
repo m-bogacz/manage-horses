@@ -9,10 +9,28 @@ import { useHorseContext } from '@/apps/context/HorseContext';
 import { FormButton } from '@/shared/button/FormButton';
 import { CloseButton } from '@/shared/button/CloseButton';
 import { CreatableSelect } from '@/shared/createableSelect/CreatableSelect';
+import { useMutationsUpdateHorse } from '../hooks/useMutationsUpdateHorse';
+import { returnNameofObject } from '@/module/addHorseForm/components/form/utils/helpers';
 
 interface IOption {
   value: string;
   label: string;
+}
+function removeNullFields<T>(obj: any): T {
+  const keys = Object.keys(obj) as (keyof T)[];
+
+  keys.forEach((key) => {
+    if (obj[key] === null) {
+      delete obj[key];
+    } else if (typeof obj[key] === 'object' && obj[key] !== null) {
+      removeNullFields(obj[key] as Record<string, unknown>);
+      if (Object.keys(obj[key]).length === 0) {
+        delete obj[key];
+      }
+    }
+  });
+
+  return obj;
 }
 
 const options = [
@@ -22,15 +40,17 @@ const options = [
 ];
 
 export const EditForm = ({ onClose }: { onClose: () => void }) => {
-  const { name, birthday, sex, place, motherName, fatherName } = useHorseContext();
+  const data = useHorseContext();
+  const { update, loading } = useMutationsUpdateHorse(data.name, data);
+  const { name, birthday, sex, place, mother, father, id } = data;
 
   const defaultValue = {
     name: name,
-    birthday: new Date(birthday),
+    birthday: birthday ? new Date(birthday) : null,
     sex,
     place,
-    mother: { value: motherName, label: motherName },
-    father: { value: fatherName, label: fatherName },
+    mother: { value: mother?.name ?? null, label: mother?.name ?? null },
+    father: { value: father?.name ?? null, label: father?.name ?? null },
   };
 
   type FormDataEntity = typeof defaultValue;
@@ -38,24 +58,33 @@ export const EditForm = ({ onClose }: { onClose: () => void }) => {
   const methods = useForm<FormDataEntity>({ defaultValues: defaultValue });
 
   const onSubmit: SubmitHandler<FormDataEntity> = async (data) => {
-    console.log(data);
+    try {
+      await update({
+        id,
+        name: data.name,
+        birthday: data.birthday,
+        sex: data.sex,
+        place: data.place,
+        mother: returnNameofObject(data.mother),
+        father: returnNameofObject(data.father),
+      });
+
+      onClose();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const filterColors = (inputValue: string) => {
     return options.filter((i) => i.label.toLowerCase().includes(inputValue.toLowerCase()));
   };
 
-  const promiseOptions = (inputValue: string) =>
+  const promiseOptions = (inputValue: string, callback: () => void) =>
     new Promise<IOption[]>((resolve) => {
       setTimeout(() => {
         resolve(filterColors(inputValue));
       }, 1000);
     });
-
-  const createOption = (label: string) => ({
-    label,
-    value: label,
-  });
 
   return (
     <FormProvider {...methods}>
@@ -80,7 +109,6 @@ export const EditForm = ({ onClose }: { onClose: () => void }) => {
             label={`Chosen another mother the ${name}`}
             control={methods.control}
             loadOptions={promiseOptions}
-            handleCreate={createOption}
           />
 
           <CreatableSelect
@@ -88,13 +116,14 @@ export const EditForm = ({ onClose }: { onClose: () => void }) => {
             label={`Chosen another father the ${name}`}
             control={methods.control}
             loadOptions={promiseOptions}
-            handleCreate={createOption}
           />
 
           <Flex>
             <ButtonGroup spacing="6">
               <CloseButton onClick={onClose} />
-              <FormButton type="submit">save</FormButton>
+              <FormButton type="submit" isLoading={loading}>
+                save
+              </FormButton>
             </ButtonGroup>
           </Flex>
         </Flex>

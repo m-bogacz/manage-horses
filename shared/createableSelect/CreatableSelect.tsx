@@ -3,7 +3,7 @@ import AsyncCreatable from 'react-select/async-creatable';
 import { Controller } from 'react-hook-form';
 import { FormControl, FormLabel } from '@chakra-ui/react';
 
-export const CreatableSelect = ({ name, control, label, loadOptions, handleCreate }: any) => {
+export const CreatableSelect = ({ name, control, label, loadOptions }: any) => {
   return (
     <FormControl>
       <FormLabel htmlFor={name}>{label ? label : ''}</FormLabel>
@@ -11,15 +11,7 @@ export const CreatableSelect = ({ name, control, label, loadOptions, handleCreat
         name={name}
         control={control}
         render={({ field }) => {
-          return (
-            <AsyncCreatable
-              cacheOptions
-              loadOptions={loadOptions}
-              defaultOptions={false}
-              onCreateOption={handleCreate}
-              {...field}
-            />
-          );
+          return <AsyncCreatable cacheOptions loadOptions={loadOptions} defaultOptions {...field} />;
         }}
       />
     </FormControl>

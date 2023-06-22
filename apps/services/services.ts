@@ -2,11 +2,17 @@ import axios from 'axios';
 import { SlideEntity, Tab } from '@/utils/types';
 import { AddPhotoEntity } from './types';
 
-export const revalidate = async (path: string) => {
-  return await axios.post(`/api/revalidate?secret=1234567`, { path });
+export const revalidate = (path: string) => {
+  return axios.post(`/api/revalidate?secret=1234567`, { path });
 };
 
 export const addHorse = (newHorse: any) => axios.post('/api/horse', newHorse);
+export const updateHorse = (newHorse: any) => axios.put('/api/horse', newHorse);
+
+export const getHorse = async (name: string) => {
+  const result = await axios.get(`/api/horse?name=${name}`);
+  return result.data;
+};
 
 export const deleteHorse = (name: string) => axios.delete('/api/horse', { data: { name } });
 

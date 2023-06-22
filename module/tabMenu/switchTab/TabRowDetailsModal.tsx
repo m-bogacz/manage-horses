@@ -34,7 +34,6 @@ interface Props {
 
 const TabRowDetailsModal = ({ show, handleClose, data, type }: Props) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const toast = useToast();
   const [isEditing, setIsEditing] = useState(false);
   const { date, description, title, executedBy, horseName, id } = data;
   const { updateTab, removeTab } = useUpdateRecordTab(horseName, type, id);
@@ -53,24 +52,8 @@ const TabRowDetailsModal = ({ show, handleClose, data, type }: Props) => {
     setIsEditing(false);
   };
 
-  const handleRemoveTab = async () => {
-    try {
-      await removeTab(id);
-      hadleCloseEditForm();
-      toast({
-        title: `Tab ${type} has been successfully deleted.`,
-        status: 'success',
-        position: 'top',
-      });
-    } catch (error) {
-      console.log(error);
-      toast({
-        title: `Failed to Delete Tab ${type}`,
-        status: 'error',
-        position: 'top',
-      });
-    }
-  };
+  const handleRemoveTab = async () => await removeTab(id, hadleCloseEditForm);
+
   return (
     <>
       <AddTabForm

@@ -2,14 +2,16 @@ import { useQueryClient, useMutation, useQuery } from '@tanstack/react-query';
 import { Tab } from '@/utils/types';
 import { revalidate, updateTabServices, deleteTabServices } from '@/apps/services/services';
 import { fetchTab } from './useFetchTab';
+import { useToast } from '@chakra-ui/react';
 
 export const useUpdateRecordTab = (horseName: string, tabName: string, id: number) => {
+  const toast = useToast();
   const queryClient = useQueryClient();
 
   const { refetch } = useQuery([tabName], async () => fetchTab(tabName, horseName));
 
   const mutationUpdateTabServices = useMutation(updateTabServices, {
-    onSuccess: (data) => {
+    onSuccess: () => {
       queryClient.invalidateQueries([tabName]);
     },
     onError: (error) => {
@@ -18,7 +20,7 @@ export const useUpdateRecordTab = (horseName: string, tabName: string, id: numbe
   });
 
   const mutationDeleteTabServices = useMutation(deleteTabServices, {
-    onSuccess: (data) => {
+    onSuccess: () => {
       queryClient.invalidateQueries([tabName]);
     },
     onError: (error) => {
@@ -36,13 +38,24 @@ export const useUpdateRecordTab = (horseName: string, tabName: string, id: numbe
     }
   };
 
-  const removeTab = async (id: number) => {
+  const removeTab = async (id: number, onClose: () => void) => {
     try {
       await mutationDeleteTabServices.mutateAsync({ id, tabName });
+      toast({
+        title: `Tab ${tabName} has been successfully deleted.`,
+        status: 'success',
+        position: 'top',
+      });
       await revalidate(`/horse/${horseName}`);
       refetch();
     } catch (error) {
-      console.log(error);
+      toast({
+        title: `Failed to Delete Tab ${tabName}`,
+        status: 'error',
+        position: 'top',
+      });
+    } finally {
+      onClose();
     }
   };
 

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Box, Button, ButtonGroup, Center, Divider, Spinner } from '@chakra-ui/react';
 import { useForm, FormProvider, SubmitHandler } from 'react-hook-form';
 import { FormButton } from '@/shared/button/FormButton';
@@ -7,20 +8,7 @@ import { useAddHorse } from './hooks/useAddHorse';
 import { useAddHorseFormContext } from '../../context/AddHorseFormContext';
 import { useRouter } from 'next/navigation';
 import { handleAddImageToSupBase } from '@/module/uploader/helpers';
-import { useState } from 'react';
-import { TypeSex, customParent } from '@/utils/types';
-
-export interface FormDataEntity {
-  name: string;
-  birthday: Date | null;
-  father: customParent | string;
-  mother: customParent | string;
-  images: string[];
-  place: string;
-  profileImageUrl: string;
-  profileImage: string;
-  sex: TypeSex;
-}
+import { FormDataEntity } from '../../utils/types';
 
 export const Form = () => {
   const [pending, setPending] = useState(false);
