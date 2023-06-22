@@ -1,4 +1,4 @@
-import { HorseDataContext } from '@/utils/types';
+import { HorseData } from '@/utils/types';
 
 export interface FeatureProps {
   title: string;
@@ -7,5 +7,5 @@ export interface FeatureProps {
 }
 
 export interface FeatureParentProps extends FeatureProps {
-  parent: HorseDataContext;
+  parent: HorseData;
 }
