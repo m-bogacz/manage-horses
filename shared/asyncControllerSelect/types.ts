@@ -4,7 +4,7 @@ import { GroupBase } from 'react-select';
 import { Control, FieldErrors, FieldPath } from 'react-hook-form';
 import { OptionType } from '@/utils/types';
 
-type LoadOptionsType<T> = (
+export type LoadOptionsType<T> = (
   inputValue: string,
   callback: (options: OptionsOrGroups<any, GroupBase<any>>) => void
 ) => void | Promise<OptionsOrGroups<T, GroupBase<T>>>;
