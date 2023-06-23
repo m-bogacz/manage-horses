@@ -25,7 +25,7 @@ export const HorseInformation = () => {
         })}
       </Grid>
 
-      <RadioInput name="sex" radioValues={formFields.radio} />
+      <RadioInput name="gender" radioValues={formFields.radio} />
     </Flex>
   );
 };

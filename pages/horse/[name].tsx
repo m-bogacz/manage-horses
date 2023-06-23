@@ -1,6 +1,6 @@
 import { Profile } from '@/module/profile/Profile';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { HorseData, PartialExceptFor } from '@/utils/types';
+import { HorseData } from '@/utils/types';
 import { TabMenu } from '@/module/tabMenu/TabMenu';
 import { Flex } from '@chakra-ui/react';
 import { HorseProvider } from '@/apps/context/HorseContext';
@@ -14,23 +14,14 @@ interface Params extends ParsedUrlQuery {
 }
 
 interface HorsePageProps {
-  horse: PartialExceptFor<HorseData, 'name'>;
+  horse: HorseData;
 }
 
 export default function Horse({ horse }: HorsePageProps) {
   const { data } = useQuery(['horse', horse.name], () => getHorse(horse.name), { initialData: horse });
 
-  console.log(data);
-
-  const updateHorse = {
-    ...data,
-    news: { type: 'news', news: horse.news ?? [] },
-    veterinarian: { type: 'veterinarian', veterinarian: horse.veterinarian ?? [] },
-    farrier: { type: 'farrier', farrier: horse.farrier ?? [] },
-  } satisfies HorseData;
-
   return (
-    <HorseProvider value={updateHorse}>
+    <HorseProvider value={data}>
       <Flex h={'100vh'} justifyContent="center">
         <TabMenu />
         <Flex display={{ base: 'none', md: 'flex' }} flex={{ base: 4, lg: 2 }}>
@@ -60,9 +51,21 @@ export const getStaticProps: GetStaticProps<Partial<HorsePageProps>, Params> = a
   const horse = await prisma.horse.findUnique({
     where: { name: horseName },
     include: {
-      news: true,
-      veterinarian: true,
-      farrier: true,
+      news: {
+        include: {
+          tabs: true,
+        },
+      },
+      veterinarian: {
+        include: {
+          tabs: true,
+        },
+      },
+      farrier: {
+        include: {
+          tabs: true,
+        },
+      },
       mother: true,
       father: true,
     },

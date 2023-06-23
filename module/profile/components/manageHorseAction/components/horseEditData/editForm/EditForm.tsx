@@ -15,12 +15,12 @@ import { EditCreateableSelect } from './components/editCreateableSelect/EditCrea
 export const EditForm = ({ onClose }: { onClose: () => void }) => {
   const data = useHorseContext();
   const { update, loading } = useMutationsUpdateHorse(data.name, data);
-  const { name, birthday, sex, place, mother, father, id } = data;
+  const { name, birthday, gender, place, mother, father, id } = data;
 
   const defaultValue = {
     name: name,
     birthday: birthday ? new Date(birthday) : null,
-    sex,
+    gender: gender,
     place,
     mother: { value: mother?.name ?? null, label: mother?.name ?? null },
     father: { value: father?.name ?? null, label: father?.name ?? null },
@@ -36,7 +36,7 @@ export const EditForm = ({ onClose }: { onClose: () => void }) => {
         id,
         name: data.name,
         birthday: data.birthday,
-        sex: data.sex,
+        gender: data.gender,
         place: data.place,
         mother: returnNameofObject(data.mother),
         father: returnNameofObject(data.father),
@@ -63,7 +63,7 @@ export const EditForm = ({ onClose }: { onClose: () => void }) => {
               </>
             );
           })}
-          <RadioInput name="sex" label="Change horse gender" radioValues={formFields.radio} />
+          <RadioInput name="gender" label="Change horse gender" radioValues={formFields.radio} />
 
           <Divider />
 

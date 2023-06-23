@@ -14,36 +14,25 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           executedBy: executedBy,
           news: {
             connect: {
-              name: name,
+              horseName: name,
             },
           },
         },
       });
       res.status(200).json(horse);
     } catch (e) {
-      res.status(500).json({ message: 'Something went wrong' });
+      res.status(500).json({ message: e });
     }
   } else if (req.method === 'GET') {
     const { name } = req.query;
 
     try {
-      const newsTabs = await prisma.newsTab.findMany({
+      const newsTabs = await prisma.news.findMany({
         where: {
           horseName: name as string,
         },
-      });
-
-      res.status(200).json(newsTabs);
-    } catch (error) {
-      res.status(500).json({ error: 'Błąd podczas pobierania tabów ' + name });
-    }
-  } else if (req.method === 'DELETE') {
-    const { id } = req.body;
-
-    try {
-      const newsTabs = await prisma.newsTab.delete({
-        where: {
-          id,
+        select: {
+          tabs: true,
         },
       });
 
@@ -53,7 +42,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
   } else if (req.method === 'PATCH') {
     const { id, tab } = req.body.data;
-    const updatedData = await prisma.newsTab.update({
+    const updatedData = await prisma.news.update({
       where: { id: id },
       data: tab,
     });

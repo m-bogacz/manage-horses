@@ -27,7 +27,7 @@ export const RadioInput = ({
     formState: { errors },
   } = useFormContext();
   return (
-    <FormControl label="choose sex" isInvalid={Boolean(errors.sex)}>
+    <FormControl label="choose gender" isInvalid={Boolean(errors.sex)}>
       <FormLabel htmlFor={name}>{label}</FormLabel>
       <Controller
         name={name}

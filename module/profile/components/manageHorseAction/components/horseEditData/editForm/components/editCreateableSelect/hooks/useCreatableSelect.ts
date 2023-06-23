@@ -1,8 +1,8 @@
 import { fetchHorsesByGender } from '@/apps/services/services';
 import { createOption, filterhorses } from '../../../utils/helpers';
-import { OptionType, TypeSex } from '@/utils/types';
+import { OptionType, GenderType } from '@/utils/types';
 
-export const useCreatableSelect = (gender: TypeSex) => {
+export const useCreatableSelect = (gender: GenderType) => {
   const promiseOptions = async (inputValue: string) => {
     const data = await fetchHorsesByGender(gender);
     const mares = data.map((el) => createOption(el.name));

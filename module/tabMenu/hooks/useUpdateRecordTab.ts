@@ -7,8 +7,7 @@ import { useToast } from '@chakra-ui/react';
 export const useUpdateRecordTab = (horseName: string, tabName: string, id: number) => {
   const toast = useToast();
   const queryClient = useQueryClient();
-
-  const { refetch } = useQuery([tabName], async () => fetchTab(tabName, horseName));
+  const { refetch } = useQuery([tabName, horseName], async () => fetchTab(tabName, horseName));
 
   const mutationUpdateTabServices = useMutation(updateTabServices, {
     onSuccess: () => {

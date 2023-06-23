@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useAddRecordTab } from './useAddRecordTab';
 import { AxiosResponse } from 'axios';
-import { Tab } from '@/utils/types';
+import { Tab, VariantTabType } from '@/utils/types';
 import { revalidate } from '@/apps/services/services';
 
 export const useSubmitFormHandler = (
   fn: (data: Tab) => Promise<AxiosResponse<any, any>>,
   name: string,
-  initialData: Tab[],
-  tabName: string
+  initialData: VariantTabType,
+  tabNameType: string
 ) => {
-  const { data, isLoading, error, isSuccess, mutation, refetch } = useAddRecordTab(fn, initialData, tabName, name);
+  const { data, isLoading, error, isSuccess, mutation, refetch } = useAddRecordTab(fn, initialData, tabNameType, name);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {

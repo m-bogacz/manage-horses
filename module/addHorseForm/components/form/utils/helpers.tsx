@@ -8,7 +8,7 @@ import { FormDataEntity } from '@/module/addHorseForm/utils/types';
 export const defaultValues = {
   name: '',
   birthday: null,
-  sex: 'mare',
+  gender: 'mare',
   profileImage: '',
   profileImageUrl: '',
   mother: '',

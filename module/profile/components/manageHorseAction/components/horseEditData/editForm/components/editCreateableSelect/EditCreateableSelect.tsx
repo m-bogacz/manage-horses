@@ -2,7 +2,7 @@ import React from 'react';
 import { CreatableSelect } from '@/shared/createableSelect/CreatableSelect';
 import { FieldValues } from 'react-hook-form';
 import { Control, FieldPath } from 'react-hook-form';
-import { TypeSex } from '@/utils/types';
+import { GenderType } from '@/utils/types';
 import { useCreatableSelect } from './hooks/useCreatableSelect';
 
 export interface CreateableSelectProps<TForm extends FieldValues> {
@@ -10,7 +10,7 @@ export interface CreateableSelectProps<TForm extends FieldValues> {
   control: Control<TForm>;
   placeholder?: string;
   label: string;
-  gender: TypeSex;
+  gender: GenderType;
 }
 
 export const EditCreateableSelect = <TForm extends FieldValues>({

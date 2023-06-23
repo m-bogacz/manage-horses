@@ -13,7 +13,6 @@ interface FormTemplateDetailsProps {
 
 export const FormTemplateDetails = ({ familySide, options, placeholder }: FormTemplateDetailsProps) => {
   const {
-    control,
     formState: { errors },
   } = useFormContext();
   const { familyMemberOptions } = useAsyncControllerSelect(options);

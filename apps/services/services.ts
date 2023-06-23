@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { SlideEntity, Tab, TypeSex } from '@/utils/types';
+import { HorseData, SlideEntity, Tab, GenderType } from '@/utils/types';
 import { AddPhotoEntity } from './types';
 
 export const revalidate = (path: string) => {
@@ -10,7 +10,7 @@ export const addHorse = (newHorse: any) => axios.post('/api/horse', newHorse);
 export const updateHorse = (newHorse: any) => axios.put('/api/horse', newHorse);
 
 export const getHorse = async (name: string) => {
-  const result = await axios.get(`/api/horse?name=${name}`);
+  const result = await axios.get<HorseData>(`/api/horse?name=${name}`);
   return result.data;
 };
 
@@ -39,7 +39,7 @@ export const fetchPhotos = async (horseName: string) => {
   return await axios.get<SlideEntity[]>(`/api/photo?name=${horseName}`);
 };
 
-export const fetchHorsesByGender = async (gender: TypeSex) => {
+export const fetchHorsesByGender = async (gender: GenderType) => {
   const horses = await axios.get<{ name: string }[]>(`/api/filter/gender?gender=${gender}`);
   return horses.data;
 };
