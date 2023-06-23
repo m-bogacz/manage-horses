@@ -1,7 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { date, z } from 'zod';
 
-const SEX = ['mare', 'gelding', 'stallion'];
+const GENDERS = ['mare', 'gelding', 'stallion'];
 
 const makeObjectValidationSchema = ({ required }: { required: boolean }) => {
   const schema = z
@@ -20,7 +20,9 @@ export const step1Schema = z.object({
   name: z.string().min(2, 'Imię musi mieć co najmniej 2 znaki'),
   birthday: date(),
   place: z.string().min(2, 'Imię musi mieć co najmniej 2 znaki'),
-  sex: z.string({ invalid_type_error: 'Zaznacz jedną z opcji' }).refine((val) => SEX.map((sex) => sex).includes(val)),
+  gender: z
+    .string({ invalid_type_error: 'Zaznacz jedną z opcji' })
+    .refine((val) => GENDERS.map((gender) => gender).includes(val)),
 });
 
 export const step2Schema = z.object({

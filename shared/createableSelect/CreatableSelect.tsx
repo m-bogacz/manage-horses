@@ -1,6 +1,6 @@
 import React from 'react';
 import AsyncCreatable from 'react-select/async-creatable';
-import { Control, Controller, FieldPath, FieldValues } from 'react-hook-form';
+import { Controller, FieldValues } from 'react-hook-form';
 import { FormControl, FormLabel } from '@chakra-ui/react';
 import { CreateableSelectProps } from './types';
 
@@ -8,6 +8,7 @@ export const CreatableSelect = <TForm extends FieldValues>({
   name,
   control,
   label,
+  placeholder,
   loadOptions,
 }: CreateableSelectProps<TForm>) => {
   return (
@@ -17,7 +18,15 @@ export const CreatableSelect = <TForm extends FieldValues>({
         name={name}
         control={control}
         render={({ field }) => {
-          return <AsyncCreatable cacheOptions loadOptions={loadOptions} defaultOptions {...field} />;
+          return (
+            <AsyncCreatable
+              cacheOptions
+              loadOptions={loadOptions}
+              defaultOptions
+              placeholder={placeholder}
+              {...field}
+            />
+          );
         }}
       />
     </FormControl>
