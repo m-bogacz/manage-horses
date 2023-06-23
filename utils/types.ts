@@ -2,20 +2,23 @@ export interface HorseData {
   id: number;
   name: string;
   birthday: Date | null;
-  sex: TypeSex;
-  mother: HorseData;
-  father: HorseData;
-  profileImage: string;
-  profileImageUrl: string;
+  gender: GenderType;
+  mother: ParentHorseData;
+  father: ParentHorseData;
+  profileImage?: string;
+  profileImageUrl?: string;
   images: SlideEntity[] | [];
   place: string;
-  news: News;
-  veterinarian: Veterinarian;
-  farrier: Farrier;
+  news: VariantTabType;
+  veterinarian: VariantTabType;
+  farrier: VariantTabType;
   createAsParent?: boolean;
 }
 
-// export type HorseData = PartialExceptFor<HorseDataRequired, 'name'>;
+export interface ParentHorseData extends HorseData {
+  motherName: string;
+  fatherName: string;
+}
 
 export type OptionType = {
   value: string;
@@ -33,17 +36,11 @@ export interface Tab {
   horseName: string;
 }
 
-export interface News {
-  type: 'news';
-  news: Tab[];
-}
-export interface Veterinarian {
-  type: 'veterinarian';
-  veterinarian: Tab[];
-}
-export interface Farrier {
-  type: 'farrier';
-  farrier: Tab[];
+export interface VariantTabType {
+  type: 'news' | 'veterinarian' | 'farrier';
+  id: number;
+  horseName: string;
+  tabs: Tab[];
 }
 
 export interface SlideEntity {
@@ -53,14 +50,7 @@ export interface SlideEntity {
   alt: string;
 }
 
-export interface ParentEntity {
-  sex: TypeSex;
-  name: customParent | string;
-  grandMotherName: string;
-  grandFatherName: string;
-}
-
-export type TypeSex = 'mare' | 'gelding' | 'stallion';
+export type GenderType = 'mare' | 'gelding' | 'stallion';
 
 export type SectionNameType = 'geneology' | 'news' | 'veterinarian' | 'farrier' | 'gallery';
 
@@ -76,5 +66,3 @@ export type TabSectionType = {
   name: SectionNameType;
   active: boolean;
 };
-
-export type PartialExceptFor<T, TRequired extends keyof T> = Partial<T> & Pick<T, TRequired>;

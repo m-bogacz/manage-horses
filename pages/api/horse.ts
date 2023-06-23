@@ -12,31 +12,58 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const horse = await prisma.horse.findUnique({
       where: { name: name as string },
       include: {
-        news: true,
-        veterinarian: true,
-        farrier: true,
+        news: {
+          include: {
+            tabs: true,
+          },
+        },
+        veterinarian: {
+          include: {
+            tabs: true,
+          },
+        },
+        farrier: {
+          include: {
+            tabs: true,
+          },
+        },
         mother: true,
         father: true,
       },
     });
     res.json(horse);
   } else if (req.method === 'POST') {
-    const { name, birthday, sex, place, mother, father, images, profileImageUrl } = req.body;
+    const { name, birthday, gender, place, mother, father, images, profileImageUrl } = req.body;
 
     try {
-      await upsertParentHorseToDb({ name: mother });
-      await upsertParentHorseToDb({ name: father });
+      await upsertParentHorseToDb({ name: mother, gender: 'mare' });
+      await upsertParentHorseToDb({ name: father, gender: 'stallion' });
 
       const newHorse = await prisma.horse.create({
         data: {
           name,
           birthday: new Date(birthday),
-          sex,
+          gender,
           place,
           images,
           profileImageUrl,
           mother: connectParentIfExist(mother),
           father: connectParentIfExist(father),
+          news: {
+            create: {
+              type: 'news',
+            },
+          },
+          veterinarian: {
+            create: {
+              type: 'veterinarian',
+            },
+          },
+          farrier: {
+            create: {
+              type: 'farrier',
+            },
+          },
         },
       });
 
@@ -45,20 +72,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       res.status(500).json({ message: 'Failed to create the horse.' });
     }
   } else if (req.method === 'PUT') {
-    const { name, birthday, sex, place, id, mother, father } = req.body;
+    const { name, birthday, gender, place, id, mother, father } = req.body;
 
     try {
       if (mother) {
-        await upsertParentHorseToDb({ name: mother });
+        await upsertParentHorseToDb({ name: mother, gender: 'mare' });
       }
       if (father) {
-        await upsertParentHorseToDb({ name: father });
+        await upsertParentHorseToDb({ name: father, gender: 'stallion' });
       }
 
       const horse = {
         name: name || undefined,
         birthday: birthday || undefined,
-        sex: sex || undefined,
+        gender: gender || undefined,
         place: place || undefined,
         mother: connectParentIfExist(mother),
         father: connectParentIfExist(father),

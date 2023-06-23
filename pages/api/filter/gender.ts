@@ -1,4 +1,5 @@
 import { prisma } from '@/lib/prisma';
+import { Prisma } from '@prisma/client';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -8,7 +9,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     try {
       const horses = await prisma.horse.findMany({
         where: {
-          sex: gender as string,
+          gender: gender as Prisma.EnumTypeGenderNullableFilter,
         },
         select: {
           name: true,

@@ -1,4 +1,4 @@
-import { OptionType, TypeSex, customParent } from '@/utils/types';
+import { OptionType, GenderType, customParent } from '@/utils/types';
 
 export type STEP_TYPE = 1 | 2 | 3;
 
@@ -22,5 +22,5 @@ export interface FormDataEntity {
   place: string;
   profileImageUrl: string;
   profileImage: string;
-  sex: TypeSex;
+  gender: GenderType;
 }

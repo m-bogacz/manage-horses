@@ -1,4 +1,4 @@
-import { HorseData } from '@/utils/types';
+import { ParentHorseData } from '@/utils/types';
 
 export interface FeatureProps {
   title: string;
@@ -6,6 +6,6 @@ export interface FeatureProps {
   variant?: 'small' | 'medium' | 'big';
 }
 
-export interface FeatureParentProps extends FeatureProps {
-  parent: HorseData;
+export interface FeatureParentProps extends Omit<FeatureProps, 'desc'> {
+  parent: ParentHorseData;
 }

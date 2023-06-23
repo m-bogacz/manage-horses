@@ -24,6 +24,7 @@ import { Alert } from '@/shared/alert/Alert';
 import { EditButton } from '@/shared/button/EditButton';
 import { RemoveButton } from '@/shared/button/DeleteButton';
 import { CloseButton } from '@/shared/button/CloseButton';
+import { useHorseContext } from '@/apps/context/HorseContext';
 
 interface Props {
   data: Tab;
@@ -33,9 +34,10 @@ interface Props {
 }
 
 const TabRowDetailsModal = ({ show, handleClose, data, type }: Props) => {
+  const { name: horseName } = useHorseContext();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isEditing, setIsEditing] = useState(false);
-  const { date, description, title, executedBy, horseName, id } = data;
+  const { date, description, title, executedBy, id } = data;
   const { updateTab, removeTab } = useUpdateRecordTab(horseName, type, id);
 
   const defaultValues = {

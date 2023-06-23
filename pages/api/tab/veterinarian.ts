@@ -14,7 +14,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           executedBy: executedBy,
           veterinarian: {
             connect: {
-              name: name,
+              horseName: name,
             },
           },
         },
@@ -28,9 +28,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const { name } = req.query;
 
     try {
-      const newsTabs = await prisma.vetTab.findMany({
+      const newsTabs = await prisma.veterinarian.findMany({
         where: {
           horseName: name as string,
+        },
+        include: {
+          tabs: true,
         },
       });
 

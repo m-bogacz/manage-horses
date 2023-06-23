@@ -33,13 +33,13 @@ export const Form = () => {
         const path = await handleAddImageToSupBase(fileBlob);
         formData.profileImage = '';
 
-        const { name, birthday, place, sex, mother, images } = formData;
+        const { name, birthday, place, gender, mother, images } = formData;
         const { father } = data;
 
         await mutate({
           name: name,
           birthday: birthday,
-          sex: sex,
+          gender: gender,
           profileImageUrl: path,
           place: place,
           mother: returnNameofObject(mother),
