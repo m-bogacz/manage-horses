@@ -10,7 +10,7 @@ import { FormButton } from '@/shared/button/FormButton';
 import { CloseButton } from '@/shared/button/CloseButton';
 import { useMutationsUpdateHorse } from '../hooks/useMutationsUpdateHorse';
 import { returnNameofObject } from '@/module/addHorseForm/components/form/utils/helpers';
-import { EditCreateableSelect } from './components/editCreateableSelect/EditCreateableSelect';
+import { AyncCreateableSelect } from '@/shared/ayncCreateableSelect/AyncCreateableSelect';
 
 export const EditForm = ({ onClose }: { onClose: () => void }) => {
   const data = useHorseContext();
@@ -67,13 +67,13 @@ export const EditForm = ({ onClose }: { onClose: () => void }) => {
 
           <Divider />
 
-          <EditCreateableSelect
+          <AyncCreateableSelect
             name="mother"
             label={`Chosen another mother the ${name}`}
             control={methods.control}
             gender="mare"
           />
-          <EditCreateableSelect
+          <AyncCreateableSelect
             name="father"
             label={`Chosen another father the ${name}`}
             control={methods.control}
