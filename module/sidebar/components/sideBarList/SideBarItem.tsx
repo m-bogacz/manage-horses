@@ -4,8 +4,8 @@ import { useRouter } from 'next/router';
 import { SECTION_NAME } from '@/utils/types';
 
 interface SideBarItemProps extends FlexProps {
-  name: string;
-  src: string;
+  readonly name: string;
+  readonly src: string;
 }
 
 export const SideBarItem = ({ name, src }: SideBarItemProps) => {

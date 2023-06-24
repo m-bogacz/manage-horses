@@ -1,4 +1,4 @@
-import { FormFields } from '../utils/types';
+import { FormFields } from '../../utils/types';
 
 export const tabFormFields = [
   { name: 'title', placeholder: 'write title', label: 'Title' },

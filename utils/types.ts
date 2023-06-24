@@ -1,53 +1,53 @@
 export interface HorseData {
-  id: number;
-  name: string;
-  birthday: Date | null;
-  gender: GenderType;
-  mother: ParentHorseData;
-  father: ParentHorseData;
-  profileImage?: string;
-  profileImageUrl?: string;
-  images: SlideEntity[] | [];
-  place: string;
-  news: VariantTabType;
-  veterinarian: VariantTabType;
-  farrier: VariantTabType;
-  createAsParent?: boolean;
+  readonly id: number;
+  readonly name: string;
+  readonly birthday: Date | null;
+  readonly gender: GenderType;
+  readonly mother: ParentHorseData;
+  readonly father: ParentHorseData;
+  readonly profileImage?: string;
+  readonly profileImageUrl?: string;
+  readonly images: SlideEntity[] | [];
+  readonly place: string;
+  readonly news: VariantTabType;
+  readonly veterinarian: VariantTabType;
+  readonly farrier: VariantTabType;
+  readonly createAsParent?: boolean;
 }
 
 export interface ParentHorseData extends HorseData {
-  motherName: string;
-  fatherName: string;
+  readonly motherName: string;
+  readonly fatherName: string;
 }
 
 export type OptionType = {
-  value: string;
-  label: string;
+  readonly value: string;
+  readonly label: string;
 };
 
 export type customParent = OptionType;
 
 export interface Tab {
-  id: number;
-  date: Date;
-  title: string;
-  description: string;
-  executedBy: string;
-  horseName: string;
+  readonly id: number;
+  readonly date: Date;
+  readonly title: string;
+  readonly description: string;
+  readonly executedBy: string;
+  readonly horseName: string;
 }
 
 export interface VariantTabType {
-  type: 'news' | 'veterinarian' | 'farrier';
-  id: number;
-  horseName: string;
-  tabs: Tab[];
+  readonly type: 'news' | 'veterinarian' | 'farrier';
+  readonly id: number;
+  readonly horseName: string;
+  readonly tabs: Tab[];
 }
 
 export interface SlideEntity {
-  id: number;
-  createdAt: Date;
-  src: string;
-  alt: string;
+  readonly id: number;
+  readonly createdAt: Date;
+  readonly src: string;
+  readonly alt: string;
 }
 
 export type GenderType = 'mare' | 'gelding' | 'stallion';
@@ -60,9 +60,9 @@ export const SECTION_NAME = {
   farrier: 'farrier',
   geneology: 'geneology',
   gallery: 'gallery',
-};
+} as const;
 
 export type TabSectionType = {
-  name: SectionNameType;
-  active: boolean;
+  readonly name: SectionNameType;
+  readonly active: boolean;
 };

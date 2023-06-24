@@ -4,40 +4,27 @@ import { RadioInput } from '@/shared/inputs/RadioInput';
 import { DatePickerInput } from '@/shared/inputs/datePickerInput/DatePickerInput';
 import { ButtonGroup, Divider, Flex } from '@chakra-ui/react';
 import { useForm, FormProvider, SubmitHandler } from 'react-hook-form';
-import { formFields } from './utils/helpers';
-import { useHorseContext } from '@/apps/context/HorseContext';
+import { formFields, getDefaultValuesEditForm } from './utils/helpers';
+import { useHorseContext } from '@/apps/context/horseContext/HorseContext';
 import { FormButton } from '@/shared/button/FormButton';
 import { CloseButton } from '@/shared/button/CloseButton';
 import { useMutationsUpdateHorse } from '../hooks/useMutationsUpdateHorse';
 import { returnNameofObject } from '@/module/addHorseForm/components/form/utils/helpers';
 import { AyncCreateableSelect } from '@/shared/ayncCreateableSelect/AyncCreateableSelect';
+import { DefaultValuesEditFormEntity } from './utils/types';
 
 export const EditForm = ({ onClose }: { onClose: () => void }) => {
-  const data = useHorseContext();
-  const { update, loading } = useMutationsUpdateHorse(data.name, data);
-  const { name, birthday, gender, place, mother, father, id } = data;
+  const contextData = useHorseContext();
+  const { update, loading } = useMutationsUpdateHorse();
 
-  const defaultValue = {
-    name: name,
-    birthday: birthday ? new Date(birthday) : null,
-    gender: gender,
-    place,
-    mother: { value: mother?.name ?? null, label: mother?.name ?? null },
-    father: { value: father?.name ?? null, label: father?.name ?? null },
-  };
+  const editFromDefaultValues = getDefaultValuesEditForm(contextData);
 
-  type EditFormDataEntity = typeof defaultValue;
+  const methods = useForm<DefaultValuesEditFormEntity>({ defaultValues: editFromDefaultValues });
 
-  const methods = useForm<EditFormDataEntity>({ defaultValues: defaultValue });
-
-  const onSubmit: SubmitHandler<EditFormDataEntity> = async (data) => {
+  const onSubmit: SubmitHandler<DefaultValuesEditFormEntity> = async (data) => {
     try {
       await update({
-        id,
-        name: data.name,
-        birthday: data.birthday,
-        gender: data.gender,
-        place: data.place,
+        ...data,
         mother: returnNameofObject(data.mother),
         father: returnNameofObject(data.father),
       });

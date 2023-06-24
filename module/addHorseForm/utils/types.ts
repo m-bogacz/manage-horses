@@ -12,15 +12,3 @@ export type FAMILY_MEMBERS = 'parent';
 export interface ParentSideInfo {
   parent: OptionType[];
 }
-
-export interface FormDataEntity {
-  name: string;
-  birthday: Date | null;
-  father: customParent | string;
-  mother: customParent | string;
-  images: string[];
-  place: string;
-  profileImageUrl: string;
-  profileImage: string;
-  gender: GenderType;
-}

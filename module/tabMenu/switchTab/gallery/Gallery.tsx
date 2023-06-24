@@ -5,7 +5,7 @@ import NextJsImage from './components/NextJsPhotos';
 import ImageUpload from './components/imageUpload/ImageUpload';
 import { Modal } from '@/shared/modal/Modal';
 import { usePhotos } from './hooks/useQueryPhotos';
-import { useHorseContext } from '@/apps/context/HorseContext';
+import { useHorseContext } from '@/apps/context/horseContext/HorseContext';
 import getPhotos from './utils/photos';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
@@ -18,7 +18,6 @@ import 'yet-another-react-lightbox/plugins/thumbnails.css';
 
 export const Gallery = () => {
   const { name } = useHorseContext();
-  console.log('gallery =>', name);
   const [index, setIndex] = useState(-1);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { data } = usePhotos(name);

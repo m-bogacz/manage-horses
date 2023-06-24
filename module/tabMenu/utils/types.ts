@@ -1,13 +1,13 @@
 import { TabSectionType } from '@/utils/types';
-import { defaultValuesTabForm } from '../addTabForm/tabFormFields';
+import { defaultValuesTabForm } from '../addTabForm/utils/tabFormFields';
 
 export type TabsSectionEntity = TabSectionType[];
 
 export type FormField = {
-  name: string;
-  placeholder: string;
-  label: string;
-  textarea?: boolean;
+  readonly name: string;
+  readonly placeholder: string;
+  readonly label: string;
+  readonly textarea?: boolean;
 };
 
 export type FormFields = FormField[];

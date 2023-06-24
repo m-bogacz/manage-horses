@@ -14,10 +14,10 @@ import React from 'react';
 import { TabForm } from './components/TabForm';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import { DefaultValuesTabFormType, FormFields } from '../utils/types';
-import { defaultValuesTabForm, tabFormFields } from './tabFormFields';
+import { defaultValuesTabForm, tabFormFields } from './utils/tabFormFields';
 import { Tab } from '@/utils/types';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { addTabFormValidationSchema } from './validationSchema';
+import { addTabFormValidationSchema } from './utils/validationSchema';
 import { CloseButton } from '@/shared/button/CloseButton';
 import { FormButton } from '@/shared/button/FormButton';
 

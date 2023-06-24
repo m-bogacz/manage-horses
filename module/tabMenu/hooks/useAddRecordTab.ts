@@ -6,18 +6,13 @@ import { useFetchTab } from './useFetchTab';
 
 type Fn = (data: Tab & { name: string }) => Promise<AxiosResponse<any, any>>;
 
-export const useAddRecordTab = <T extends VariantTabType>(
-  addServices: Fn,
-  initial: T,
-  tabName: string,
-  horseName: string
-) => {
+export const useAddRecordTab = <T extends VariantTabType>(addServices: Fn, initial: T, horseName: string) => {
   const queryClient = useQueryClient();
-  const { data, isLoading, error, isSuccess, refetch } = useFetchTab<T>(initial, tabName, horseName);
+  const { data, isLoading, error, isSuccess, refetch } = useFetchTab<T>(initial, initial.type, horseName);
 
   const mutation = useMutation(addServices, {
     onSuccess: (data) => {
-      queryClient.invalidateQueries([tabName]);
+      queryClient.invalidateQueries([initial.type]);
     },
     onError: (error) => {
       console.error('Wystąpił błąd podczas dodawania obiektu:', error);

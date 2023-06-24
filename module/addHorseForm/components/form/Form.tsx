@@ -8,7 +8,7 @@ import { useAddHorse } from './hooks/useAddHorse';
 import { useAddHorseFormContext } from '../../context/AddHorseFormContext';
 import { useRouter } from 'next/navigation';
 import { handleAddImageToSupBase } from '@/module/uploader/helpers';
-import { FormDataEntity } from '../../utils/types';
+import { FormDataEntity } from './utils/types';
 
 export const Form = () => {
   const [pending, setPending] = useState(false);
@@ -31,6 +31,7 @@ export const Form = () => {
         const fileBlob = await fetch(formData?.profileImage).then((res) => res.blob());
 
         const path = await handleAddImageToSupBase(fileBlob);
+        //todo
         formData.profileImage = '';
 
         const { name, birthday, place, gender, mother, images } = formData;

@@ -2,7 +2,7 @@ import { FormControl, FormLabel, Input } from '@chakra-ui/react';
 import React, { ChangeEventHandler } from 'react';
 
 interface SearchInputProps {
-  onChange: (query: string) => void;
+  readonly onChange: (query: string) => void;
 }
 
 export const SearchInput = ({ onChange }: SearchInputProps) => {

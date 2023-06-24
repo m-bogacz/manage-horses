@@ -2,8 +2,13 @@ import { HOME_PAGE_PATH } from '@/apps/routes';
 import { Box, Flex } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { Sidebar } from '../sidebar/Sidebar';
+import { ReactNode } from 'react';
 
-export const Layout = ({ children }: { children: any }) => {
+interface LayoutProps {
+  readonly children: ReactNode;
+}
+
+export const Layout = ({ children }: LayoutProps) => {
   const { pathname } = useRouter();
 
   const isHomePage = pathname === HOME_PAGE_PATH;

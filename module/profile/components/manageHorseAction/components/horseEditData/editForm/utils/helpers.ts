@@ -1,3 +1,5 @@
+import { HorseContextType } from '@/apps/context/horseContext/utils/types';
+
 export const formFields = {
   input: [
     { name: 'name', placeholder: 'name', label: 'Change name' },
@@ -9,4 +11,16 @@ export const formFields = {
     { value: 'gelding', content: 'gelding' },
     { value: 'stallion', content: 'stallion' },
   ],
+};
+
+export const getDefaultValuesEditForm = ({ id, name, birthday, gender, place, mother, father }: HorseContextType) => {
+  return {
+    id,
+    name: name,
+    birthday: birthday ? new Date(birthday) : null,
+    gender: gender,
+    place,
+    mother: { value: mother?.name ?? null, label: mother?.name ?? null },
+    father: { value: father?.name ?? null, label: father?.name ?? null },
+  };
 };

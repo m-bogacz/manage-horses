@@ -3,7 +3,7 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import { HorseData } from '@/utils/types';
 import { TabMenu } from '@/module/tabMenu/TabMenu';
 import { Flex } from '@chakra-ui/react';
-import { HorseProvider } from '@/apps/context/HorseContext';
+import { HorseProvider } from '@/apps/context/horseContext/HorseContext';
 import { prisma } from '@/lib/prisma';
 import { ParsedUrlQuery } from 'querystring';
 import { useQuery } from '@tanstack/react-query';

@@ -3,7 +3,7 @@ import { useQueryClient, useMutation } from '@tanstack/react-query';
 import { updateHorse } from '@/apps/services/services';
 import { useToast } from '@chakra-ui/react';
 
-export const useMutationsUpdateHorse = (name: string, initialData: any) => {
+export const useMutationsUpdateHorse = () => {
   const queryClient = useQueryClient();
 
   const toast = useToast();

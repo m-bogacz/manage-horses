@@ -1,15 +1,8 @@
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
 import { FormControl, Grid, GridItem } from '@chakra-ui/react';
-import { GenderType } from '@/utils/types';
 import { AyncCreateableSelect } from '@/shared/ayncCreateableSelect/AyncCreateableSelect';
-
-interface FormTemplateDetailsProps {
-  familySide: 'father' | 'mother';
-  placeholder?: string;
-  gender: GenderType;
-  label: string;
-}
+import { FormTemplateDetailsProps } from './utils/types';
 
 export const FormTemplateDetails = ({ familySide, gender, label, placeholder }: FormTemplateDetailsProps) => {
   const {

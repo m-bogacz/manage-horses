@@ -6,9 +6,9 @@ import { SideBarItem } from './SideBarItem';
 import { Horse } from '@/apps/services/types';
 
 interface SideBarListProps {
-  data: Horse[];
-  isLoading: boolean;
-  error: unknown;
+  readonly data: Horse[];
+  readonly isLoading: boolean;
+  readonly error: unknown;
 }
 
 export const SideBarList = ({ isLoading, error, data }: SideBarListProps) => {

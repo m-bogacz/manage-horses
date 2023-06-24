@@ -1,4 +1,4 @@
-import { useHorseContext } from '@/apps/context/HorseContext';
+import { useHorseContext } from '@/apps/context/horseContext/HorseContext';
 import { Alert } from '@/shared/alert/Alert';
 
 import {

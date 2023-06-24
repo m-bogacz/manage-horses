@@ -1,5 +1,5 @@
 import React from 'react';
-import { tabFormFields } from '../tabFormFields';
+import { tabFormFields } from '../utils/tabFormFields';
 import { InputField } from '@/shared/inputs/InputField';
 import { Flex, Grid, GridItem, Box } from '@chakra-ui/react';
 import { FormFields } from '../../utils/types';
