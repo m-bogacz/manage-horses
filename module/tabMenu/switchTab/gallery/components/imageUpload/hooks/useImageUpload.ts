@@ -1,17 +1,17 @@
 import React, { ChangeEvent, useRef, useState } from 'react';
 
 interface ImageProps {
-  src: string;
-  alt: string;
+  readonly src: string;
+  readonly alt: string;
 }
 
 interface ImageUploadProps {
-  label?: string;
-  initialImage: ImageProps | null;
-  objectFit?: 'cover' | 'contain' | 'none' | 'fill' | 'scale-down';
-  accept?: string;
-  sizeLimit: number;
-  onChangePicture?: (imageData: string) => Promise<void> | void;
+  readonly label?: string;
+  readonly initialImage: ImageProps | null;
+  readonly objectFit?: 'cover' | 'contain' | 'none' | 'fill' | 'scale-down';
+  readonly accept?: string;
+  readonly sizeLimit: number;
+  readonly onChangePicture?: (imageData: string) => Promise<void> | void;
 }
 
 export const useImageUpload = ({ initialImage, sizeLimit, onChangePicture }: ImageUploadProps) => {

@@ -7,12 +7,10 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
-  Button,
   Flex,
   Text,
   Box,
   Divider,
-  useToast,
   useDisclosure,
   ButtonGroup,
 } from '@chakra-ui/react';
@@ -24,13 +22,13 @@ import { Alert } from '@/shared/alert/Alert';
 import { EditButton } from '@/shared/button/EditButton';
 import { RemoveButton } from '@/shared/button/DeleteButton';
 import { CloseButton } from '@/shared/button/CloseButton';
-import { useHorseContext } from '@/apps/context/HorseContext';
+import { useHorseContext } from '@/apps/context/horseContext/HorseContext';
 
 interface Props {
-  data: Tab;
-  show: boolean;
-  handleClose: () => void;
-  type: string;
+  readonly data: Tab;
+  readonly show: boolean;
+  readonly handleClose: () => void;
+  readonly type: string;
 }
 
 const TabRowDetailsModal = ({ show, handleClose, data, type }: Props) => {

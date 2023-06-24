@@ -2,10 +2,10 @@ import { Circle, Divider, Flex, Text } from '@chakra-ui/react';
 import React from 'react';
 
 interface StepProps {
-  step: number;
-  currentStepIndex: number;
-  label: string;
-  isLast?: boolean;
+  readonly step: number;
+  readonly currentStepIndex: number;
+  readonly label: string;
+  readonly isLast?: boolean;
 }
 
 export const Step = ({ step, currentStepIndex, label, isLast }: StepProps) => {

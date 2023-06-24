@@ -23,7 +23,7 @@ import { useHorses } from '@/hooks/useHorses';
 import { useState } from 'react';
 
 interface SideBarProps {
-  maxW?: number | string;
+  readonly maxW?: number | string;
 }
 
 export const Sidebar = ({ maxW = 240 }: SideBarProps) => {

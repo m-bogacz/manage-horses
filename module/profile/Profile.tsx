@@ -1,12 +1,13 @@
-import { useHorseContext } from '@/apps/context/HorseContext';
+import { useHorseContext } from '@/apps/context/horseContext/HorseContext';
 import { dateHelper } from '@/lib/dateHelper';
 import { Box, Center, Text, Image, VStack, Flex } from '@chakra-ui/react';
 import { ManageHorseAction } from './components/manageHorseAction/ManageHorseAction';
 import { Feature } from './components/feature/Feature';
 import { FeatureParent } from './components/feature/FeatureParent';
+import { getDefaultExamplephoto } from '@/utils/imageLoader/getDefualtPhoto';
 
 export const Profile = () => {
-  const { defaultPhotoSrc, name, birthday, gender, place, profileImageUrl, mother, father } = useHorseContext();
+  const { name, birthday, gender, place, profileImageUrl, mother, father } = useHorseContext();
 
   return (
     <Flex w={'100%'} flexDir={'column'} bg="table.100" borderRadius={16} m={{ base: 0, md: 10 }}>
@@ -14,7 +15,7 @@ export const Profile = () => {
         <Center padding={10} paddingBottom={2}>
           <Image
             boxSize="200px"
-            src={profileImageUrl ? profileImageUrl : defaultPhotoSrc}
+            src={profileImageUrl ? profileImageUrl : getDefaultExamplephoto()}
             alt={`profile image of ${name}`}
             borderRadius="full"
             objectFit="cover"

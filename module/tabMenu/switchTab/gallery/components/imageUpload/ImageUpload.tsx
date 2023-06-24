@@ -3,7 +3,7 @@ import { Box, Button, Flex, FormLabel, Input, VisuallyHidden, useToast } from '@
 import { DownloadIcon } from '@chakra-ui/icons';
 import { useImageUpload } from './hooks/useImageUpload';
 import { handleAddImageToSupBase } from './utils/handleUploadImage';
-import { useHorseContext } from '@/apps/context/HorseContext';
+import { useHorseContext } from '@/apps/context/horseContext/HorseContext';
 import { useAddPhoto } from './hooks/useAddPhoto';
 
 interface ImageProps {

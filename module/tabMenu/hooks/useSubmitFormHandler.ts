@@ -6,11 +6,10 @@ import { revalidate } from '@/apps/services/services';
 
 export const useSubmitFormHandler = (
   fn: (data: Tab) => Promise<AxiosResponse<any, any>>,
-  name: string,
-  initialData: VariantTabType,
-  tabNameType: string
+  horseName: string,
+  initialData: VariantTabType
 ) => {
-  const { data, isLoading, error, isSuccess, mutation, refetch } = useAddRecordTab(fn, initialData, tabNameType, name);
+  const { data, isLoading, error, isSuccess, mutation, refetch } = useAddRecordTab(fn, initialData, horseName);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
@@ -20,7 +19,7 @@ export const useSubmitFormHandler = (
   const addDataFromTab = async (tab: Tab) => {
     setIsLoaded(true);
     try {
-      await mutation.mutateAsync({ ...tab, name });
+      await mutation.mutateAsync({ ...tab, name: horseName });
       await revalidate(`/horse/${name}`);
       refetch();
     } catch (error) {
