@@ -9,16 +9,16 @@ datasource db {
 
 model Horse {
   id              Int            @id @default(autoincrement())
-  createdAt       DateTime       @default(now())
+  createdAt       DateTime       @default(now()) @map("created_at")
   name            String         @unique
   birthday        DateTime?
   gender          TypeGender?
-  profileImageUrl String?
+  profileImageUrl String?        @map("profile_image_url")
   place           String?
   images          String[]
-  createAsParent  Boolean        @default(false)
-  fatherName      String?
-  motherName      String?
+  createAsParent  Boolean        @default(false) @map("create_as_parent")
+  fatherName      String?        @map("father_name")
+  motherName      String?        @map("mother_name")
   father          Horse?         @relation("Father", fields: [fatherName], references: [name])
   fatherChildren  Horse[]        @relation("Father")
   mother          Horse?         @relation("Mother", fields: [motherName], references: [name])
@@ -27,13 +27,15 @@ model Horse {
   news            News?
   veterinarian    Veterinarian?
   farrier         Farrier?
+
+  @@map("horses")
 }
 
 model News {
   id        Int       @id @default(autoincrement())
   type      TypeTab   @default(news)
   tabs      NewsTab[]
-  horseName String?   @unique
+  horseName String?   @unique @map("horse_name")
   horse     Horse?    @relation(fields: [horseName], references: [name])
 }
 
@@ -42,15 +44,15 @@ model NewsTab {
   date        String
   title       String
   description String
-  executedBy  String?
-  newsId      Int?
+  executedBy  String? @map("executed_by")
+  newsId      Int?    @map("news_id")
   news        News?   @relation(fields: [newsId], references: [id], onDelete: Cascade)
 }
 
 model Veterinarian {
   id        Int      @id @default(autoincrement())
   type      TypeTab  @default(veterinarian)
-  horseName String?  @unique
+  horseName String?  @unique @map("horse_name")
   tabs      VetTab[]
   horse     Horse?   @relation(fields: [horseName], references: [name])
 }
@@ -60,15 +62,15 @@ model VetTab {
   date         String
   title        String
   description  String
-  executedBy   String?
-  vetId        Int?
+  executedBy   String?       @map("executed_by")
+  vetId        Int?          @map("vet_id")
   veterinarian Veterinarian? @relation(fields: [vetId], references: [id], onDelete: Cascade)
 }
 
 model Farrier {
   id        Int          @id @default(autoincrement())
   type      TypeTab      @default(farrier)
-  horseName String?      @unique
+  horseName String?      @unique @map("horse_name")
   tabs      FarrierTab[]
   horse     Horse?       @relation(fields: [horseName], references: [name])
 }
@@ -78,17 +80,17 @@ model FarrierTab {
   date        String
   title       String
   description String
-  executedBy  String?
-  farrierId   Int?
+  executedBy  String?  @map("executed_by")
+  farrierId   Int?     @map("farrier_id")
   farrier     Farrier? @relation(fields: [farrierId], references: [id], onDelete: Cascade)
 }
 
 model PhotosEntity {
   id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
+  createdAt DateTime @default(now()) @map("created_at")
   src       String
   alt       String
-  horseName String
+  horseName String   @map("horse_name")
   photos    Horse    @relation(fields: [horseName], references: [name], onDelete: Cascade)
 }
 
