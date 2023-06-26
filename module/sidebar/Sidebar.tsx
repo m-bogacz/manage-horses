@@ -19,8 +19,8 @@ import { SideBarList } from './components/sideBarList/SideBarList';
 import { ChakraNextLink } from '@/shared/chakraNextLink/ChakraNextLink';
 import { AddIcon, MinusIcon, PlusSquareIcon } from '@chakra-ui/icons';
 import { SearchInput } from './components/SearchInput/SearchInput';
-import { useHorses } from '@/hooks/useHorses';
 import { useState } from 'react';
+import { useHorses } from '@/apps/api/hooks/useHorses';
 
 interface SideBarProps {
   readonly maxW?: number | string;

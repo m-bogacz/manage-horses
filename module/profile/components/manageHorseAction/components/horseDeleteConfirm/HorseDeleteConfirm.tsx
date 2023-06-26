@@ -1,31 +1,11 @@
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useHorseContext } from '@/apps/context/horseContext/HorseContext';
 import { Alert } from '@/shared/alert/Alert';
+import { useDisclosure, Button, Text, useToast, Flex } from '@chakra-ui/react';
 
-import {
-  useDisclosure,
-  Button,
-  AlertDialog,
-  AlertDialogOverlay,
-  AlertDialogContent,
-  AlertDialogHeader,
-  AlertDialogBody,
-  AlertDialogFooter,
-  Text,
-  HStack,
-  useToast,
-  Flex,
-} from '@chakra-ui/react';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import axios from 'axios';
 import { useRouter } from 'next/router';
 import React from 'react';
-
-export const deleteHorse = (name: string) =>
-  axios.delete('/api/horse', {
-    data: {
-      name,
-    },
-  });
+import { deleteHorse } from '@/apps/api/services/horse.services';
 
 export const HorseDeleteConfirm = () => {
   const toast = useToast();

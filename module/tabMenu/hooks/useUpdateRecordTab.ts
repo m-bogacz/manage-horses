@@ -1,8 +1,9 @@
 import { useQueryClient, useMutation, useQuery } from '@tanstack/react-query';
 import { Tab } from '@/utils/types';
-import { revalidate, updateTabServices, deleteTabServices } from '@/apps/services/services';
 import { fetchTab } from './useFetchTab';
 import { useToast } from '@chakra-ui/react';
+import { updateTabServices, deleteTabServices } from '@/apps/api/services/tabs.services';
+import { revalidate } from '@/apps/api/services/revalidate.services';
 
 export const useUpdateRecordTab = (horseName: string, tabName: string, id: number) => {
   const toast = useToast();

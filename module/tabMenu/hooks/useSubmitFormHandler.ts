@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useAddRecordTab } from './useAddRecordTab';
 import { AxiosResponse } from 'axios';
 import { Tab, VariantTabType } from '@/utils/types';
-import { revalidate } from '@/apps/services/services';
+import { revalidate } from '@/apps/api/services/revalidate.services';
 
 export const useSubmitFormHandler = (
   fn: (data: Tab) => Promise<AxiosResponse<any, any>>,

@@ -1,10 +1,10 @@
 import React from 'react';
 import { Table } from '@/shared/table/Table';
-import { Box, Skeleton, Text } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 import { useHorseContext } from '@/apps/context/horseContext/HorseContext';
 import { AddTabForm } from '../../addTabForm/AddTabForm';
 import { useSubmitFormHandler } from '../../hooks/useSubmitFormHandler';
-import { addFarrierServices } from '@/apps/services/services';
+import { addFarrierServices } from '@/apps/api/services/tabs.services';
 
 export const Farrier = () => {
   const { name, farrier } = useHorseContext();

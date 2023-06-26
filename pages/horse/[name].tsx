@@ -7,7 +7,7 @@ import { HorseProvider } from '@/apps/context/horseContext/HorseContext';
 import { prisma } from '@/lib/prisma';
 import { ParsedUrlQuery } from 'querystring';
 import { useQuery } from '@tanstack/react-query';
-import { getHorse } from '@/apps/services/services';
+import { getHorse } from '@/apps/api/services/horse.services';
 
 interface Params extends ParsedUrlQuery {
   name: string;

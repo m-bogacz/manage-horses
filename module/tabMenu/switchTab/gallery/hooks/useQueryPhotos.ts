@@ -1,4 +1,4 @@
-import { fetchPhotos } from '@/apps/services/services';
+import { fetchPhotos } from '@/apps/api/services/photos.services';
 import { useQuery } from '@tanstack/react-query';
 
 export const usePhotos = (horseName: string) => {

@@ -1,9 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { prisma } from '@/lib/prisma';
 import { Prisma } from '@prisma/client';
-import { connectParentIfExist, upsertParentHorseToDb } from '@/apps/services/utils/horse/upsertParentHorseToDb';
-import { deleteHorseByName } from '@/apps/services/utils/horse/deleteHorseByName';
-import { updateHorseToDb } from '@/apps/services/utils/horse/updateHorseToDb';
+import { deleteHorseByName } from '@/utils/api/horse/deleteHorseByName';
+import { updateHorseToDb } from '@/utils/api/horse/updateHorseToDb';
+import { upsertParentHorseToDb, connectParentIfExist } from '@/utils/api/horse/upsertParentHorseToDb';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'GET') {

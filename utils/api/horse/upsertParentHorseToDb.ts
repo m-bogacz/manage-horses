@@ -1,5 +1,5 @@
 import { prisma } from '@/lib/prisma';
-import { CreateParentHorseType } from '../types';
+import { CreateParentHorseType } from './types';
 
 export const upsertParentHorseToDb = async ({ name, gender, createAsParent = true }: CreateParentHorseType) => {
   return await prisma.horse.upsert({

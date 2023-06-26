@@ -2,16 +2,15 @@ import { getDefaultExamplephoto } from '@/utils/imageLoader/getDefualtPhoto';
 import { Box, List, Spinner } from '@chakra-ui/react';
 import React from 'react';
 import { SideBarItem } from './SideBarItem';
-
-import { Horse } from '@/apps/services/types';
+import { SideBarListHorseEntity } from '@/apps/api/services/types';
 
 interface SideBarListProps {
-  readonly data: Horse[];
+  readonly data?: SideBarListHorseEntity;
   readonly isLoading: boolean;
   readonly error: unknown;
 }
 
-export const SideBarList = ({ isLoading, error, data }: SideBarListProps) => {
+export const SideBarList = ({ isLoading, error, data = [] }: SideBarListProps) => {
   if (error) return <Box>Error</Box>;
 
   if (isLoading) {

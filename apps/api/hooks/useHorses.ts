@@ -1,5 +1,5 @@
-import { fetchHorses } from '@/apps/services/services';
 import { useQuery } from '@tanstack/react-query';
+import { fetchHorses } from '../services/horse.services';
 
 export const useHorses = (queryName: string, queryAge?: string) => {
   return useQuery({
