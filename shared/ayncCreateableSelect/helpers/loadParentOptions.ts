@@ -1,4 +1,4 @@
-import { fetchHorsesByGender } from '@/apps/services/services';
+import { fetchHorsesByGender } from '@/apps/api/modules/horse/horse.services';
 import { createOption, filterhorses } from '@/utils/helpers';
 import { OptionType, GenderType } from '@/utils/types';
 

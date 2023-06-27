@@ -1,13 +1,11 @@
 import { SlideEntity } from '@/utils/types';
 
-export type Horse = {
+export type SideBarItemHorseEntity = {
   readonly name: string;
   readonly profileImageUrl: string;
 };
 
-export interface SideBarListEntity {
-  readonly data: Horse[];
-}
+export type SideBarListHorseEntity = SideBarItemHorseEntity[];
 
 export interface PhotosEntity {
   readonly data: SlideEntity;

@@ -4,9 +4,7 @@ import { Table } from '@/shared/table/Table';
 import { Box } from '@chakra-ui/react';
 import { AddTabForm } from '../../addTabForm/AddTabForm';
 import { useSubmitFormHandler } from '../../hooks/useSubmitFormHandler';
-import { addNewsServices } from '@/apps/services/services';
-import { useFetchTab } from '../../hooks/useFetchTab';
-import { VariantTabType, Tab } from '@/utils/types';
+import { addNewsServices } from '@/apps/api/modules/tabs/tabs.services';
 
 export const News = () => {
   const { name, news } = useHorseContext();

@@ -1,26 +1,16 @@
-import type { AppProps } from 'next/app';
-import { ChakraProvider } from '@chakra-ui/react';
-import { Layout } from '@/module/layout/Layout';
-import { Hydrate, QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { useState } from 'react';
-import { theme } from '@/styles/customTheme';
+import React from 'react';
+import { SessionProvider } from 'next-auth/react';
+import { AppProviders } from '@/providers/AppProviders';
 import '../shared/inputs/datePickerInput/datapicker.css';
 import '../styles/globals.css';
 
-export default function App({ Component, pageProps }: AppProps) {
-  const [queryClient] = useState(() => new QueryClient());
+import { AppPropsWithLayout } from '@/utils/types';
 
+export default function App({ Component, pageProps: { session, ...pageProps } }: AppPropsWithLayout) {
+  const getLayout = Component.getLayout ?? ((page) => page);
   return (
-    <QueryClientProvider client={queryClient}>
-      <Hydrate state={pageProps.dehydratedState}>
-        <ReactQueryDevtools />
-        <ChakraProvider theme={theme} resetCSS={true}>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </ChakraProvider>
-      </Hydrate>
-    </QueryClientProvider>
+    <SessionProvider session={session}>
+      <AppProviders>{getLayout(<Component {...pageProps} />)}</AppProviders>
+    </SessionProvider>
   );
 }

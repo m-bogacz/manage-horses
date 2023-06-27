@@ -1,6 +1,5 @@
-import React from 'react';
+import { addPhoto } from '@/apps/api/modules/photos/photos.services';
 import { useQueryClient, useMutation } from '@tanstack/react-query';
-import { addPhoto } from '@/apps/services/services';
 
 export const useAddPhoto = () => {
   const queryClient = useQueryClient();
