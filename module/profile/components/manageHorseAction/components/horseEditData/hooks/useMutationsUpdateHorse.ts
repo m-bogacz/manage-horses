@@ -1,7 +1,7 @@
 import React from 'react';
 import { useQueryClient, useMutation } from '@tanstack/react-query';
 import { useToast } from '@chakra-ui/react';
-import { updateHorse } from '@/apps/api/services/horse.services';
+import { updateHorse } from '@/apps/api/modules/horse/horse.services';
 
 export const useMutationsUpdateHorse = () => {
   const queryClient = useQueryClient();

@@ -1,4 +1,4 @@
-import { addPhoto } from '@/apps/api/services/photos.services';
+import { addPhoto } from '@/apps/api/modules/photos/photos.services';
 import { useQueryClient, useMutation } from '@tanstack/react-query';
 
 export const useAddPhoto = () => {

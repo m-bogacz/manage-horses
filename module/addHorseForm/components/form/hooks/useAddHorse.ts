@@ -1,5 +1,5 @@
+import { addHorse } from '@/apps/api/modules/horse/horse.services';
 import { useQueryClient, useMutation } from '@tanstack/react-query';
-import { addHorse } from '@/apps/api/services/horse.services';
 
 export const useAddHorse = () => {
   const queryClient = useQueryClient();

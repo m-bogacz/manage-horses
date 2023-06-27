@@ -4,7 +4,7 @@ import { Box } from '@chakra-ui/react';
 import { useHorseContext } from '@/apps/context/horseContext/HorseContext';
 import { AddTabForm } from '../../addTabForm/AddTabForm';
 import { useSubmitFormHandler } from '../../hooks/useSubmitFormHandler';
-import { addVeterinarianServices } from '@/apps/api/services/tabs.services';
+import { addVeterinarianServices } from '@/apps/api/modules/tabs/tabs.services';
 
 export const Veterinarian = () => {
   const { name, veterinarian } = useHorseContext();

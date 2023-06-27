@@ -1,6 +1,6 @@
 import { GenderType, HorseData } from '@/utils/types';
-import { api_client } from '../api_client';
-import { SideBarListHorseEntity } from './types';
+import { api_client } from '../../api_client';
+import { SideBarListHorseEntity } from '../../services/types';
 
 export const addHorse = (newHorse: any) => api_client.post('/api/horse', newHorse);
 

@@ -2,10 +2,9 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useHorseContext } from '@/apps/context/horseContext/HorseContext';
 import { Alert } from '@/shared/alert/Alert';
 import { useDisclosure, Button, Text, useToast, Flex } from '@chakra-ui/react';
-
 import { useRouter } from 'next/router';
 import React from 'react';
-import { deleteHorse } from '@/apps/api/services/horse.services';
+import { deleteHorse } from '@/apps/api/modules/horse/horse.services';
 
 export const HorseDeleteConfirm = () => {
   const toast = useToast();
