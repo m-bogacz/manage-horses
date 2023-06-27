@@ -1,8 +1,9 @@
 import React from 'react';
 import { useQueryClient, useMutation, useQuery } from '@tanstack/react-query';
-import axios, { AxiosResponse } from 'axios';
+import { AxiosResponse } from 'axios';
 import { Tab, VariantTabType } from '@/utils/types';
 import { useFetchTab } from './useFetchTab';
+import { revalidate } from '@/apps/api/services/revalidate.services';
 
 type Fn = (data: Tab & { name: string }) => Promise<AxiosResponse<any, any>>;
 
@@ -11,8 +12,9 @@ export const useAddRecordTab = <T extends VariantTabType>(addServices: Fn, initi
   const { data, isLoading, error, isSuccess, refetch } = useFetchTab<T>(initial, initial.type, horseName);
 
   const mutation = useMutation(addServices, {
-    onSuccess: (data) => {
+    onSuccess: async (data) => {
       queryClient.invalidateQueries([initial.type]);
+      await revalidate(`/horse/${horseName}`);
     },
     onError: (error) => {
       console.error('Wystąpił błąd podczas dodawania obiektu:', error);

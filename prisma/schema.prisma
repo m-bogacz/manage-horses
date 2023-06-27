@@ -140,10 +140,11 @@ model User {
   email         String?   @unique
   role          Role      @default(user)
   emailVerified DateTime?
+  activated     Boolean?  @default(true)
   image         String?
   accounts      Account[]
   sessions      Session[]
-  password      String
+  password      String?
   premissions   String[]
 }
 

@@ -42,7 +42,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
   } else if (req.method === 'PATCH') {
     const { id, tab } = req.body.data;
-    const updatedData = await prisma.news.update({
+    const updatedData = await prisma.newsTab.update({
       where: { id: id },
       data: tab,
     });

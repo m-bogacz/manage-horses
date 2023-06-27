@@ -134,7 +134,9 @@ CREATE TABLE "User" (
     "email" TEXT,
     "role" "Role" NOT NULL DEFAULT 'user',
     "emailVerified" TIMESTAMP(3),
+    "activated" BOOLEAN DEFAULT true,
     "image" TEXT,
+    "password" TEXT,
     "premissions" TEXT[],
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")

@@ -2,7 +2,7 @@ import { prisma } from '@/lib/prisma';
 import { Prisma } from '@prisma/client';
 import { compare, hash } from 'bcrypt';
 
-export const createUser = async ({ email, name, password }: Prisma.UserCreateInput) =>
+export const createUser = async ({ email, name, password }: { email: string; name: string; password: string }) =>
   await prisma.user.create({
     data: {
       email,
