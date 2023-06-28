@@ -1,7 +1,7 @@
 import { FlexProps, Avatar, ListItem, Text } from '@chakra-ui/react';
 import { ChakraNextLink } from '@/shared/chakraNextLink/ChakraNextLink';
 import { useRouter } from 'next/router';
-import { SECTION_NAME } from '@/utils/types';
+import { SECTION_NAME } from '@/utils/const';
 
 interface SideBarItemProps extends FlexProps {
   readonly name: string;

@@ -5,11 +5,11 @@ import { useFormContext } from 'react-hook-form';
 interface InputFieldProps {
   name: string;
   placeholder?: string;
-  label?: string | boolean;
+  label?: string;
   asTextArea?: boolean;
 }
 
-export const InputField = ({ name, placeholder, label = false, asTextArea = false }: InputFieldProps) => {
+export const InputField = ({ name, placeholder, label = '', asTextArea = false }: InputFieldProps) => {
   const {
     register,
     formState: { errors },
@@ -17,7 +17,9 @@ export const InputField = ({ name, placeholder, label = false, asTextArea = fals
 
   return (
     <FormControl isInvalid={Boolean(errors[name])}>
-      <FormLabel htmlFor={name}>{label ? label : ''}</FormLabel>
+      <FormLabel htmlFor={name} color="gray.500">
+        {label}
+      </FormLabel>
 
       {asTextArea ? (
         <Textarea id={name} placeholder={placeholder} {...register(name)} />

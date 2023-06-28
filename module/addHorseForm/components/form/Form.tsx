@@ -15,10 +15,10 @@ export const Form = () => {
   const router = useRouter();
   const { currentStep, handleNextStep, handlePrevStep, currentStepIndex } = useAddHorseFormContext();
 
-  const resolver = switchResolver(currentStepIndex);
+  const resolverStep = switchResolver(currentStepIndex);
   const { mutate } = useAddHorse();
 
-  const methods = useForm<FormDataEntity>({ resolver, defaultValues });
+  const methods = useForm<FormDataEntity>({ resolver: resolverStep, defaultValues });
   const formData = methods.getValues();
 
   const onSubmit: SubmitHandler<FormDataEntity> = async (data) => {

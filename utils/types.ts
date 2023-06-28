@@ -58,14 +58,6 @@ export type GenderType = 'mare' | 'gelding' | 'stallion';
 
 export type SectionNameType = 'geneology' | 'news' | 'veterinarian' | 'farrier' | 'gallery';
 
-export const SECTION_NAME = {
-  news: 'news',
-  veterinarian: 'veterinarian',
-  farrier: 'farrier',
-  geneology: 'geneology',
-  gallery: 'gallery',
-} as const;
-
 export type TabSectionType = {
   readonly name: SectionNameType;
   readonly active: boolean;

@@ -5,7 +5,3 @@ export default function supabaseLoader({ src, width, quality }: ImageLoaderProps
     quality || 75
   }`;
 }
-
-// export const downloadImageFromSupBase = (src: string, width: number, height: number, quality = 75) => {
-//   return `https://dpdasginastynijsarwv.supabase.co/storage/v1/object/public/${src}?width=${width}&height=${height}&quality=${quality}`;
-// };
