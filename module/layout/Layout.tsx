@@ -3,17 +3,14 @@ import { HOME_PAGE_PATH, HORSE_PAGE_PATH } from '@/apps/routes';
 import { Box, Flex } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { Sidebar } from '../sidebar/Sidebar';
+import { ChildrenPageProps } from '@/utils/types';
 
-interface LayoutProps {
-  readonly children: ReactNode;
-}
-
-export const Layout = ({ children }: LayoutProps) => {
+export const Layout = ({ children }: ChildrenPageProps) => {
   const { pathname } = useRouter();
 
   const isHomePage = pathname === HOME_PAGE_PATH || pathname === HORSE_PAGE_PATH;
   return (
-    <Flex h={'100vh'}>
+    <Flex>
       <Box as="aside" width={240} display={{ base: isHomePage ? 'flex' : 'none', lg: 'flex' }}>
         <Sidebar />
       </Box>

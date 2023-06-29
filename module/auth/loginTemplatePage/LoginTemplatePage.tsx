@@ -3,7 +3,6 @@ import { signIn } from 'next-auth/react';
 import { Flex, Stack, Avatar, Heading, Text, Button, Box, HStack } from '@chakra-ui/react';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import { InputField } from '@/shared/inputs/InputField';
-import { ForgotPassword } from '@/shared/inputs/passwordInput/components/ForgotPassword';
 import { PasswordInput } from '@/shared/inputs/passwordInput/PasswordInput';
 import { ChakraNextLink } from '@/shared/chakraNextLink/ChakraNextLink';
 
@@ -44,11 +43,7 @@ const LoginTemplatePage = () => {
             <form onSubmit={methods.handleSubmit(onSubmit)}>
               <Stack spacing={4} p="1rem" backgroundColor="whiteAlpha.900" boxShadow="md">
                 <InputField name="name" placeholder="name" />
-                <PasswordInput
-                  name="password"
-                  placeholder="Password"
-                  formHelpertext={<ForgotPassword href="register" />}
-                />
+                <PasswordInput name="password" placeholder="Password" />
 
                 <Button borderRadius={0} type="submit" variant="solid" colorScheme="teal" width="full">
                   Login

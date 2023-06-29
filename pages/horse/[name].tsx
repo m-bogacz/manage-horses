@@ -23,7 +23,7 @@ export default function Horse({ horse }: HorsePageProps) {
 
   return (
     <HorseProvider value={data}>
-      <Flex h={'100vh'} justifyContent="center">
+      <Flex justifyContent="center">
         <TabMenu />
         <Flex display={{ base: 'none', md: 'flex' }} flex={{ base: 4, lg: 2 }}>
           <Profile />

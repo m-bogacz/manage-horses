@@ -70,3 +70,7 @@ export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
 export type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
 };
+
+export interface ChildrenPageProps {
+  readonly children: ReactNode;
+}

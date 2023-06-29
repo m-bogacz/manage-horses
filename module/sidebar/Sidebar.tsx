@@ -14,7 +14,7 @@ import {
   AccordionButton,
   Button,
 } from '@chakra-ui/react';
-import { AppBar } from '../appBar/AppBar';
+
 import { SideBarList } from './components/sideBarList/SideBarList';
 import { ChakraNextLink } from '@/shared/chakraNextLink/ChakraNextLink';
 import { AddIcon, MinusIcon, PlusSquareIcon } from '@chakra-ui/icons';
@@ -47,17 +47,14 @@ export const Sidebar = ({ maxW = 240 }: SideBarProps) => {
       bg="gray.900"
       borderRight="1px"
       borderRightColor="gray.200"
-      h="100vh"
+      h="calc(100vh - 60px)"
       backgroundColor={{ base: 'white', md: 'white' }}
       minW={240}
       flexDir={'column'}
       w={'100vw'}
       maxW={{ base: '100vw', md: maxW }}
     >
-      <Box h={'90px'}>
-        <AppBar />
-      </Box>
-      <Divider />
+      {/* <Divider /> */}
 
       <Box m={'5px 10px'}>
         <SearchInput onChange={handleChangeQuery} />
