@@ -1,16 +1,12 @@
 import { Layout } from '@/module/layout/Layout';
-import { signOut } from 'next-auth/react';
+import { ChildrenPageProps } from '@/utils/types';
+import { ReactNode } from 'react';
 
-const HorsePage = ({ children }: any) => {
-  return (
-    <>
-      <button onClick={() => signOut()}>Sign out</button>
-
-      {children}
-    </>
-  );
+const HorsePage = ({ children }: ChildrenPageProps) => {
+  return children;
 };
-export const HorsePageLayout = (page: any) => <Layout>{page}</Layout>;
+
+export const HorsePageLayout = (page: ReactNode) => <Layout>{page}</Layout>;
 
 HorsePage.getLayout = HorsePageLayout;
 

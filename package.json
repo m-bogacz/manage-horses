@@ -37,6 +37,7 @@
     "react-datepicker": "^4.11.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.43.9",
+    "react-icons": "^4.10.1",
     "react-photo-album": "^2.0.3",
     "react-select": "^5.7.2",
     "supabase": "^1.50.13",
