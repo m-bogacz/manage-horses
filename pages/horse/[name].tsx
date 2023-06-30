@@ -1,6 +1,6 @@
 import { Profile } from '@/module/profile/Profile';
-import { GetStaticPaths, GetStaticProps } from 'next';
-import { HorseData } from '@/utils/types';
+import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next';
+import { HorseData, InferGetStaticPathsType } from '@/utils/types';
 import { TabMenu } from '@/module/tabMenu/TabMenu';
 import { Flex } from '@chakra-ui/react';
 import { HorseProvider } from '@/apps/context/horseContext/HorseContext';
@@ -33,7 +33,7 @@ export default function Horse({ horse }: HorsePageProps) {
   );
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths = async () => {
   const horses = await prisma.horse.findMany({
     select: { name: true },
   });
@@ -46,7 +46,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps<Partial<HorsePageProps>, Params> = async ({ params }) => {
+export const getStaticProps: GetStaticProps<Partial<HorsePageProps>, Params> = async ({
+  params,
+}: GetStaticPropsContext<InferGetStaticPathsType<typeof getStaticPaths>>) => {
   const horseName = params?.name;
 
   const horse = await prisma.horse.findUnique({
