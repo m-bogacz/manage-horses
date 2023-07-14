@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import { VariantTabType } from '@/utils/types';
+import { VariantTabType } from '@/utils/types/horse';
 
 export const fetchTab = async <T>(tabName: string, horseName: string) => {
   const result = await axios.get<T[]>(`/api/tab/${tabName}?name=${horseName}`);

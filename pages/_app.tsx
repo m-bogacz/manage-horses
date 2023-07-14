@@ -3,7 +3,7 @@ import { SessionProvider } from 'next-auth/react';
 import { AppProviders } from '@/providers/AppProviders';
 import '../shared/inputs/datePickerInput/datapicker.css';
 import '../styles/globals.css';
-import { AppPropsWithLayout } from '@/utils/types';
+import { AppPropsWithLayout } from '@/utils/types/page';
 import { RootLayout } from '@/module/layout/RootLayout';
 
 export default function App({ Component, pageProps: { session, ...pageProps } }: AppPropsWithLayout) {

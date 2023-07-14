@@ -15,7 +15,7 @@ export const TabMenu = () => {
         size={'sm'}
         position={'relative'}
         variant="unstyled"
-        paddingTop={{ lg: 10 }}
+        paddingTop={{ lg: 5 }}
         ml={{ base: 1, sm: 5, md: 2 }}
         mr={{ base: 1, sm: 5, md: 2 }}
         w={{ base: '95vw', md: '100%' }}

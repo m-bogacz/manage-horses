@@ -15,7 +15,7 @@ import { TabForm } from './components/TabForm';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import { DefaultValuesTabFormType, FormFields } from '../utils/types';
 import { defaultValuesTabForm, tabFormFields } from './utils/tabFormFields';
-import { Tab } from '@/utils/types';
+import { Tab } from '@/utils/types/horse';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { addTabFormValidationSchema } from './utils/validationSchema';
 import { CloseButton } from '@/shared/button/CloseButton';

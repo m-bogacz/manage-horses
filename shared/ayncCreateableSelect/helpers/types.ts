@@ -1,5 +1,5 @@
 import { Control, FieldPath, FieldValues } from 'react-hook-form';
-import { GenderType } from '@/utils/types';
+import { GenderType } from '@/utils/types/horse';
 
 export interface AsyncCreateableSelectProps<TForm extends FieldValues> {
   name: FieldPath<TForm>;

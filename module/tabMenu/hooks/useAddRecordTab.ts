@@ -1,7 +1,6 @@
-import React from 'react';
-import { useQueryClient, useMutation, useQuery } from '@tanstack/react-query';
+import { useQueryClient, useMutation } from '@tanstack/react-query';
 import { AxiosResponse } from 'axios';
-import { Tab, VariantTabType } from '@/utils/types';
+import { Tab, VariantTabType } from '@/utils/types/horse';
 import { useFetchTab } from './useFetchTab';
 import { revalidate } from '@/apps/api/services/revalidate.services';
 

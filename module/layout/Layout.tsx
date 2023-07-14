@@ -3,7 +3,7 @@ import { HOME_PAGE_PATH, HORSE_PAGE_PATH } from '@/apps/routes';
 import { Box, Flex } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { Sidebar } from '../sidebar/Sidebar';
-import { ChildrenPageProps } from '@/utils/types';
+import { ChildrenPageProps } from '@/utils/types/page';
 
 export const Layout = ({ children }: ChildrenPageProps) => {
   const { pathname } = useRouter();

@@ -62,21 +62,3 @@ export type TabSectionType = {
   readonly name: SectionNameType;
   readonly active: boolean;
 };
-
-export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
-  getLayout?: (page: ReactElement) => ReactNode;
-};
-
-export type AppPropsWithLayout = AppProps & {
-  Component: NextPageWithLayout;
-};
-
-export interface ChildrenPageProps {
-  readonly children: ReactNode;
-}
-
-export type InferGetStaticPathsType<T> = T extends () => Promise<{
-  paths: Array<{ params: infer R }>;
-}>
-  ? R
-  : never;

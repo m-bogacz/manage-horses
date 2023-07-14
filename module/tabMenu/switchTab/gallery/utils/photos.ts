@@ -1,4 +1,4 @@
-import { downloadImageFromSupBase } from '@/utils/imageLoader/getDefualtPhoto';
+import { downloadImageFromSupBase } from '@/apps/api/services/supabase.services';
 
 const breakpoints = [780, 640, 384, 256, 128, 96, 64, 48];
 

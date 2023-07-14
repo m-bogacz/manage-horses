@@ -1,4 +1,4 @@
-import { HorseData } from '@/utils/types';
+import { HorseData } from '@/utils/types/horse';
 import { Horse } from '@prisma/client';
 
 export type CreateParentHorseType = Pick<HorseData, 'name' | 'gender' | 'createAsParent'>;

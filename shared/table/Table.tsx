@@ -1,7 +1,7 @@
 import { TableContainer, Thead, Tr, Th, Tbody, Table as TableUI } from '@chakra-ui/react';
 import React from 'react';
 import { TBodyTr } from './components/TBodyTr';
-import { Tab } from '@/utils/types';
+import { Tab } from '@/utils/types/horse';
 import { LoadingSkeleton } from '../LoadingSkeleton/LoadingSkeleton';
 
 interface Props {

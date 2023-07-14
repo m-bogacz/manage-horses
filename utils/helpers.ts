@@ -1,4 +1,4 @@
-import { OptionType } from './types';
+import { OptionType } from './types/horse';
 
 export const getFirstElement = <T>(arr: T[]) => {
   return arr[0];

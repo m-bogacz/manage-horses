@@ -1,5 +1,5 @@
 import { useQueryClient, useMutation, useQuery } from '@tanstack/react-query';
-import { Tab } from '@/utils/types';
+import { Tab } from '@/utils/types/horse';
 import { fetchTab } from './useFetchTab';
 import { useToast } from '@chakra-ui/react';
 import { revalidate } from '@/apps/api/services/revalidate.services';

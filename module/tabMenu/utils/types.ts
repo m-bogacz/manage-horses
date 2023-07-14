@@ -1,4 +1,4 @@
-import { TabSectionType } from '@/utils/types';
+import { TabSectionType } from '@/utils/types/horse';
 import { defaultValuesTabForm } from '../addTabForm/utils/tabFormFields';
 
 export type TabsSectionEntity = TabSectionType[];

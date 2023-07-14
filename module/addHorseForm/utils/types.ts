@@ -1,4 +1,4 @@
-import { OptionType, GenderType, customParent } from '@/utils/types';
+import { OptionType } from '@/utils/types/horse';
 
 export type STEP_TYPE = 1 | 2 | 3;
 

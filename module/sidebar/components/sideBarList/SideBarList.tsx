@@ -1,8 +1,8 @@
-import { getDefaultExamplephoto } from '@/utils/imageLoader/getDefualtPhoto';
 import { Box, List, Spinner } from '@chakra-ui/react';
 import React from 'react';
 import { SideBarItem } from './SideBarItem';
-import { SideBarListHorseEntity } from '@/apps/api/services/types';
+import { SideBarListHorseEntity } from '@/apps/api/types';
+import { getDefaultPhoto } from '@/apps/api/services/supabase.services';
 
 interface SideBarListProps {
   readonly data?: SideBarListHorseEntity;
@@ -26,7 +26,7 @@ export const SideBarList = ({ isLoading, error, data = [] }: SideBarListProps) =
           <SideBarItem
             key={horse.name}
             name={horse.name}
-            src={horse.profileImageUrl ? horse.profileImageUrl : getDefaultExamplephoto()}
+            src={horse.profileImageUrl ? horse.profileImageUrl : getDefaultPhoto()}
           />
         ))}
     </List>

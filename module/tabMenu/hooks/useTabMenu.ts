@@ -1,4 +1,4 @@
-import { TabSectionType } from '@/utils/types';
+import { TabSectionType } from '@/utils/types/horse';
 import { useState } from 'react';
 import { TAB_SECTIONS } from '../utils/const';
 import { TabsSectionEntity } from '../utils/types';

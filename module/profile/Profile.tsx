@@ -4,7 +4,7 @@ import { Box, Center, Text, Image, VStack, Flex } from '@chakra-ui/react';
 import { ManageHorseAction } from './components/manageHorseAction/ManageHorseAction';
 import { Feature } from './components/feature/Feature';
 import { FeatureParent } from './components/feature/FeatureParent';
-import { getDefaultExamplephoto } from '@/utils/imageLoader/getDefualtPhoto';
+import { getDefaultPhoto } from '@/apps/api/services/supabase.services';
 
 export const Profile = () => {
   const { name, birthday, gender, place, profileImageUrl, mother, father } = useHorseContext();
@@ -15,7 +15,7 @@ export const Profile = () => {
         <Center padding={10} paddingBottom={2}>
           <Image
             boxSize="200px"
-            src={profileImageUrl ? profileImageUrl : getDefaultExamplephoto()}
+            src={profileImageUrl ? profileImageUrl : getDefaultPhoto()}
             alt={`profile image of ${name}`}
             borderRadius="full"
             objectFit="cover"
