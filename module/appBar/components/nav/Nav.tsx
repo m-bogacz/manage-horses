@@ -8,7 +8,7 @@ export const Navigation = () => {
 
   return (
     <Flex
-      bg={useColorModeValue('white', 'gray.800')}
+      bg={useColorModeValue('appbar.100', 'gray.800')}
       color={useColorModeValue('gray.600', 'white')}
       borderStyle={'solid'}
       justifyContent={'flex-end'}

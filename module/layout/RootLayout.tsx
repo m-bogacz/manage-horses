@@ -8,9 +8,7 @@ export const RootLayout = ({ children }: ChildrenPageProps) => {
       <Box as="nav">
         <AppBar />
       </Box>
-      <Box as={'main'} flex={1}>
-        {children}
-      </Box>
+      <Box flex={1}>{children}</Box>
     </Flex>
   );
 };

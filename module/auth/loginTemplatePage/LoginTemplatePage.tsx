@@ -19,7 +19,7 @@ const LoginTemplatePage = () => {
       await signIn('credentials', {
         name: data.name,
         password: data.password,
-        callbackUrl: '/horse',
+        callbackUrl: '/',
       });
     } catch (error) {
       console.log(error);
@@ -27,14 +27,7 @@ const LoginTemplatePage = () => {
   };
 
   return (
-    <Flex
-      flexDirection="column"
-      width="100wh"
-      height="100vh"
-      backgroundColor="gray.100"
-      justifyContent="center"
-      alignItems="center"
-    >
+    <Flex flexDirection="column" width="100wh" height="100vh" justifyContent="center" alignItems="center" bg="gray.50">
       <Stack flexDir="column" mb="2" justifyContent="center" alignItems="center">
         <Avatar bg="teal.500" />
         <Heading color="teal.400">Welcome</Heading>

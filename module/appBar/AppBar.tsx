@@ -6,7 +6,7 @@ import { AppLogo } from './components/appLogo/AppLogo';
 export const AppBar = () => {
   return (
     <>
-      <Flex align={'center'} p={1}>
+      <Flex align={'center'} p={1} bg="appbar.100">
         <AppLogo />
         <Navigation />
       </Flex>
