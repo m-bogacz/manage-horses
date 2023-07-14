@@ -22,3 +22,12 @@ export const getUser = async (name: string, password: string) => {
 
   return user;
 };
+
+export const findUsers = async () => await prisma.user.findMany();
+
+export const handleActivationUser = async (userId: string, action: 'deactivate' | 'activate') => {
+  return await prisma.user.update({
+    where: { id: userId },
+    data: { activated: action === 'activate' ? true : false },
+  });
+};

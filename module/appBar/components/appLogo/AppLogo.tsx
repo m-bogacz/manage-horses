@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 export const AppLogo = () => {
   return (
-    <ChakraNextLink href="/" ml={5}>
+    <ChakraNextLink href="/" ml={5} bg="appbar.100">
       <Flex>
         <Image priority src="/logo.svg" height={42} width={42} alt="Logo App" />
         <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">

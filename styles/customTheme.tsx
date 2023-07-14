@@ -27,6 +27,9 @@ export const theme = extendTheme({
     table: {
       100: '#edf2f7',
     },
+    appbar: {
+      100: '#edf2f7',
+    },
     step: {
       100: '#E2E8F0',
       200: '#7A889D',

@@ -1,10 +1,9 @@
-import NextAuth from 'next-auth';
+import NextAuth, { NextAuthOptions } from 'next-auth';
 import { PrismaAdapter } from '@auth/prisma-adapter';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import type { Adapter } from 'next-auth/adapters';
 import { prisma } from '@/lib/prisma';
 import { getUser } from '@/apps/api/modules/user/user.utils';
-
 import { z } from 'zod';
 
 const validateUser = z.object({
@@ -12,7 +11,7 @@ const validateUser = z.object({
   password: z.string(),
 });
 
-export default NextAuth({
+export const authOptions: NextAuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
   adapter: PrismaAdapter(prisma) as Adapter,
   pages: {
@@ -20,6 +19,7 @@ export default NextAuth({
     signOut: '/signout',
     newUser: '/register',
     error: '/error',
+    verifyRequest: 'not-access',
   },
   providers: [
     CredentialsProvider({
@@ -39,7 +39,7 @@ export default NextAuth({
             username: userprisma.name,
             premissions: userprisma.premissions,
             role: userprisma.role,
-            activated: userprisma.activated,
+            activated: userprisma.activated ?? false,
           };
         } else {
           return null;
@@ -55,11 +55,22 @@ export default NextAuth({
       }
       return token;
     },
-    async session({ session, token, user }) {
+    async redirect({ url }) {
+      return url;
+    },
+    async session({ session, token }) {
       session.user = token.user;
       return session;
+    },
+    async signIn({ user }) {
+      if (user && !user.activated) {
+        return '/no-access';
+      }
+      return true;
     },
   },
 
   session: { strategy: 'jwt' },
-});
+};
+
+export default NextAuth(authOptions);
