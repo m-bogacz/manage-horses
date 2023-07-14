@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useAddRecordTab } from './useAddRecordTab';
 import { AxiosResponse } from 'axios';
-import { Tab, VariantTabType } from '@/utils/types';
+import { Tab, VariantTabType } from '@/utils/types/horse';
 import { revalidate } from '@/apps/api/services/revalidate.services';
 
 export const useSubmitFormHandler = (

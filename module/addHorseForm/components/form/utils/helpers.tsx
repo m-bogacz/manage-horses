@@ -2,7 +2,7 @@ import { MotherSideInformation } from '../components/motherSideInformation/Mothe
 import { FatherSideInformation } from '../components/fatherSideInformation/FatherInformation';
 import { HorseInformation } from '../components/horseInformation/HorseInformation';
 import { Summary } from '../components/summary/Summary';
-import { customParent } from '@/utils/types';
+import { customParent } from '@/utils/types/horse';
 import { FormDataEntity } from './types';
 
 export const defaultValues = {

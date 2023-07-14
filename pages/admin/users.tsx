@@ -5,7 +5,7 @@ import { findUsers } from '@/apps/api/modules/user/user.utils';
 import { getAllUsersServices } from '@/apps/api/modules/user/user.services';
 import { useQuery } from '@tanstack/react-query';
 import { UserTable } from '@/module/admin/components/userTable/UserTable';
-import { Box, Flex } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 
 interface AdminUserProps {
   users: UserType[];

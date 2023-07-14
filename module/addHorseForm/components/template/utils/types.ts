@@ -1,4 +1,4 @@
-import { GenderType } from '@/utils/types';
+import { GenderType } from '@/utils/types/horse';
 
 export interface FormTemplateDetailsProps {
   readonly familySide: 'father' | 'mother';

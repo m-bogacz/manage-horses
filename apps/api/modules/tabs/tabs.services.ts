@@ -1,4 +1,4 @@
-import { Tab } from '@/utils/types';
+import { Tab } from '@/utils/types/horse';
 import { api_client } from '../../api_client';
 
 export const addNewsServices = (data: Tab) => api_client.post('/api/tab/news', data);

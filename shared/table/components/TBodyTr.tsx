@@ -1,8 +1,8 @@
 import React from 'react';
 import { setFormatDate } from '@/lib/dateHelper';
 import TabRowDetailsModal from '@/module/tabMenu/switchTab/TabRowDetailsModal';
-import { Tr, Td, useDisclosure, Flex } from '@chakra-ui/react';
-import { Tab } from '@/utils/types';
+import { Tr, Td, useDisclosure } from '@chakra-ui/react';
+import { Tab } from '@/utils/types/horse';
 
 interface TBodyTrProps {
   item: Tab;

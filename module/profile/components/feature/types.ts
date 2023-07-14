@@ -1,4 +1,4 @@
-import { ParentHorseData } from '@/utils/types';
+import { ParentHorseData } from '@/utils/types/horse';
 
 export interface FeatureProps {
   title: string;

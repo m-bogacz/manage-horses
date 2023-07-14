@@ -1,4 +1,4 @@
-import { customParent, GenderType } from '@/utils/types';
+import { customParent, GenderType } from '@/utils/types/horse';
 
 export interface FormDataEntity {
   readonly name: string;

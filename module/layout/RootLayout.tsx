@@ -1,6 +1,6 @@
 import { Box, Flex } from '@chakra-ui/react';
 import { AppBar } from '../appBar/AppBar';
-import { ChildrenPageProps } from '@/utils/types';
+import { ChildrenPageProps } from '@/utils/types/page';
 
 export const RootLayout = ({ children }: ChildrenPageProps) => {
   return (

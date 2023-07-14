@@ -1,4 +1,4 @@
-import { HorseData } from '@/utils/types';
+import { HorseData } from '@/utils/types/horse';
 import { ReactNode } from 'react';
 
 export interface HorseProviderProps {

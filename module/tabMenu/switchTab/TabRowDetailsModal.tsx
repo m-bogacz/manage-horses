@@ -14,7 +14,7 @@ import {
   useDisclosure,
   ButtonGroup,
 } from '@chakra-ui/react';
-import { Tab } from '@/utils/types';
+import { Tab } from '@/utils/types/horse';
 import { setFormatDate } from '@/lib/dateHelper';
 import { AddTabForm } from '../addTabForm/AddTabForm';
 import { useUpdateRecordTab } from '../hooks/useUpdateRecordTab';

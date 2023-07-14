@@ -1,5 +1,5 @@
-import { SlideEntity } from '@/utils/types';
-import { AddPhotoEntity } from '../../services/types';
+import { SlideEntity } from '@/utils/types/horse';
+import { AddPhotoEntity } from '../../types';
 import { api_client } from '../../api_client';
 
 export const addPhoto = (photo: AddPhotoEntity) => api_client.post('/api/photo', photo);

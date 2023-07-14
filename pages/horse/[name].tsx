@@ -1,6 +1,7 @@
 import { Profile } from '@/module/profile/Profile';
-import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next';
-import { HorseData, InferGetStaticPathsType } from '@/utils/types';
+import { GetStaticProps, GetStaticPropsContext } from 'next';
+import { InferGetStaticPathsType } from '@/utils/types/page';
+import { HorseData } from '@/utils/types/horse';
 import { TabMenu } from '@/module/tabMenu/TabMenu';
 import { Flex } from '@chakra-ui/react';
 import { HorseProvider } from '@/apps/context/horseContext/HorseContext';

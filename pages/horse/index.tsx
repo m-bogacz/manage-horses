@@ -1,8 +1,8 @@
+import { ReactNode } from 'react';
 import { Layout } from '@/module/layout/Layout';
-import { ChildrenPageProps } from '@/utils/types';
 import { Spinner } from '@chakra-ui/react';
 import { useSession } from 'next-auth/react';
-import { ReactNode } from 'react';
+import { ChildrenPageProps } from '@/utils/types/page';
 
 const HorsePage = ({ children }: ChildrenPageProps) => {
   const { status } = useSession();

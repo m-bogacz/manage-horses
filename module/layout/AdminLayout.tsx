@@ -1,8 +1,8 @@
 import { Box, Flex } from '@chakra-ui/react';
-import { ChildrenPageProps } from '@/utils/types';
 import { AdminDashboard } from '../admin/dashboard/AdminDashboard';
 import { useSession } from 'next-auth/react';
 import { AccessDenied } from '@/shared/accessDenied/AccessDenied';
+import { ChildrenPageProps } from '@/utils/types/page';
 
 export const AdminLayout = ({ children }: ChildrenPageProps) => {
   const { data: session } = useSession();

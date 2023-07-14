@@ -1,4 +1,4 @@
-import { SlideEntity } from '@/utils/types';
+import { SlideEntity } from '@/utils/types/horse';
 
 export type SideBarItemHorseEntity = {
   readonly name: string;
