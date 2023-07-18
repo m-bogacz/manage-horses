@@ -18,6 +18,6 @@ export default withAuth({
 
 const protectedAdminRoute = ['/admin', '/admin/users', '/admin/settings', '/admin/permission', '/admin/activate'];
 
-export const config = {
-  matcher: ['/horse', '/horse/:name*', '/'],
-};
+// export const config = {
+//   matcher: ['/horse', '/horse/:name*', '/'],
+// };
