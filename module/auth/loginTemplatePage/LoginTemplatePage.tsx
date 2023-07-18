@@ -19,7 +19,7 @@ const LoginTemplatePage = () => {
       await signIn('credentials', {
         name: data.name,
         password: data.password,
-        callbackUrl: '/',
+        callbackUrl: '/horse',
       });
     } catch (error) {
       console.log(error);
