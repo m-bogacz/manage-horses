@@ -15,9 +15,9 @@ export const authOptions: NextAuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
   adapter: PrismaAdapter(prisma) as Adapter,
   pages: {
-    signIn: '/login/',
-    newUser: '/register/',
-    verifyRequest: '/not-access/',
+    signIn: '/login',
+    newUser: '/register',
+    verifyRequest: '/not-access',
   },
   providers: [
     CredentialsProvider({
