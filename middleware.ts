@@ -3,10 +3,10 @@ import { withAuth } from 'next-auth/middleware';
 export default withAuth({
   callbacks: {
     authorized({ req, token }) {
-      if (protectedAdminRoute.includes(req.nextUrl.pathname)) {
-        console.log('token', token);
-        return token?.userRole === 'admin';
-      }
+      // if (protectedAdminRoute.includes(req.nextUrl.pathname)) {
+      //   console.log('token', token);
+      //   return token?.userRole === 'admin';
+      // }
       if (!token?.user.activated) {
         return false;
       }
