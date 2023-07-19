@@ -1,14 +1,14 @@
 import { Box, Flex } from '@chakra-ui/react';
 import { AdminDashboard } from '../admin/dashboard/AdminDashboard';
+import { ChildrenPageProps } from '@/utils/types/page';
+import { ReactElement } from 'react';
 import { useSession } from 'next-auth/react';
 import { AccessDenied } from '@/shared/accessDenied/AccessDenied';
-import { ChildrenPageProps } from '@/utils/types/page';
 
 export const AdminLayout = ({ children }: ChildrenPageProps) => {
   const { data: session } = useSession();
 
   if (!session || session?.user.role !== 'admin') return <AccessDenied />;
-
   return (
     <Flex w={'100vw'} h={'100vh'}>
       <Box as="aside" w={{ base: '50px', md: 240 }}>
@@ -20,3 +20,5 @@ export const AdminLayout = ({ children }: ChildrenPageProps) => {
     </Flex>
   );
 };
+
+export const AdminPageLayout = (page: ReactElement) => <AdminLayout>{page}</AdminLayout>;

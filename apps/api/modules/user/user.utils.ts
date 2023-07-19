@@ -1,5 +1,5 @@
 import { prisma } from '@/lib/prisma';
-import { Prisma } from '@prisma/client';
+import { Prisma, User } from '@prisma/client';
 import { compare, hash } from 'bcrypt';
 
 export const createUser = async ({ email, name, password }: { email: string; name: string; password: string }) =>
@@ -31,3 +31,10 @@ export const handleActivationUser = async (userId: string, action: 'deactivate' 
     data: { activated: action === 'activate' ? true : false },
   });
 };
+
+export const findDeactivateUsers = async () =>
+  await prisma.user.findMany({
+    where: {
+      activated: false,
+    },
+  });
