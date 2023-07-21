@@ -29,12 +29,9 @@ export default function RegisterTemplatePage() {
       <Flex minH={'100vh'} align={'center'} justify={'center'} bg={useColorModeValue('gray.50', 'gray.800')}>
         <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
           <Stack align={'center'}>
-            <Heading fontSize={'4xl'} textAlign={'center'} color="teal.400">
+            <Heading fontSize={'5xl'} textAlign={'center'} color="primary.300">
               Sign up
             </Heading>
-            <Text fontSize={'lg'} color={'teal.300'}>
-              to enjoy all of our cool features ✌️
-            </Text>
           </Stack>
           <Box
             minW={{ base: '100%', md: '468px' }}
@@ -51,7 +48,7 @@ export default function RegisterTemplatePage() {
                   <PasswordInput name="password" placeholder="password" label="Password" />
 
                   <Stack spacing={10} pt={2}>
-                    <Button type="submit" isLoading={loading} loadingText="Submitting" size="lg" colorScheme="teal">
+                    <Button type="submit" isLoading={loading} loadingText="Submitting" size="lg" bg="primary.200">
                       Sign up
                     </Button>
                   </Stack>

@@ -1,10 +1,10 @@
-import { HStack, Spinner } from '@chakra-ui/react';
+import { Spinner, Stack } from '@chakra-ui/react';
 import React from 'react';
 
 export const NavLoadingSpinner = () => {
   return (
-    <HStack mr={10}>
+    <Stack p={1} mr={10} mb={1}>
       <Spinner />
-    </HStack>
+    </Stack>
   );
 };

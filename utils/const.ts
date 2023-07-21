@@ -7,5 +7,5 @@ export const SECTION_NAME = {
 } as const;
 
 export const APP_BAR_CONFIG = {
-  HEIGHT: 60,
+  HEIGHT: '50px',
 };
