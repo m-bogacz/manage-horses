@@ -84,7 +84,6 @@ export const Sidebar = ({ maxW = 240 }: SideBarProps) => {
         </Accordion>
       </Box>
 
-      <Divider />
       <Box flex={1} overflowY={'auto'} textAlign={'center'}>
         <SideBarList data={data} isLoading={isLoading} error={error} />
       </Box>
