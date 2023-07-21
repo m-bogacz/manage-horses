@@ -1,12 +1,12 @@
 import { Box, Flex } from '@chakra-ui/react';
 import { AdminDashboard } from '../admin/dashboard/AdminDashboard';
 import { ChildrenPageProps } from '@/utils/types/page';
-import { ReactElement } from 'react';
+import { ReactElement, Suspense } from 'react';
 import { useSession } from 'next-auth/react';
 import { AccessDenied } from '@/shared/accessDenied/AccessDenied';
 
 export const AdminLayout = ({ children }: ChildrenPageProps) => {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
 
   if (!session || session?.user.role !== 'admin') return <AccessDenied />;
   return (

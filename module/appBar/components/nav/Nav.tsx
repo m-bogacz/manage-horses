@@ -1,22 +1,18 @@
-import { Flex, useColorModeValue } from '@chakra-ui/react';
+import { Spinner } from '@chakra-ui/react';
 import { useSession } from 'next-auth/react';
 import { AuthenticationOptions } from './components/authenticationOptions/AuthenticationOptions';
 import { UserBar } from './components/userBar/UserBar';
+import { Suspense } from 'react';
+import { NavContainer } from './components/NavContainer';
 
 export const Navigation = () => {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
+
+  if (status === 'loading') return <Spinner />;
 
   return (
-    <Flex
-      bg={useColorModeValue('appbar.100', 'gray.800')}
-      color={useColorModeValue('gray.600', 'white')}
-      borderStyle={'solid'}
-      justifyContent={'flex-end'}
-      borderColor={useColorModeValue('gray.200', 'gray.900')}
-      align={'flex-end'}
-      flex={2}
-    >
-      {!session?.user ? <AuthenticationOptions /> : <UserBar />}
-    </Flex>
+    <NavContainer>
+      <Suspense fallback={<Spinner />}>{!session?.user ? <AuthenticationOptions /> : <UserBar />}</Suspense>
+    </NavContainer>
   );
 };
