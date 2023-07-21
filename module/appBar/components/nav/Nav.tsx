@@ -8,8 +8,6 @@ import { NavContainer } from './components/NavContainer';
 export const Navigation = () => {
   const { data: session, status } = useSession();
 
-  if (status === 'loading') return <Spinner />;
-
   return (
     <NavContainer>
       <Suspense fallback={<Spinner />}>{!session?.user ? <AuthenticationOptions /> : <UserBar />}</Suspense>
