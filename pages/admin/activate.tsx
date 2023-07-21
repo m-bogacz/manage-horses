@@ -1,12 +1,11 @@
 import React from 'react';
-import { AdminPageLayout } from '.';
-import { prisma } from '@/lib/prisma';
-import { GetStaticProps } from 'next';
-import { Box, Flex } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 import { UserType } from '@/utils/types/user';
 import { UserTable } from '@/module/admin/components/userTable/UserTable';
 import { getAllUsersServices } from '@/apps/api/modules/user/user.services';
 import { useQuery } from '@tanstack/react-query';
+import { AdminPageLayout } from '@/module/layout/AdminLayout';
+import { findDeactivateUsers } from '@/apps/api/modules/user/user.utils';
 
 interface AdminUserProps {
   users: UserType[];
@@ -26,16 +25,12 @@ export default function Activate({ users }: AdminUserProps) {
   );
 }
 
-export const getStaticProps: GetStaticProps<Partial<any>> = async () => {
-  const users = await prisma.user.findMany({
-    where: {
-      activated: false,
-    },
-  });
+export const getStaticProps = async () => {
+  const users = await findDeactivateUsers();
 
   return {
     props: {
-      users,
+      users: users,
     },
   };
 };

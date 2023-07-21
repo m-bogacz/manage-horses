@@ -1,5 +1,5 @@
+import { AdminPageLayout } from '@/module/layout/AdminLayout';
 import React from 'react';
-import { AdminPageLayout } from '.';
 
 export default function Settings() {
   return <div>In progress Settings</div>;

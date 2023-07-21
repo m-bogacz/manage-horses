@@ -16,10 +16,8 @@ export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma) as Adapter,
   pages: {
     signIn: '/login',
-    signOut: '/signout',
     newUser: '/register',
-    error: '/error',
-    verifyRequest: 'not-access',
+    verifyRequest: '/not-access',
   },
   providers: [
     CredentialsProvider({
@@ -55,9 +53,7 @@ export const authOptions: NextAuthOptions = {
       }
       return token;
     },
-    async redirect({ url }) {
-      return url;
-    },
+
     async session({ session, token }) {
       session.user = token.user;
       return session;
