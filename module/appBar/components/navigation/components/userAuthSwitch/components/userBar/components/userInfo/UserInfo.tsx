@@ -1,6 +1,6 @@
 import React from 'react';
 import { ChevronDownIcon, ChevronUpIcon } from '@chakra-ui/icons';
-import { MenuButton, HStack, Avatar, VStack, Text, Box } from '@chakra-ui/react';
+import { MenuButton, HStack, Avatar, VStack, Text, Box, AvatarBadge } from '@chakra-ui/react';
 import { useSession } from 'next-auth/react';
 
 export const UserInfo = ({ isOpen }: { isOpen: boolean }) => {
@@ -9,7 +9,9 @@ export const UserInfo = ({ isOpen }: { isOpen: boolean }) => {
     <>
       <MenuButton py={1} transition="all 0.3s" _focus={{ boxShadow: 'none' }}>
         <HStack>
-          <Avatar bg={'gray.400'} size={'sm'} />
+          <Avatar bg={'gray.400'} size={'sm'}>
+            <AvatarBadge boxSize="1.15em" bg="green.500" />
+          </Avatar>
           <VStack display={{ base: 'none', md: 'flex' }} alignItems="flex-start" spacing="1px" ml="2">
             <Text fontSize="md">{session?.user.username}</Text>
 

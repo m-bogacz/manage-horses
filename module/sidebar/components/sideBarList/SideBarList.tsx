@@ -1,5 +1,5 @@
-import { Box, List, Spinner } from '@chakra-ui/react';
 import React from 'react';
+import { Box, List, Skeleton } from '@chakra-ui/react';
 import { SideBarItem } from './SideBarItem';
 import { SideBarListHorseEntity } from '@/apps/api/types';
 import { getDefaultPhoto } from '@/apps/api/services/supabase.services';
@@ -13,22 +13,17 @@ interface SideBarListProps {
 export const SideBarList = ({ isLoading, error, data = [] }: SideBarListProps) => {
   if (error) return <Box>Error</Box>;
 
-  if (isLoading) {
-    return (
-      <Spinner thickness="4px" speed="0.65s" emptyColor="gray.200" color="blue.500" size="xl" textAlign={'center'} />
-    );
-  }
+  const horsesList = data.map((horse) => (
+    <SideBarItem
+      key={horse.name}
+      name={horse.name}
+      src={horse.profileImageUrl ? horse.profileImageUrl : getDefaultPhoto()}
+    />
+  ));
 
   return (
     <List mt={2}>
-      {data &&
-        data.map((horse) => (
-          <SideBarItem
-            key={horse.name}
-            name={horse.name}
-            src={horse.profileImageUrl ? horse.profileImageUrl : getDefaultPhoto()}
-          />
-        ))}
+      <Skeleton isLoaded={!isLoading}>{horsesList}</Skeleton>
     </List>
   );
 };

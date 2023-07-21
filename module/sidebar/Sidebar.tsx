@@ -48,14 +48,13 @@ export const Sidebar = ({ maxW = 240 }: SideBarProps) => {
       borderRight="1px"
       borderRightColor="gray.200"
       h="calc(100vh - 60px)"
+      zIndex={10}
       backgroundColor={{ base: 'white', md: 'white' }}
       minW={240}
       flexDir={'column'}
       w={'100vw'}
       maxW={{ base: '100vw', md: maxW }}
     >
-      {/* <Divider /> */}
-
       <Box m={'5px 10px'}>
         <SearchInput onChange={handleChangeQuery} />
         <Accordion allowMultiple mt={1} border={'1px solid'} borderColor={'step.100'} borderRadius={'1px'}>
