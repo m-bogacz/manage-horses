@@ -1,5 +1,4 @@
 import { Flex, useColorModeValue } from '@chakra-ui/react';
-
 import { ChildrenPageProps } from '@/utils/types/page';
 
 export const NavContainer = ({ children }: ChildrenPageProps) => {

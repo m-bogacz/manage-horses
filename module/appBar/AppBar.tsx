@@ -1,6 +1,6 @@
 import React from 'react';
 import { Divider, Flex } from '@chakra-ui/react';
-import { Navigation } from './components/nav/Nav';
+import { Navigation } from './components/navigation/Navigation';
 import { AppLogo } from './components/appLogo/AppLogo';
 
 export const AppBar = () => {
