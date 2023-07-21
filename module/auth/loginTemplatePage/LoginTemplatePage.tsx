@@ -5,6 +5,8 @@ import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import { InputField } from '@/shared/inputs/InputField';
 import { PasswordInput } from '@/shared/inputs/passwordInput/PasswordInput';
 import { ChakraNextLink } from '@/shared/chakraNextLink/ChakraNextLink';
+import { loginSchema } from './utils/validatorSchema';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 type Inputs = {
   name: string;
@@ -12,7 +14,9 @@ type Inputs = {
 };
 
 const LoginTemplatePage = () => {
-  const methods = useForm<Inputs>();
+  const methods = useForm<Inputs>({
+    resolver: zodResolver(loginSchema),
+  });
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     try {

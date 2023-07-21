@@ -29,7 +29,7 @@ export const PasswordInput = ({ name, placeholder, label = '', formHelpertext }:
   } = useFormContext();
 
   return (
-    <FormControl>
+    <FormControl isInvalid={Boolean(errors[name])}>
       <FormLabel htmlFor={name} color="gray.500">
         {label}
       </FormLabel>
