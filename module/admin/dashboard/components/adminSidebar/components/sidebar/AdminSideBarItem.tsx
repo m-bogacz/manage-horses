@@ -12,7 +12,7 @@ interface NavItemProps extends FlexProps {
 
 export const AdminSidebarItem = ({ icon, children, href }: NavItemProps) => {
   return (
-    <ChakraNextLink href={`/admin/${href}`} style={{ textDecoration: 'none' }} _focus={{ boxShadow: 'none' }}>
+    <ChakraNextLink href={`${href}`} style={{ textDecoration: 'none' }} _focus={{ boxShadow: 'none' }}>
       <Flex
         align="center"
         p="4"

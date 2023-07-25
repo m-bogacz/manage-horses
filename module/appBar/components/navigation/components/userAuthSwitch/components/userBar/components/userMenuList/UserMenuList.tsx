@@ -10,9 +10,9 @@ const logout = () => {
 };
 
 const LinkItems = [
-  { name: 'Profile', href: 'profile', icon: FiHome, callback: undefined, divider: false },
-  { name: 'Settings', href: 'settings', icon: FiSettings, callback: undefined, divider: false },
-  { name: 'Admin dashboard', href: 'admin', icon: FiPocket, callback: undefined, divider: false },
+  { name: 'Profile', href: 'user/profile', icon: FiHome, divider: false },
+  { name: 'Settings', href: 'user/settings', icon: FiSettings, divider: false },
+  { name: 'Admin dashboard', href: 'user/admin', icon: FiPocket, divider: false },
   { name: 'Sign out', href: 'login', icon: FiLogOut, callback: logout, divider: true },
 ];
 
@@ -22,7 +22,7 @@ export const UserMenuList = () => {
   return (
     <MenuList bg={useColorModeValue('white', 'gray.900')} borderColor={useColorModeValue('gray.200', 'gray.700')}>
       {LinkItems.map((item) => {
-        if (!isAdmin && item.href === 'admin') {
+        if (!isAdmin && item.href === 'user/admin') {
           return null;
         }
         return (

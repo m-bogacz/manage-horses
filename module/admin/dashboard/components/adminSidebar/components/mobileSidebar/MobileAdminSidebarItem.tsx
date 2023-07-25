@@ -11,7 +11,7 @@ interface NavItemProps extends FlexProps {
 
 export const MobileAdminSidebarItem = ({ icon, href }: NavItemProps) => {
   return (
-    <ChakraNextLink href={`/admin/${href}`} _focus={{ boxShadow: '#0F8378' }}>
+    <ChakraNextLink href={`${href}`} _focus={{ boxShadow: '#0F8378' }}>
       <Icon
         fontSize="16"
         _groupHover={{

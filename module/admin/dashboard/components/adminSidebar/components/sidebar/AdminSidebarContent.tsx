@@ -1,9 +1,7 @@
-import React, { ReactNode } from 'react';
-import { useColorModeValue, Box, FlexProps, IconButton, Flex } from '@chakra-ui/react';
-import { FiHome, FiTrendingUp } from 'react-icons/fi';
-import { IconType } from 'react-icons';
+import React from 'react';
+import { useColorModeValue, Box } from '@chakra-ui/react';
 import { AdminSidebarItem } from './AdminSideBarItem';
-import { LinkItems } from '@/module/admin/utils';
+import { adminRouteLinks } from '@/module/admin/utils';
 
 export const AdminSidebarContent = () => {
   return (
@@ -15,7 +13,7 @@ export const AdminSidebarContent = () => {
       pos="fixed"
       h="full"
     >
-      {LinkItems.map((link) => (
+      {adminRouteLinks.map((link) => (
         <AdminSidebarItem key={link.name} icon={link.icon} href={link.href}>
           {link.name}
         </AdminSidebarItem>

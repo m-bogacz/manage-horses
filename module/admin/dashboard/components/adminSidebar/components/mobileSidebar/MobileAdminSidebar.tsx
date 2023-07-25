@@ -1,5 +1,5 @@
 import React from 'react';
-import { LinkItems } from '@/module/admin/utils';
+import { adminRouteLinks } from '@/module/admin/utils';
 import { FlexProps, Flex, useColorModeValue } from '@chakra-ui/react';
 import { MobileAdminSidebarItem } from './MobileAdminSidebarItem';
 
@@ -18,7 +18,7 @@ export const MobileAdminSidebar = ({ ...rest }: FlexProps) => {
       justifyContent="flex-start"
       {...rest}
     >
-      {LinkItems.map((link) => (
+      {adminRouteLinks.map((link) => (
         <MobileAdminSidebarItem key={link.name} icon={link.icon} href={link.href}>
           {link.name}
         </MobileAdminSidebarItem>

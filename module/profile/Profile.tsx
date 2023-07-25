@@ -5,6 +5,7 @@ import { ManageHorseAction } from './components/manageHorseAction/ManageHorseAct
 import { Feature } from './components/feature/Feature';
 import { FeatureParent } from './components/feature/FeatureParent';
 import { getDefaultPhoto } from '@/apps/api/services/supabase.services';
+import { useCheckAdmin } from '@/hooks/useCheckAdmin';
 
 export const Profile = () => {
   const { name, birthday, gender, place, profileImageUrl, mother, father } = useHorseContext();
@@ -34,7 +35,7 @@ export const Profile = () => {
           <FeatureParent title="Father" parent={father} />
         </VStack>
       </Box>
-      <ManageHorseAction />
+      {useCheckAdmin() ? <ManageHorseAction /> : null}
     </Flex>
   );
 };
