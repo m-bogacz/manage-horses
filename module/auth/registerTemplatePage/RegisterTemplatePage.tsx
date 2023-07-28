@@ -21,11 +21,7 @@ export default function RegisterTemplatePage() {
   });
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    try {
-      await create({ name: data.name, email: data.email, password: data.password });
-    } catch (error) {
-      console.log('onSubmit', error);
-    }
+    await create({ name: data.name, email: data.email, password: data.password });
   };
 
   return (

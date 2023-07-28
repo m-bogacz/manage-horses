@@ -1,5 +1,4 @@
 import React from 'react';
-import { signIn } from 'next-auth/react';
 import { Flex, Stack, Avatar, Heading, Text, Button, Box, HStack } from '@chakra-ui/react';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import { InputField } from '@/shared/inputs/InputField';
@@ -7,27 +6,18 @@ import { PasswordInput } from '@/shared/inputs/passwordInput/PasswordInput';
 import { ChakraNextLink } from '@/shared/chakraNextLink/ChakraNextLink';
 import { loginSchema } from './utils/validatorSchema';
 import { zodResolver } from '@hookform/resolvers/zod';
-
-type Inputs = {
-  name: string;
-  password: string;
-};
+import { Inputs } from './utils/types';
+import { useLogin } from './hooks/useLogin';
 
 const LoginTemplatePage = () => {
+  const { login, loading } = useLogin();
+
   const methods = useForm<Inputs>({
     resolver: zodResolver(loginSchema),
   });
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    try {
-      await signIn('credentials', {
-        name: data.name,
-        password: data.password,
-        callbackUrl: '/horse',
-      });
-    } catch (error) {
-      console.log(error);
-    }
+    await login(data);
   };
 
   return (
@@ -42,12 +32,19 @@ const LoginTemplatePage = () => {
                 <InputField name="name" placeholder="name" />
                 <PasswordInput name="password" placeholder="Password" />
 
-                <Button borderRadius={0} type="submit" variant="solid" bg="primary.200" width="full">
+                <Button
+                  isLoading={loading}
+                  borderRadius={0}
+                  type="submit"
+                  variant="solid"
+                  bg="primary.200"
+                  width="full"
+                >
                   Login
                 </Button>
                 <HStack pt={6} justifyContent={'center'}>
                   <Text>New to us?</Text>
-                  <ChakraNextLink href={'/register'}>Sign in</ChakraNextLink>
+                  <ChakraNextLink href={'/register'}>Sign up</ChakraNextLink>
                 </HStack>
               </Stack>
             </form>

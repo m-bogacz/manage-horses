@@ -1,15 +1,17 @@
 import { IconType } from 'react-icons';
-import { FiHome, FiTrendingUp } from 'react-icons/fi';
+import { FiActivity, FiKey, FiSettings, FiUsers } from 'react-icons/fi';
 
-interface LinkItemProps {
+interface AdminRouteLinks {
   name: string;
   icon: IconType;
   href: string;
 }
 
-export const LinkItems: Array<LinkItemProps> = [
-  { name: 'Activate', href: 'activate', icon: FiHome },
-  { name: 'Users', href: 'users', icon: FiHome },
-  { name: 'Permission ', href: 'permission', icon: FiTrendingUp },
-  { name: 'Settings ', href: 'settings', icon: FiTrendingUp },
+const pathToAdmin = '/user/admin';
+
+export const adminRouteLinks: Array<AdminRouteLinks> = [
+  { name: 'Activate', href: `${pathToAdmin}/activate`, icon: FiActivity },
+  { name: 'Users', href: `${pathToAdmin}/users`, icon: FiUsers },
+  { name: 'Permission ', href: `${pathToAdmin}/permission`, icon: FiKey },
+  { name: 'Settings ', href: `${pathToAdmin}/settings`, icon: FiSettings },
 ];

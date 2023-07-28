@@ -10,7 +10,6 @@ export const AppBar = () => {
         <AppLogo />
         <Navigation />
       </Flex>
-      <Divider />
     </>
   );
 };

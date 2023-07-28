@@ -20,6 +20,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { addTabFormValidationSchema } from './utils/validationSchema';
 import { CloseButton } from '@/shared/button/CloseButton';
 import { FormButton } from '@/shared/button/FormButton';
+import { useCheckAdmin } from '@/hooks/useCheckAdmin';
 
 interface AddTabFormProps {
   title: string;
@@ -65,11 +66,15 @@ export const AddTabForm = ({
 
   return (
     <FormProvider {...methods}>
-      {isHiddenOpenBtn ? null : (
-        <Button onClick={onOpen} mt={2}>
-          Add
-        </Button>
-      )}
+      {useCheckAdmin() ? (
+        <>
+          {isHiddenOpenBtn ? null : (
+            <Button onClick={onOpen} mt={2}>
+              Add
+            </Button>
+          )}
+        </>
+      ) : null}
 
       <Modal isOpen={isOpen || isEditing} onClose={handleClose} size={'4xl'}>
         <ModalOverlay />

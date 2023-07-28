@@ -15,8 +15,10 @@ import Slideshow from 'yet-another-react-lightbox/plugins/slideshow';
 import Thumbnails from 'yet-another-react-lightbox/plugins/thumbnails';
 import Zoom from 'yet-another-react-lightbox/plugins/zoom';
 import 'yet-another-react-lightbox/plugins/thumbnails.css';
+import { useCheckAdmin } from '@/hooks/useCheckAdmin';
 
 export const Gallery = () => {
+  const isAdmin = useCheckAdmin();
   const { name } = useHorseContext();
   const [index, setIndex] = useState(-1);
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -36,9 +38,11 @@ export const Gallery = () => {
 
   return (
     <>
-      <Box textAlign={'right'} paddingBottom={5}>
-        <Button onClick={onOpen}>Add Image</Button>
-      </Box>
+      {isAdmin ? (
+        <Box textAlign={'right'} paddingBottom={5}>
+          <Button onClick={onOpen}>Add Image</Button>
+        </Box>
+      ) : null}
       <Modal
         title={'Add image to gallery'}
         buttons={null}

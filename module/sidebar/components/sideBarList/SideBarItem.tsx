@@ -1,7 +1,8 @@
-import { FlexProps, Avatar, ListItem, Text } from '@chakra-ui/react';
+import { FlexProps, ListItem, Text } from '@chakra-ui/react';
 import { ChakraNextLink } from '@/shared/chakraNextLink/ChakraNextLink';
 import { useRouter } from 'next/router';
 import { SECTION_NAME } from '@/utils/const';
+import { AvatarNext } from '@/shared/avatar/AvatarNext';
 
 interface SideBarItemProps extends FlexProps {
   readonly name: string;
@@ -40,7 +41,7 @@ export const SideBarItem = ({ name, src }: SideBarItemProps) => {
           outline: 'none',
         }}
       >
-        <Avatar name={name} src={src} />
+        <AvatarNext src={src} width={55} height={55} alt={`Horse named ${name}`} rounded={50} />
         <Text>{name}</Text>
       </ChakraNextLink>
     </ListItem>

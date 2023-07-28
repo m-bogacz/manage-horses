@@ -6,7 +6,8 @@ import { UserInfo } from './components/userInfo/UserInfo';
 export const UserBar = () => {
   return (
     <HStack>
-      <IconButton size="lg" variant="ghost" aria-label="open menu" icon={<BellIcon />} />
+      {/* todo dodac powiadomienia */}
+      {/* <IconButton size="lg" variant="ghost" aria-label="open menu" icon={<BellIcon />} /> */}
       <Flex alignItems={'center'}>
         <Menu>
           {({ isOpen }) => (

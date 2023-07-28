@@ -21,12 +21,14 @@ import { AddIcon, MinusIcon, PlusSquareIcon } from '@chakra-ui/icons';
 import { SearchInput } from './components/SearchInput/SearchInput';
 import { useState } from 'react';
 import { useHorses } from '@/apps/api/hooks/useHorses';
+import { useCheckAdmin } from '@/hooks/useCheckAdmin';
 
 interface SideBarProps {
   readonly maxW?: number | string;
 }
 
 export const Sidebar = ({ maxW = 240 }: SideBarProps) => {
+  const isAdmin = useCheckAdmin();
   const [queryName, setQueryName] = useState('');
   const [queryAge, setQueryAge] = useState<string | undefined>(undefined);
   const { error, data, isLoading } = useHorses(queryName, queryAge);
@@ -48,14 +50,13 @@ export const Sidebar = ({ maxW = 240 }: SideBarProps) => {
       borderRight="1px"
       borderRightColor="gray.200"
       h="calc(100vh - 60px)"
+      zIndex={10}
       backgroundColor={{ base: 'white', md: 'white' }}
       minW={240}
       flexDir={'column'}
       w={'100vw'}
       maxW={{ base: '100vw', md: maxW }}
     >
-      {/* <Divider /> */}
-
       <Box m={'5px 10px'}>
         <SearchInput onChange={handleChangeQuery} />
         <Accordion allowMultiple mt={1} border={'1px solid'} borderColor={'step.100'} borderRadius={'1px'}>
@@ -85,31 +86,32 @@ export const Sidebar = ({ maxW = 240 }: SideBarProps) => {
         </Accordion>
       </Box>
 
-      <Divider />
       <Box flex={1} overflowY={'auto'} textAlign={'center'}>
         <SideBarList data={data} isLoading={isLoading} error={error} />
       </Box>
       <Divider />
 
-      <Flex p={5} alignItems="center" justifyContent={'center'}>
-        <ChakraNextLink
-          href={'/add'}
-          display={'flex'}
-          alignItems={'center'}
-          justifyContent={'center'}
-          gap={1}
-          border={'1px solid'}
-          borderRadius={6}
-          w={'100%'}
-          height={'100%'}
-          color={'white'}
-          p={3}
-          bg={'button.100'}
-        >
-          <PlusSquareIcon />
-          <Text>Add horse</Text>
-        </ChakraNextLink>
-      </Flex>
+      {isAdmin ? (
+        <Flex p={5} alignItems="center" justifyContent={'center'}>
+          <ChakraNextLink
+            href={'/add'}
+            display={'flex'}
+            alignItems={'center'}
+            justifyContent={'center'}
+            gap={1}
+            border={'1px solid'}
+            borderRadius={6}
+            w={'100%'}
+            height={'100%'}
+            color={'white'}
+            p={3}
+            bg={'button.100'}
+          >
+            <PlusSquareIcon />
+            <Text>Add horse</Text>
+          </ChakraNextLink>
+        </Flex>
+      ) : null}
     </Flex>
   );
 };
