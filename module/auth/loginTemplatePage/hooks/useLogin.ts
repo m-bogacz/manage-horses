@@ -15,7 +15,6 @@ export const useLogin = () => {
       const result = await signIn('credentials', {
         name: data.name,
         password: data.password,
-        redirect: false,
       });
       if (!result?.ok) {
         toast({
