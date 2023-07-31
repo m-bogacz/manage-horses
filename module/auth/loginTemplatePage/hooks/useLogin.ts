@@ -15,6 +15,7 @@ export const useLogin = () => {
       const result = await signIn('credentials', {
         name: data.name,
         password: data.password,
+        callbackUrl: '/horse',
       });
       if (!result?.ok) {
         toast({
