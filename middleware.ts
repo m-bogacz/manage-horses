@@ -1,6 +1,11 @@
 import { withAuth } from 'next-auth/middleware';
 
 export default withAuth({
+  pages: {
+    signIn: '/login',
+    newUser: '/register',
+    verifyRequest: '/not-access',
+  },
   callbacks: {
     authorized({ req, token }) {
       if (protectedAdminRoute.includes(req.nextUrl.pathname)) {
