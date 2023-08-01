@@ -19,13 +19,13 @@ export const useLogin = () => {
       });
 
       if (!result?.ok) {
-        toast({
+        return toast({
           title: `Login failed. Please check your username and password and try again.`,
           status: 'error',
           position: 'top',
         });
       } else {
-        router.push('/horse');
+        return router.push('/');
       }
     } catch (error) {
       console.error('Wystąpił błąd podczas dodawania obiektu:', error);
