@@ -15,7 +15,7 @@ export const useLogin = () => {
       const result = await signIn('credentials', {
         name: data.name,
         password: data.password,
-        redirect: false,
+        callbackUrl: '/horse',
       });
 
       if (!result?.ok) {
@@ -24,8 +24,6 @@ export const useLogin = () => {
           status: 'error',
           position: 'top',
         });
-      } else {
-        router.push('/');
       }
     } catch (error) {
       console.error('Wystąpił błąd podczas dodawania obiektu:', error);
