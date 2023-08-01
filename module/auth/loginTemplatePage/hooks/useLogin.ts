@@ -15,15 +15,19 @@ export const useLogin = () => {
       const result = await signIn('credentials', {
         name: data.name,
         password: data.password,
-        callbackUrl: '/horse',
+        redirect: false,
       });
 
-      if (!result?.ok) {
+      console.log(result);
+
+      if (result?.status === 401) {
         toast({
           title: `Login failed. Please check your username and password and try again.`,
           status: 'error',
           position: 'top',
         });
+      } else {
+        router.push('/horse');
       }
     } catch (error) {
       console.error('Wystąpił błąd podczas dodawania obiektu:', error);
