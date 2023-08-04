@@ -20,7 +20,11 @@ export const UserMenuList = () => {
   const isAdmin = useCheckAdmin();
 
   return (
-    <MenuList bg={useColorModeValue('white', 'gray.900')} borderColor={useColorModeValue('gray.200', 'gray.700')}>
+    <MenuList
+      bg={useColorModeValue('white', 'gray.900')}
+      borderColor={useColorModeValue('gray.200', 'gray.700')}
+      zIndex={4}
+    >
       {LinkItems.map((item) => {
         if (!isAdmin && item.href === 'user/admin') {
           return null;
