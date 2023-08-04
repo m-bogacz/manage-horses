@@ -50,7 +50,7 @@ export const Sidebar = ({ maxW = 240 }: SideBarProps) => {
       borderRight="1px"
       borderRightColor="gray.200"
       h="calc(100vh - 60px)"
-      zIndex={3}
+      zIndex={2}
       backgroundColor={{ base: 'white', md: 'white' }}
       minW={240}
       flexDir={'column'}
