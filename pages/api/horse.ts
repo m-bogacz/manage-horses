@@ -7,11 +7,13 @@ import {
   updateHorseToDb,
   deleteHorseByName,
 } from '@/apps/api/modules/horse/horse.utils';
-import { getSession } from 'next-auth/react';
+
+import { getToken } from 'next-auth/jwt';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const session = await getSession({ req });
-  if (!session) {
+  const token = await getToken({ req });
+
+  if (!token) {
     return res.status(401).json({ message: 'Unauthorized' });
   }
 

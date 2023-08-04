@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex, Stack, Avatar, Heading, Text, Button, Box, HStack } from '@chakra-ui/react';
+import { Flex, Stack, Avatar, Heading, Text, Button, Box, HStack, useToast } from '@chakra-ui/react';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import { InputField } from '@/shared/inputs/InputField';
 import { PasswordInput } from '@/shared/inputs/passwordInput/PasswordInput';
@@ -8,8 +8,11 @@ import { loginSchema } from './utils/validatorSchema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Inputs } from './utils/types';
 import { useLogin } from './hooks/useLogin';
+import { useRouter } from 'next/router';
 
 const LoginTemplatePage = () => {
+  const router = useRouter();
+  const error = router.query.error;
   const { login, loading } = useLogin();
 
   const methods = useForm<Inputs>({
@@ -42,6 +45,7 @@ const LoginTemplatePage = () => {
                 >
                   Login
                 </Button>
+                {error && <Box color={'red.600'}>{'Invalid email or password'}</Box>}
                 <HStack pt={6} justifyContent={'center'}>
                   <Text>New to us?</Text>
                   <ChakraNextLink href={'/register'}>Sign up</ChakraNextLink>
