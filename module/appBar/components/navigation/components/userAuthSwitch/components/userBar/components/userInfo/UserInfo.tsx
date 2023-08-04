@@ -6,7 +6,7 @@ import { useSession } from 'next-auth/react';
 export const UserInfo = ({ isOpen }: { isOpen: boolean }) => {
   const { data: session } = useSession();
   return (
-    <MenuButton as={'button'} py={1} transition="all 0.3s" _focus={{ boxShadow: 'none' }}>
+    <MenuButton as={'button'} py={1} transition="all 0.3s">
       <HStack>
         <Avatar bg={'gray.400'} size={'sm'}>
           <AvatarBadge boxSize="1.15em" bg="green.500" />
