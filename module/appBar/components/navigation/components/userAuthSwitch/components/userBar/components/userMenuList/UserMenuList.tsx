@@ -6,7 +6,7 @@ import { UserMenuItem } from './components/userMenuItem.tsx/UserMenuItem';
 import { useCheckAdmin } from '@/hooks/useCheckAdmin';
 
 const logout = () => {
-  signOut();
+  signOut({ callbackUrl: '/login' });
 };
 
 const LinkItems = [

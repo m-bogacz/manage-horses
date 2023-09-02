@@ -5,20 +5,21 @@ import { useDisclosure, Button, Text, useToast, Flex } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import React from 'react';
 import { deleteHorse } from '@/apps/api/modules/horse/horse.services';
+import { redirect } from 'next/navigation';
 
 export const HorseDeleteConfirm = () => {
   const toast = useToast();
-  const router = useRouter();
   const queryClient = useQueryClient();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const { name } = useHorseContext();
+
   const mutation = useMutation(deleteHorse, {
     onSuccess: (data) => {
       queryClient.invalidateQueries();
     },
     onError: (error) => {
-      console.error('Wystąpił błąd podczas dodawania obiektu:', error);
+      console.error('Wystąpił błąd podczas usuwania konia:', error);
     },
   });
 
@@ -26,12 +27,12 @@ export const HorseDeleteConfirm = () => {
     try {
       await mutation.mutateAsync(removeName);
       onClose();
-      router.push('/');
       toast({
         title: `Horse ${name} has been successfully deleted.`,
         status: 'success',
         position: 'top',
       });
+      redirect('/');
     } catch (error) {
       toast({
         title: `Failed to delete the horse.`,

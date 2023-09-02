@@ -1,8 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { getSession } from 'next-auth/react';
+import { getToken } from 'next-auth/jwt';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const session = await getSession({ req });
+  const session = await getToken({ req });
   if (!session) {
     return res.status(401).json({ message: 'Unauthorized' });
   }

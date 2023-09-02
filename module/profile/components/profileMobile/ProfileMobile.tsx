@@ -4,13 +4,16 @@ import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPane
 import { Profile } from '../../Profile';
 
 export const ProfileMobile = () => {
-  const { name } = useHorseContext();
+  const horse = useHorseContext();
+
+  if (!horse) return null;
+
   return (
     <Accordion allowToggle>
       <AccordionItem border="none">
         <AccordionButton _expanded={{ bg: 'table.100' }} border={'1px solid #E2E8F0'} borderRadius={12}>
           <Box as="span" flex="1" textAlign="left">
-            {name}
+            {horse.name}
           </Box>
           <AccordionIcon />
         </AccordionButton>
