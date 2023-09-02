@@ -1,6 +1,6 @@
-import { supabase } from './supabaseClient';
+import { supabase } from '@/module/uploader/supabaseClient';
 
-export const handleAddImageToSupBase = async (file: Blob, name: string) => {
+export const handleChangeImageToSupBase = async (file: Blob, name: string) => {
   try {
     const filename = 'profileImageUrl';
     const { data, error } = await supabase.storage.from(`horses/horse/${name}`).upload(filename, file, {

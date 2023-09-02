@@ -8,7 +8,8 @@ import { AccessDenied } from '@/shared/accessDenied/AccessDenied';
 export const AdminLayout = ({ children }: ChildrenPageProps) => {
   const { data: session, status } = useSession();
 
-  if (!session || session?.user.role !== 'admin') return <AccessDenied />;
+  if (status === 'authenticated' && session?.user.role !== 'admin') return <AccessDenied />;
+
   return (
     <Flex w={'100vw'} h={'100vh'}>
       <Box as="aside" w={{ base: '50px', md: 240 }}>

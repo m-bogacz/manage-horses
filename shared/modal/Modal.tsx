@@ -17,9 +17,10 @@ interface ModalPropsUI {
   readonly title: string;
   readonly buttons?: React.ReactNode;
   readonly isOpen: boolean;
-  contentButton?: string;
-  showButton?: boolean;
-
+  readonly contentButton?: string;
+  readonly showButton?: boolean;
+  readonly onSubmit?: (data: any) => Promise<void>;
+  as?: React.ElementType;
   onOpen: () => void;
   onClose: () => void;
   onClick?: () => void;
@@ -34,13 +35,15 @@ export const Modal = ({
   onOpen,
   onClose,
   contentButton,
+  as = 'section',
+  onSubmit,
   showButton = false,
   ...props
 }: ModalPropsUI & ModalProps) => {
   return (
     <ChakraModal isOpen={isOpen} onClose={onClose} {...props}>
       <ModalOverlay />
-      <ModalContent>
+      <ModalContent as={as} onSubmit={onSubmit}>
         <ModalHeader>{title}</ModalHeader>
         <ModalCloseButton />
         <ModalBody>{children}</ModalBody>
