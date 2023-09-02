@@ -38,5 +38,5 @@ export default async function middleware(req: NextRequest, event: NextFetchEvent
 const protectedAdminRoute = ['/admin', '/admin/users', '/admin/settings', '/admin/permission', '/admin/activate'];
 
 export const config = {
-  matcher: ['/horse', '/horse/:name*', '/', '/login', '/register'],
+  matcher: ['/horse', '/horse/:name*', '/'],
 };
