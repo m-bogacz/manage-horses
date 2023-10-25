@@ -40,7 +40,7 @@
     "react-icons": "^4.10.1",
     "react-photo-album": "^2.0.3",
     "react-select": "^5.7.2",
-    "supabase": "^1.50.13",
+    "supabase": "^1.106.1",
     "uuid": "^9.0.0",
     "yet-another-react-lightbox": "^3.9.0",
     "zod": "^3.21.4"
