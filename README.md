@@ -13,7 +13,7 @@ Horse Management is a cutting-edge solution developed using Next.js 12, designed
 ## Technologies Used
 - Frontend: React, Next.js, Chakra UI, Framer Motion, React Icons
 - Backend: Express, Prisma, Next Auth
-- Database: Supabase
+- Database: Supabase - Postgres
 - Additional Libraries: Axios, Dayjs, React Hook Form, UUID, Zod
 
 ## Installation
