@@ -1,5 +1,7 @@
 # Horse Management App
 
+##Live [https://manage-horses.com]
+
 ## About the Project
 Horse Management is an advanced solution developed using Next.js 12, specifically designed for stables and equestrian centers. This application enables the collection, storage, and management of health data of horses, without directly monitoring their health status on an ongoing basis. It's an ideal tool for efficiently managing health-related information of horses in professional settings.
 
