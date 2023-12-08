@@ -1,19 +1,18 @@
 # Horse Management App
 
 ## About the Project
-Horse Management is a cutting-edge solution developed using Next.js 12, specifically designed for stables. This application facilitates the collection, storage, and management of comprehensive information about each horse, including their health, training history, diet, and care schedule. It's an efficient tool for managing all aspects of equine care in professional stables.
+Horse Management is an advanced solution developed using Next.js 12, specifically designed for stables and equestrian centers. This application enables the collection, storage, and management of health data of horses, without directly monitoring their health status on an ongoing basis. It's an ideal tool for efficiently managing health-related information of horses in professional settings.
 
 ## Key Features
-- **Horse Profile Management**: Create and manage detailed profiles for each horse.
-- **Health and Care Tracking**: Keep track of health, vaccinations, vet visits, and more.
-- **Training Scheduling**: Manage training schedules and track progress.
-- **Dietary Management**: Monitor diet plans and nutritional needs.
-- **Gallery Module**: Store and view photos of the horses.
+- **Horse Health Information Management**: Create detailed health profiles for each horse, including their medical history, information on past treatments, vaccinations, and other significant data.
+- **Gallery Module**: Store and view photos of horses that can assist in documenting their condition and any changes in health status.
+- **Information Organization**: Facilitate the effective gathering and review of health information, crucial for providing the best care.
+- **Easy Access to Data**: Quick and easy access to horses' health data for stable staff, aiding in efficient care management.
 
 ## Technologies Used
 - Frontend: React, Next.js, Chakra UI, Framer Motion, React Icons
 - Backend: Express, Prisma, Next Auth
-- Database: Supabase - Postgres
+- Database: Supabase
 - Additional Libraries: Axios, Dayjs, React Hook Form, UUID, Zod
 
 ## Installation
